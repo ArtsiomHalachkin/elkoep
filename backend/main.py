@@ -636,7 +636,7 @@ async def add_device(payload: dict):
                         device.get("description", ""),
                         rfatv8.get("heating"),
                         rfatv8.get("refresh_interval"),
-                        rfatv8.get("temperature_hysteresis"),
+                        rfatv8.get("temperature_hysteresis", 0),
                         rfatv8.get("freezing_temperature"),
                         rfatv8.get("window_sensitivity"),
                         rfatv8.get("window_time")
