@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 24 24">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #0091ea;
+      }
+    </style>
+  </defs>
+  <!-- Generator: Adobe Illustrator 28.7.1, SVG Export Plug-In . SVG Version: 1.2.0 Build 142)  -->
+  <g>
+    <g id="Vrstva_1">
+      <g id="Group_10031">
+        <rect id="Rectangle_3169" class="cls-1" width="24" height="24"/>
+        <path id="plus-circle" class="cls-2" d="M12,3C7,3,3,7,3,12s4,9,9,9,9-4,9-9S17,3,12,3ZM17.2,13c0,.2-.2.4-.4.4h-3.3v3.3c0,.2-.2.4-.4.4h-2c-.2,0-.4-.2-.4-.4v-3.3h-3.3c-.2,0-.4-.2-.4-.4v-2c0-.2.2-.4.4-.4h3.3v-3.3c0-.2.2-.4.4-.4h2c.2,0,.4.2.4.4v3.3h3.3c.2,0,.4.2.4.4v2Z"/>
+      </g>
+    </g>
+  </g>
+</svg>

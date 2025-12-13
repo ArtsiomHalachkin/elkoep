@@ -1,0 +1,77 @@
+.icon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+  vertical-align: middle;
+}
+
+.icon.cursor {
+  cursor: pointer;
+}
+
+.icon.bigger {
+  width: 32px;
+  height: 32px;
+}
+
+.icon-play {
+  background-image: url('../../assets/img/play-inactive-green.svg');
+}
+
+.icon-play:hover {
+  background-image: url('../../assets/img/play-active-green.svg');
+}
+
+.icon-add {
+  background-image: url('../../assets/img/plus-icon-inactive.svg');
+}
+
+.icon-add:hover {
+  background-image: url('../../assets/img/plus-icon-active.svg');
+}
+
+.icon-edit {
+  background-image: url('../../assets/img/edit-icon-inactive.svg');
+}
+
+.icon-edit:hover {
+  background-image: url('../../assets/img/edit-icon-active.svg');
+}
+
+.icon-delete {
+  background-image: url('../../assets/img/trash-icon-empty.svg');
+}
+
+.icon-delete:hover {
+  background-image: url('../../assets/img/trash-icon-full.svg');
+}
+
+.icon-on {
+  background-image: url('../../assets/img/device/on.svg');
+}
+
+.icon-off {
+  background-image: url('../../assets/img/device/off.svg');
+}
+
+.icon-thermo {
+  background-image: url('../../assets/img/device/thermometer.svg');
+}
+
+.icon-heating {
+  background-image: url('../../assets/img/device/heating.svg');
+}
+
+.icon-automat-on {
+  background-image: url('../../assets/img/device/automat_on.svg');
+}
+
+.icon-user {
+  background-image: url('../../assets/img/user.svg');
+}
+

@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>inels_air_v2</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/icons.css">
+    <link rel="stylesheet" href="assets/css/rooms.css">
+    <link rel="stylesheet" href="assets/css/sidebar.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body class="body-background">
+    <ul class="nav nav-pills flex-column shadow d-flex sidebar mobile-hid">
+        <li class="nav-item logo-holder">
+            <div class="logo py-4 mx-4">
+                <img src="assets/img/logo-inels.svg" style="max-width: 60%;margin-top: -19px;margin-bottom: -11px;">
+                <span class="fs-5 fw-bold text-dark logo" id="title" style="padding-right: 30px;"></span>
+                <a class="float-end text-dark" id="sidebarToggleHolder" href="#">
+                    <img id="sidebarToggle" src="assets/img/menu-icon-black.svg">
+                </a>
+            </div>
+        </li>
+        <li class="nav-item"><a class="nav-link text-start py-1 px-0 text-color" href="rooms_en.html"><img class="navbar-icon" src="assets/img/overview-icon-inactive.svg"><span class="text-nowrap mx-2">Rooms</span></a></li>
+        <li class="nav-item"><a class="nav-link active text-start py-1 px-0 text-color" href="devices.html"><img class="navbar-icon" src="assets/img/settings-icon-active.svg" width="24" height="24"><span class="text-nowrap mx-2">Devices</span></a></li>
+        <li class="nav-item"><a class="nav-link text-start py-1 px-0 text-color" href="temp_plans.html"><img class="navbar-icon" src="assets/img/settings-icon-inactive.svg"><span class="text-nowrap mx-2">Temperature plans</span></a></li>
+        <li class="nav-item"><a class="nav-link text-start py-1 px-0 text-color" href="accounts.html"><img class="navbar-icon" src="assets/img/settings-icon-inactive.svg"><span class="text-nowrap mx-2">App accounts</span></a></li>
+    </ul>
+
+    <div class="d-flex justify-content-between align-items-center stripe" style="height: 86.3906px;">
+        <span class="d-xxl-flex justify-content-xxl-start page-info-left">Devices</span>
+        <span class="unit-info-right">iNELS Heating</span>
+    </div>
+
+    <section class="text-center position-relative py-2 px-5 section-heading">
+        <span class="second-title page-heading">Devices</span>
+    </section>
+
+    <section class="service-template section-expand">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-xl-8">
+                    <div class="card header-color" style="margin-bottom: 24px;">
+                        <h4 class="text-center header">Device List</h4>
+                        <div class="card-body card-color">
+                            <div>
+                                <div class="table-responsive text-nowrap">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-start">#</th>
+                                                <th scope="col">DEV EUI</th>
+                                                <th scope="col">Device Type</th>
+                                                <th>Description</th>
+                                                <th class="text-center">Active</th>
+                                                <th class="text-center" scope="col">Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="list-devices">
+
+                                            <!-- Device rows will be populated here dynamically -->
+
+
+                                            <td class="text-center">
+                                                <span class="icon icon-edit cursor me-2" data-bs-toggle="modal" data-bs-target="#modal_edit_device"
+                                                    id="edit-device-btn"></span>
+
+                                                <span class="icon icon-delete cursor" data-bs-toggle="modal" data-bs-target="#modal_delete_device"
+                                                    id="delete-device-btn"></span>
+                                            </td>
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!-- Add Device Modal -->
+                            <div class="modal fade" role="dialog" tabindex="-1" id="modal_add_device">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header header-color">
+                                            <h4 class="modal-title">Add Device</h4>
+                                            <button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form id="add-device-form">
+                                                <div class="mb-3">
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <label class="form-label">Device Model:</label>
+                                                            <select class="form-select" name="deviceModel">
+                                                                <option value="1" selected>RFTC-8</option>
+                                                                <option value="2">RFATV-8</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <div class="row">
+                                                        <div class="col"><label class="form-label">DEV EUI:</label><input class="form-control" type="text" name="eui"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <div class="row">
+                                                        <div class="col"><label class="form-label">Description:</label><input class="form-control" type="text" name="description"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3" name="rfatvSettings" style="display: none;">
+                                                    <label class="form-label fs-5 fw-bold mb-2">RFATV Settings</label>
+                                                    <div class="mb-3">
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <label class="form-label">Heating</label>
+                                                                <select class="form-select" name="heating">
+                                                                    <option value="1" selected>Enabled</option>
+                                                                    <option value="2">Disabled - valve closed</option>
+                                                                    <option value="3">Disabled - valve open</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div name="heatingSettings">
+                                                        <div class="mb-3">
+                                                            <div class="row">
+                                                                <div class="col"><label class="form-label">Refresh interval [min]</label><input class="form-control" type="number" value="0.5" min="0.5" step="0.5" name="refresh_interval"></div>
+                                                                <div class="col"><label class="form-label">Temperature hysteresis [°C]</label><input class="form-control" type="number" value="0" min="0" max="20" step="0.1" name="temperature_hysteresis"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="mb-3">
+                                                                <div class="row">
+                                                                    <div class="col">
+                                                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-3" name="freezingDetection"><label class="form-check-label" for="formCheck-3">Freezing detection</label></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="mb-3" name="freezingDetectionDiv" style="display: none;">
+                                                                <div class="row">
+                                                                    <div class="col"><label class="form-label">Freezing temperature [°C]</label><input class="form-control" type="number" value="5" min="0" max="20" step="0.1" name="freezing_temperature"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="mb-3">
+                                                                <div class="row">
+                                                                    <div class="col">
+                                                                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1" name="windowDetection"><label class="form-check-label" for="formCheck-1">Window detection</label></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div name="windowDetectionDiv" style="display: none;">
+                                                                <div class="row">
+                                                                    <div class="col"><label class="form-label">Window sensitivity [°C]</label><input class="form-control" type="number" value="0.4" min="0" max="20" step="0.1" name="window_sensitivity"></div>
+                                                                    <div class="col"><label class="form-label">Window time [min]</label><input class="form-control" type="number" value="10" min="0" step="0.5" name="window_time"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button>
+                                            <button class="btn btn-primary" type="submit" id="device-submit-btn">Add</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Edit Device Modal -->
+                            <div class="modal fade" role="dialog" tabindex="-1" id="modal_edit_device">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header header-color">
+                                            <h4 class="modal-title">Edit Device</h4>
+                                            <button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form id="edit-device-form">
+                                                <div class="mb-3">
+                                                    <div class="row">
+                                                        <div class="col"><label class="form-label">Device Model:</label>
+                                                            <select class="form-select" name="deviceModel" disabled>
+                                                                <option value="1" selected>RFTC-8</option>
+                                                                <option value="2">RFATV-8</option>
+                                                            </select></div>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <div class="row">
+                                                        <div class="col"><label class="form-label">DEV EUI:</label><input class="form-control" type="text" value="00F41A" name="dev_eui"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <div class="row">
+                                                        <div class="col"><label class="form-label">Description:</label><input class="form-control" type="text" value="Room 1" name="description"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3 hidden" name="rfatvSettings">
+                                                    <label class="form-label fs-5 fw-bold mb-3">RFATV Settings</label>
+                                                     <div class="mb-3">
+                                                        <div class="row">
+                                                            <div class="col">
+                                                                <label class="form-label">Heating</label>
+                                                                <select class="form-select" name="heating">
+                                                                    <option value="1" selected>Enabled</option>
+                                                                    <option value="2">Disabled - valve closed</option>
+                                                                    <option value="3">Disabled - valve open</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div name="heatingSettings">
+                                                    <div class="mb-3">
+                                                        <div class="row">
+                                                            <div class="col"><label class="form-label">Refresh time [min]</label><input class="form-control" type="number" min="0.5" step="0.5" name="refresh_interval"></div>
+                                                            <div class="col"><label class="form-label">Temperature hysteresis [°C]</label><input class="form-control" type="number"  min="0" max="20" step="0.1" name="temperature_hysteresis"></div>
+                                                        </div>
+                                                    </div>
+                                                        <div class="mb-3">
+                                                            <div class="row">
+                                                                <div class="col">
+                                                                     <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-3" name="freezingDetection"><label class="form-check-label" for="formCheck-3">Freezing detection</label></div>
+                                                                 </div>
+                                                              </div>
+                                                      </div>
+                                                    <div class="mb-3" name="freezingDetectionDiv">
+                                                        <div class="row">
+                                                            <div class="col"><label class="form-label">Freezing temperature [°C]</label><input class="form-control" type="number"  min="0" max="20" step="0.1" name="freezing_temperature"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="mb-3">
+                                                            <div class="row">
+                                                                <div class="col">
+                                                                    <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-2" name="windowDetection"><label class="form-check-label" for="formCheck-2">Window detection</label></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="hidden" name="windowDetectionDiv">
+                                                            <div class="row">
+                                                                <div class="col"><label class="form-label">Window sensitivity [°C]</label><input class="form-control" type="number"  min="0" max="20" step="0.1" name="window_sensitivity"></div>
+                                                                <div class="col"><label class="form-label">Delay [min]</label><input class="form-control" type="number"  min="0" step="0.5" name="window_time"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button>
+                                            <button class="btn btn-primary" type="submit" id="device-edit-submit-btn">Edit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Delete Device Modal -->
+                            <div class="modal fade" role="dialog" tabindex="-1" id="modal_delete_device">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Delete Device</h4>
+                                            <button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h5 class="text-center">Are you sure?</h5>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button>
+                                            <button class="btn btn-danger btn-delete" type="button" data-bs-dismiss="modal">Delete</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="fixed-add-button">
+        <button class="btn btn-primary btn-sm border rounded-pill btn-circle" type="button" data-bs-toggle="modal" data-bs-target="#modal_add_device">
+            <img src="assets/img/plus-inactive-black.svg" style="width: 28px;">
+            <span class="add-text">Add</span>
+        </button>
+    </div>
+
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/general.js"></script>
+    <script src="assets/js/sidebar.js"></script>
+    <script type="module" src="assets/js/device.js"></script>
+</body>
+</html>

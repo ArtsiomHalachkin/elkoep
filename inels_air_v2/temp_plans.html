@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>inels_air_v2</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/icons.css">
+    <link rel="stylesheet" href="assets/css/rooms.css">
+    <link rel="stylesheet" href="assets/css/sidebar.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/temp_plan.css">
+</head>
+
+<body class="body-background">
+    <ul class="nav nav-pills flex-column shadow d-flex sidebar mobile-hid">
+        <li class="nav-item logo-holder">
+            <div class="logo py-4 mx-4"><img src="assets/img/logo-inels.svg" style="max-width: 60%;margin-top: -19px;margin-bottom: -11px;"><span class="fs-5 fw-bold text-dark logo" id="title" style="padding-right: 30px;"></span><a class="float-end text-dark" id="sidebarToggleHolder" href="#"><img id="sidebarToggle" src="assets/img/menu-icon-black.svg"></a></div>
+        </li>
+        <li class="nav-item"><a class="nav-link text-start py-1 px-0 text-color" href="rooms_en.html"><img class="navbar-icon" src="assets/img/overview-icon-inactive.svg"><span class="text-nowrap mx-2">Rooms</span></a></li>
+        <li class="nav-item"><a class="nav-link text-start py-1 px-0 text-color" href="devices.html"><img class="navbar-icon" src="assets/img/settings-icon-inactive.svg"><span class="text-nowrap mx-2">Devices</span></a></li>
+        <li class="nav-item"><a class="nav-link active text-start py-1 px-0 text-color" href="temp_plans.html"><img class="navbar-icon" src="assets/img/settings-icon-active.svg"><span class="text-nowrap mx-2">Temperature plans</span></a></li>
+        <li class="nav-item"><a class="nav-link text-start py-1 px-0 text-color" href="accounts.html"><img class="navbar-icon" src="assets/img/settings-icon-inactive.svg"><span class="text-nowrap mx-2">App accounts</span></a></li>
+    </ul>
+    <div class="d-flex justify-content-between align-items-center stripe" style="height: 86.3906px;"><span class="d-xxl-flex justify-content-xxl-start page-info-left">Temperature plans</span><span class="unit-info-right">iNELS Heating</span></div>
+    <section class="text-center position-relative py-2 px-5 section-heading"><span class="second-title page-heading">Temperature plans</span></section>
+    <section class="service-template section-expand">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-8 col-xl-7">
+                    <div class="card header-color" style="margin-bottom: 24px;">
+                        <h4 class="text-center header">List of plans</h4>
+                        <div class="card-body card-color">
+                            <div>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Name</th>
+                                                <th>Description</th>
+                                                <th class="text-center">Edit</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="list-temp-plans">
+
+                                            <!-- plans rows will be populated here dynamically -->
+                                            
+                                            <tr>
+                                                <td class="text-nowrap text-center">
+                                                    <span class="icon icon-edit cursor me-2" data-bs-toggle="modal" data-bs-target="#modal_edit_TempPlan">
+                                                    
+                                                </span>
+                                                    <span class="icon icon-delete cursor" data-bs-toggle="modal" data-bs-target="#modal_delete_TempPlan">
+
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="modal fade" role="dialog" tabindex="-1" data-bs-backdrop="static" id="modal_add_TempPlan" data-bs-keyboard="false">
+                                <div class="modal-dialog modal-xl" role="document">
+                                    <div class="modal-content">
+                                        <form id="add-TempPlan-form">
+                                            <div class="modal-header header-color">
+                                                <h4 class="modal-title">Add temperature plan</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div>
+                                                    <div class="row">
+                                                        <div class="col-auto">
+                                                            <div class="px-0 px-sm-3">
+                                                                <div class="row">
+                                                                    <div class="col"><label class="form-label">Name:</label><input class="form-control form-control-sm" type="text" name="temp-name"></div>
+                                                                    <div class="col"><label class="form-label">Descriptions</label><input class="form-control form-control-sm" type="text" name="temp-description"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col"></div>
+                                                    </div>
+                                                    <hr class="mt-4 mb-4">
+                                                    <div class="row">
+                                                        <div class="col-12 col-lg-6 pb-4 pb-lg-0 custom-border-right custom-border-bottom">
+                                                            <div class="heating-cooling-container">
+                                                                <div class="mb-4">
+                                                                    <div class="heating-cooling-switch">
+                                                                        <div class="heating-cooling-label-container"><label class="heating" for="heating">Heating</label></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="px-0 px-sm-3 form-group">
+                                                                    <div class="row form-group">
+                                                                        <div class="col"><label class="form-label">Minimum [°C]:</label><input class="form-control form-control-sm" type="number" name="temp-heat-min" value="15" min="0" max="50" step="1"></div>
+                                                                        <div class="col"><label class="form-label">Attenuation [°C]:</label><input class="form-control form-control-sm" type="number" name="temp-heat-atten" value="20" min="0" max="50" step="1"></div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col"><label class="form-label">Normal [°C]:</label><input class="form-control form-control-sm" type="number" name="temp-heat-normal" value="24" min="0" max="50" step="1"></div>
+                                                                        <div class="col"><label class="form-label">Comfort [°C]:</label><input class="form-control form-control-sm" type="number" name="temp-heat-comfort" value="28" min="0" max="50" step="1"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 col-lg-6 pt-4 pt-lg-0 custom-border-left custom-border-top">
+                                                            <div>
+                                                                <div class="mb-4">
+                                                                    <div class="time-weekly-switch">
+                                                                        <div class="time-weekly-label-container"><input type="radio" id="time-schedule" class="btn-check" autocomplete="off" checked="" name="plans-view"><label class="time-weekly-label time-schedule" for="time-schedule">Time Schedule</label></div>
+                                                                        <div class="time-weekly-label-container"><input type="radio" id="weekly-overview" class="btn-check" autocomplete="off" name="plans-view"><label class="time-weekly-label weekly-overview" for="weekly-overview">Weekly Overview</label></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="mb-5" name="timeSchedule">
+                                                                    <div class="temp-plan-container mb-4"><input type="radio" id="Mon" class="btn-check" autocomplete="off" checked="" name="dayWeek" value="1"><label class="temp-plan-day-btn" for="Mon">Mon</label><input type="radio" id="Tue" class="btn-check" autocomplete="off" name="dayWeek" value="2"><label class="temp-plan-day-btn" for="Tue">Tue</label><input type="radio" id="Wed" class="btn-check" autocomplete="off" name="dayWeek" value="3"><label class="temp-plan-day-btn" for="Wed">Wed</label><input type="radio" id="Thu" class="btn-check" autocomplete="off" name="dayWeek" value="4"><label class="temp-plan-day-btn" for="Thu">Thu</label><input type="radio" id="Fri" class="btn-check" autocomplete="off" name="dayWeek" value="5"><label class="temp-plan-day-btn" for="Fri">Fri</label><input type="radio" id="Sat" class="btn-check" autocomplete="off" name="dayWeek" value="6"><label class="temp-plan-day-btn" for="Sat">Sat</label><input type="radio" id="Sun" class="btn-check" autocomplete="off" name="dayWeek" value="7"><label class="temp-plan-day-btn" for="Sun">Sun</label></div>
+                                                                    <div class="mb-3 week-plans-list">
+                                                                        <div class="plans-list" data-day="1">
+                                                                            <div class="row justify-content-center">
+                                                                                <div class="col-11">
+                                                                                    
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="plans-list hidden" data-day="2">
+                                                                            <div class="row justify-content-center">
+                                                                                <div class="col-11"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="plans-list hidden" data-day="3">
+                                                                            <div class="row justify-content-center">
+                                                                                <div class="col-11"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="plans-list hidden" data-day="4">
+                                                                            <div class="row justify-content-center">
+                                                                                <div class="col-11"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="plans-list hidden" data-day="5">
+                                                                            <div class="row justify-content-center">
+                                                                                <div class="col-11"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="plans-list hidden" data-day="6">
+                                                                            <div class="row justify-content-center">
+                                                                                <div class="col-11"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="plans-list hidden" data-day="7">
+                                                                            <div class="row justify-content-center">
+                                                                                <div class="col-11"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="d-flex justify-content-center"><img class="icon cursor" src="assets/img/plus_icon.svg" style="width: 35px;" name="add-plan-button"></div>
+                                                                </div>
+                                                                <div class="hidden" name="weeklyOverview">
+                                                                    <div class="schedule-container mb-4">
+                                                                        <div class="schedule-header">
+                                                                            <div class="time-label"></div>
+                                                                            <div class="day-label"><span>MO</span></div>
+                                                                            <div class="day-label"><span>TU</span></div>
+                                                                            <div class="day-label"><span>WE</span></div>
+                                                                            <div class="day-label"><span>TH</span></div>
+                                                                            <div class="day-label"><span>FR</span></div>
+                                                                            <div class="day-label"><span>SA</span></div>
+                                                                            <div class="day-label"><span>SU</span></div>
+                                                                        </div>
+                                                                        <div class="schedule-grid">
+                                                                            <div class="time-column">
+                                                                                <div class="time-slot-label"><span>0</span></div>
+                                                                                <div class="time-dot"><span>•</span></div>
+                                                                                <div class="time-slot-label"><span>2</span></div>
+                                                                                <div class="time-dot"><span>•</span></div>
+                                                                                <div class="time-slot-label"><span>4</span></div>
+                                                                                <div class="time-dot"><span>•</span></div>
+                                                                                <div class="time-slot-label"><span>6</span></div>
+                                                                                <div class="time-dot"><span>•</span></div>
+                                                                                <div class="time-slot-label"><span>8</span></div>
+                                                                                <div class="time-dot"><span>•</span></div>
+                                                                                <div class="time-slot-label"><span>10</span></div>
+                                                                                <div class="time-dot"><span>•</span></div>
+                                                                                <div class="time-slot-label"><span>12</span></div>
+                                                                                <div class="time-dot"><span>•</span></div>
+                                                                                <div class="time-slot-label"><span>14</span></div>
+                                                                                <div class="time-dot"><span>•</span></div>
+                                                                                <div class="time-slot-label"><span>16</span></div>
+                                                                                <div class="time-dot"><span>•</span></div>
+                                                                                <div class="time-slot-label"><span>18</span></div>
+                                                                                <div class="time-dot"><span>•</span></div>
+                                                                                <div class="time-slot-label"><span>20</span></div>
+                                                                                <div class="time-dot"><span>•</span></div>
+                                                                                <div class="time-slot-label"><span>22</span></div>
+                                                                                <div class="time-dot"><span>•</span></div>
+                                                                                <div class="time-slot-label"><span>24</span></div>
+                                                                            </div>
+                                                                            <div class="day-column" data-day="monday"></div>
+                                                                            <div class="day-column" data-day="tuesday"></div>
+                                                                            <div class="day-column" data-day="wednesday"></div>
+                                                                            <div class="day-column" data-day="thursday"></div>
+                                                                            <div class="day-column" data-day="friday"></div>
+                                                                            <div class="day-column" data-day="saturday"></div>
+                                                                            <div class="day-column" data-day="sunday"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div name="plan-describe">
+                                                                        <div class="row justify-content-center">
+                                                                            <div class="col-11">
+                                                                                <div class="d-flex justify-content-between align-items-center border p-2 mb-2 small plan-info" data-mode="minimum" data-starttime="00:00" data-endtime="07:00">
+                                                                                    <div class="d-flex align-items-center"><span class="color-indicator minimum"></span><span class="fw-bold ms-2 mode">Minimum</span></div><span class="time">00:00 - 07:00</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button>
+                                                <button class="btn btn-primary" type="button" id="add-week-plan" >Add</button></div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal fade" role="dialog" tabindex="-1" data-bs-backdrop="static" id="modal_edit_TempPlan" data-bs-keyboard="false">
+                                <div class="modal-dialog modal-xl" role="document">
+                                    <div class="modal-content">
+                                        <form id="edit-scene-form">
+                                            <div class="modal-header header-color">
+                                                <h4 class="modal-title">Edit temperature plan</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div>
+                                                    <div class="row">
+                                                        <div class="col-auto">
+                                                            <div class="px-0 px-sm-3">
+                                                                <div class="row">
+                                                                    <div class="col"><label class="form-label">Name:</label><input class="form-control form-control-sm" type="text" name="temp-name"></div>
+                                                                    <div class="col"><label class="form-label">Descriptions</label><input class="form-control form-control-sm" type="text" name="temp-description"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col"></div>
+                                                    </div>
+                                                    <hr class="mt-4 mb-4">
+                                                    <div class="row">
+                                                        <div class="col-12 col-lg-6 pb-4 pb-lg-0 custom-border-right custom-border-bottom">
+                                                            <div class="heating-cooling-container">
+                                                                <div class="mb-4">
+                                                                    <div class="heating-cooling-switch">
+                                                                        <div class="heating-cooling-label-container"><label class="heating" for="heating">Heating</label></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="px-0 px-sm-3 form-group">
+                                                                    <div class="row form-group">
+                                                                        <div class="col"><label class="form-label">Minimum [°C]:</label><input class="form-control form-control-sm" type="number" name="temp-heat-min-edit" value="15" min="0" max="50" step="1"><input class="form-control form-control-sm hidden" type="number" name="temp-cool-min-edit" value="26" min="0" max="50" step="1"></div>
+                                                                        <div class="col"><label class="form-label">Attenuation [°C]:</label><input class="form-control form-control-sm" type="number" name="temp-heat-atten-edit" value="20" min="0" max="50" step="1"><input class="form-control form-control-sm hidden" type="number" name="temp-cool-atten-edit" value="24" min="0" max="50" step="1"></div>
+                                                                    </div>
+                                                                    <div class="row">
+                                                                        <div class="col"><label class="form-label">Normal [°C]:</label><input class="form-control form-control-sm" type="number" name="temp-heat-normal-edit" value="24" min="0" max="50" step="1"><input class="form-control form-control-sm hidden" type="number" name="temp-cool-normal-edit" value="22" min="0" max="50" step="1"></div>
+                                                                        <div class="col"><label class="form-label">Comfort [°C]:</label><input class="form-control form-control-sm" type="number" name="temp-heat-comfort-edit" value="28" min="0" max="50" step="1"><input class="form-control form-control-sm hidden" type="number" name="temp-cool-comfort-edit" value="20" min="0" max="50" step="1"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12 col-lg-6 pt-4 pt-lg-0 custom-border-left custom-border-top">
+                                                            <div>
+                                                                <div class="mb-4">
+                                                                    <div class="time-weekly-switch">
+                                                                        <div class="time-weekly-label-container"><input type="radio" id="time-schedule-edit" class="btn-check" autocomplete="off" checked="" name="plans-view-edit"><label class="time-weekly-label time-schedule" for="time-schedule-edit">Time Schedule</label></div>
+                                                                        <div class="time-weekly-label-container"><input type="radio" id="weekly-overview-edit" class="btn-check" autocomplete="off" name="plans-view-edit"><label class="time-weekly-label weekly-overview" for="weekly-overview-edit">Weekly Overview</label></div>
+                                                                    </div>
+                                                                </div>
+                                                   <div class="mb-5" name="timeSchedule">
+                                                                    <div class="temp-plan-container mb-4"><input type="radio" id="Mon-edit" class="btn-check" autocomplete="off" checked="" name="dayWeek" value="1"><label class="temp-plan-day-btn" for="Mon-edit">Mon</label><input type="radio" id="Tue-edit" class="btn-check" autocomplete="off" name="dayWeek" value="2"><label class="temp-plan-day-btn" for="Tue-edit">Tue</label><input type="radio" id="Wed-edit" class="btn-check" autocomplete="off" name="dayWeek" value="3"><label class="temp-plan-day-btn" for="Wed-edit">Wed</label><input type="radio" id="Thu-edit" class="btn-check" autocomplete="off" name="dayWeek" value="4"><label class="temp-plan-day-btn" for="Thu-edit">Thu</label><input type="radio" id="Fri-edit" class="btn-check" autocomplete="off" name="dayWeek" value="5"><label class="temp-plan-day-btn" for="Fri-edit">Fri</label><input type="radio" id="Sat-edit" class="btn-check" autocomplete="off" name="dayWeek" value="6"><label class="temp-plan-day-btn" for="Sat-edit">Sat</label><input type="radio" id="Sun-edit" class="btn-check" autocomplete="off" name="dayWeek" value="7"><label class="temp-plan-day-btn" for="Sun-edit">Sun</label></div>
+                                                                    <div class="mb-3 week-plans-list">
+                                                                        <div class="plans-list" data-day="1">
+                                                                            <div class="row justify-content-center">
+                                                                                <div class="col-11"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="plans-list hidden" data-day="2">
+                                                                            <div class="row justify-content-center">
+                                                                                <div class="col-11"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="plans-list hidden" data-day="3">
+                                                                            <div class="row justify-content-center">
+                                                                                <div class="col-11"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="plans-list hidden" data-day="4">
+                                                                            <div class="row justify-content-center">
+                                                                                <div class="col-11"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="plans-list hidden" data-day="5">
+                                                                            <div class="row justify-content-center">
+                                                                                <div class="col-11"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="plans-list hidden" data-day="6">
+                                                                            <div class="row justify-content-center">
+                                                                                <div class="col-11"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="plans-list hidden" data-day="7">
+                                                                            <div class="row justify-content-center">
+                                                                                <div class="col-11"></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="d-flex justify-content-center"><img class="icon cursor" src="assets/img/plus_icon.svg" style="width: 35px;" name="add-plan-button"></div>
+                                                                </div>
+                                                                <div class="hidden" name="weeklyOverview">
+                                                                    <div class="schedule-container mb-4">
+                                                                        <div class="schedule-header">
+                                                                            <div class="time-label"></div>
+                                                                            <div class="day-label"><span>MO</span></div>
+                                                                            <div class="day-label"><span>TU</span></div>
+                                                                            <div class="day-label"><span>WE</span></div>
+                                                                            <div class="day-label"><span>TH</span></div>
+                                                                            <div class="day-label"><span>FR</span></div>
+                                                                            <div class="day-label"><span>SA</span></div>
+                                                                            <div class="day-label"><span>SU</span></div>
+                                                                        </div>
+                                                                        <div class="schedule-grid">
+                                                                            <div class="time-column">
+                                                                                <div class="time-slot-label"><span>0</span></div>
+                                                                                <div class="time-dot"><span>•</span></div>
+                                                                                <div class="time-slot-label"><span>2</span></div>
+                                                                                <div class="time-dot"><span>•</span></div>
+                                                                                <div class="time-slot-label"><span>4</span></div>
+                                                                                <div class="time-dot"><span>•</span></div>
+                                                                                <div class="time-slot-label"><span>6</span></div>
+                                                                                <div class="time-dot"><span>•</span></div>
+                                                                                <div class="time-slot-label"><span>8</span></div>
+                                                                                <div class="time-dot"><span>•</span></div>
+                                                                                <div class="time-slot-label"><span>10</span></div>
+                                                                                <div class="time-dot"><span>•</span></div>
+                                                                                <div class="time-slot-label"><span>12</span></div>
+                                                                                <div class="time-dot"><span>•</span></div>
+                                                                                <div class="time-slot-label"><span>14</span></div>
+                                                                                <div class="time-dot"><span>•</span></div>
+                                                                                <div class="time-slot-label"><span>16</span></div>
+                                                                                <div class="time-dot"><span>•</span></div>
+                                                                                <div class="time-slot-label"><span>18</span></div>
+                                                                                <div class="time-dot"><span>•</span></div>
+                                                                                <div class="time-slot-label"><span>20</span></div>
+                                                                                <div class="time-dot"><span>•</span></div>
+                                                                                <div class="time-slot-label"><span>22</span></div>
+                                                                                <div class="time-dot"><span>•</span></div>
+                                                                                <div class="time-slot-label"><span>24</span></div>
+                                                                            </div>
+                                                                            <div class="day-column" data-day="monday"></div>
+                                                                            <div class="day-column" data-day="tuesday"></div>
+                                                                            <div class="day-column" data-day="wednesday"></div>
+                                                                            <div class="day-column" data-day="thursday"></div>
+                                                                            <div class="day-column" data-day="friday"></div>
+                                                                            <div class="day-column" data-day="saturday"></div>
+                                                                            <div class="day-column" data-day="sunday"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div name="plan-describe">
+                                                                        <div class="row justify-content-center">
+                                                                            <div class="col-11">
+                                                                                <div class="d-flex justify-content-between align-items-center border p-2 mb-2 small plan-info" data-mode="minimum" data-starttime="00:00" data-endtime="07:00">
+                                                                                    <div class="d-flex align-items-center"><span class="color-indicator minimum"></span><span class="fw-bold ms-2 mode">Minimum</span></div><span class="time">00:00 - 07:00</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit" id="edit_plan_submit">Edit</button></div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal fade" role="dialog" tabindex="-1" data-bs-backdrop="static" id="modal_add_plan">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <form id="add-plan-form">
+                                            <div class="modal-header header-color">
+                                                <h4 class="modal-title">Add plan</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col"><label class="form-label" for="add-plan-mode">Mode</label>
+                                                            <select class="form-select form-select-sm" id="add-plan-mode" name="add-plan-mode">
+                                                                <option value="minimum" selected="">Minimum</option>
+                                                                <option value="attenuation">Attenuation</option>
+                                                                <option value="normal">Normal</option>
+                                                                <option value="comfort">Comfort</option>
+                                                            </select></div>
+                                                        <div class="col"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-4">
+                                                    <div class="row">
+                                                        <div class="col"><label class="form-label" for="add-plan-startTime">Start:</label><input class="form-control" id="add-plan-startTime" name="add-plan-startTime" type="time"></div>
+                                                        <div class="col">
+                                                            <div id="add-action-delay" style="display:none;">
+                                                                <label class="form-label" for="add-action-number">Time [s]:</label><input class="form-control form-control-sm" type="number" id="add-action-number" value="2" min="2" max="1600" step="1"></div>
+                                                                
+                                                                 <label class="form-label" for="add-plan-endTime">End:</label><input class="form-control" id="add-plan-endTime" name="add-plan-endTime" type="time">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="d-flex justify-content-center align-items-end flex-wrap gap-3" id="add-day-div">
+                                                        <div class="text-center mx-2"><label class="form-label d-block mb-0" for="add-Mon">Mon</label><input type="checkbox" id="add-Mon" class="form-check-input scaled-checkbox"></div>
+                                                        <div class="text-center mx-2"><label class="form-label d-block mb-0" for="add-Tue">Tue</label><input type="checkbox" id="add-Tue" class="form-check-input scaled-checkbox"></div>
+                                                        <div class="text-center mx-2"><label class="form-label d-block mb-0" for="add-Wed">Wed</label><input type="checkbox" id="add-Wed" class="form-check-input scaled-checkbox"></div>
+                                                        <div class="text-center mx-2"><label class="form-label d-block mb-0" for="add-Thu">Thu</label><input type="checkbox" id="add-Thu" class="form-check-input scaled-checkbox"></div>
+                                                        <div class="text-center mx-2"><label class="form-label d-block mb-0" for="add-Fri">Fri</label><input type="checkbox" id="add-Fri" class="form-check-input scaled-checkbox"></div>
+                                                        <div class="text-center mx-2"><label class="form-label d-block mb-0" for="add-Sat">Sat</label><input type="checkbox" id="add-Sat" class="form-check-input scaled-checkbox"></div>
+                                                        <div class="text-center mx-2"><label class="form-label d-block mb-0" for="add-Sun">Sun</label><input type="checkbox" id="add-Sun" class="form-check-input scaled-checkbox"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button>
+                                                <button class="btn btn-primary" id="add-plan-to-tempPlan" type="button">Add plan</button></div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal fade" role="dialog" tabindex="-1" id="modal_delete_TempPlan">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Delete temperature plan</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h5 class="text-center">Are you sure?</h5>
+                                        </div>
+                                        <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-danger btn-delete" type="button" data-bs-dismiss="modal">Delete</button></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="fixed-add-button"><button class="btn btn-primary btn-sm border rounded-pill btn-circle" type="button" data-bs-toggle="modal" data-bs-target="#modal_add_TempPlan"><img src="assets/img/plus-inactive-black.svg" style="width: 28px;"><span class="add-text">Add</span></button></div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <!--<script src="assets/js/device.js"></script>-->
+    <script src="assets/js/general.js"></script>
+    <script src="assets/js/sidebar.js"></script>
+    <script type="module" src="assets/js/temp_plan.js"></script>
+</body>
+
+</html>

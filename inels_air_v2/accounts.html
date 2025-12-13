@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>inels_air_v2</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/icons.css">
+    <link rel="stylesheet" href="assets/css/rooms.css">
+    <link rel="stylesheet" href="assets/css/sidebar.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+</head>
+
+
+<body class="body-background">
+    <ul class="nav nav-pills flex-column shadow d-flex sidebar mobile-hid">
+        <li class="nav-item logo-holder">
+            <div class="logo py-4 mx-4"><img src="assets/img/logo-inels.svg"
+                    style="max-width: 60%;margin-top: -19px;margin-bottom: -11px;"><span
+                    class="fs-5 fw-bold text-dark logo" id="title" style="padding-right: 30px;"></span><a
+                    class="float-end text-dark" id="sidebarToggleHolder" href="#"><img id="sidebarToggle"
+                        src="assets/img/menu-icon-black.svg"></a></div>
+        </li>
+        <li class="nav-item"><a class="nav-link text-start py-1 px-0 text-color" href="rooms_en.html"><img
+                    class="navbar-icon" src="assets/img/overview-icon-inactive.svg"><span
+                    class="text-nowrap mx-2">Rooms</span></a></li>
+        <li class="nav-item"><a class="nav-link text-start py-1 px-0 text-color" href="devices.html"><img
+                    class="navbar-icon" src="assets/img/settings-icon-inactive.svg"><span
+                    class="text-nowrap mx-2">Devices</span></a></li>
+        <li class="nav-item"><a class="nav-link text-start py-1 px-0 text-color" href="temp_plans.html"><img
+                    class="navbar-icon" src="assets/img/settings-icon-inactive.svg"><span
+                    class="text-nowrap mx-2">Temperature plans</span></a></li>
+        <li class="nav-item"><a class="nav-link active text-start py-1 px-0 text-color" href="accounts.html"><img
+                    class="navbar-icon" src="assets/img/settings-icon-active.svg"><span class="text-nowrap mx-2">App
+                    accounts</span></a></li>
+    </ul>
+    <div class="d-flex justify-content-between align-items-center stripe" style="height: 86.3906px;"><span
+            class="d-xxl-flex justify-content-xxl-start page-info-left">App accounts</span><span
+            class="unit-info-right">iNELS Heating</span></div>
+    <section class="text-center position-relative py-2 px-5 section-heading"><span class="second-title page-heading">App
+            accounts</span></section>
+    <section class="service-template section-expand">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-xl-8">
+                    <div class="card header-color" style="margin-bottom: 24px;">
+                        <h4 class="text-center header">List of app accounts</h4>
+                        <div class="card-body card-color">
+                            <div class="table-responsive text-nowrap">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-start">#</th>
+                                            <th scope="col">Username</th>
+                                            <th scope="col">Password</th>
+                                            <th>Description</th>
+                                            <th class="text-center">Enabled</th>
+                                            <th class="text-center" scope="col">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="list-accounts">
+
+                                        <!-- Accounts rows will be populated here dynamically -->
+
+
+
+                                        <td class="text-center">
+                                            <span class="icon icon-edit cursor me-2" data-bs-toggle="modal"
+                                                data-bs-target="#modal_edit_account" id="edit-account-btn"></span>
+
+                                            <span class="icon icon-delete cursor" data-bs-toggle="modal"
+                                                data-bs-target="#modal_delete_account" id="delete-account-btn"></span>
+                                        </td>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="modal fade" role="dialog" tabindex="-1" id="modal_add_account">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header header-color">
+                                            <h4 class="modal-title">Add account</h4><button class="btn-close"
+                                                type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form id="add-account-form">
+                                                <div class="mb-3">
+                                                    <div class="row">
+                                                        <div class="col"><label class="form-label"
+                                                                for="add-product-type">Username:</label>
+                                                            <input class="form-control" type="text" name="username"
+                                                                id="username">
+                                                        </div>
+                                                        <div class="col"><label class="form-label"
+                                                                for="add-label">Password:</label>
+                                                            <input class="form-control" type="text" name="password"
+                                                                id="password">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <div class="row">
+                                                        <div class="col"><label class="form-label"
+                                                                for="add-product-type">Description:</label>
+                                                            <input class="form-control" type="text" name="description"
+                                                                id="description">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div class="form-check">
+                                                                <input class="form-check-input" type="checkbox"
+                                                                    id="enable" name="enable">
+                                                                <label class="form-check-label"
+                                                                    for="formCheck-1">Enable</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button class="btn btn-light" type="button"
+                                                data-bs-dismiss="modal">Close</button>
+                                            <button class="btn btn-primary" type="button" id="submit-btn">Add</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal fade" role="dialog" tabindex="-1" id="modal_edit_account">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header header-color">
+                                            <h4 class="modal-title">Edit account</h4><button class="btn-close"
+                                                type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form id="edit-account-form">
+                                                <div class="mb-3">
+                                                    <div class="row">
+                                                        <div class="col"><label class="form-label"
+                                                                for="add-product-type">Username:</label><input
+                                                                class="form-control" type="text" name="username" ></div>
+                                                        <div class="col"><label class="form-label"
+                                                                for="add-label">Password:</label><input
+                                                                class="form-control" type="text" name="password" ></div>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <div class="row">
+                                                        <div class="col"><label class="form-label"
+                                                                for="add-product-type">Description:</label><input
+                                                                class="form-control" type="text" name="description">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div class="form-check"><input class="form-check-input"
+                                                                    type="checkbox" id="formCheck-2" name="enable"><label
+                                                                    class="form-check-label"
+                                                                    for="formCheck-2">Enable</label></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer"><button class="btn btn-light" type="button"
+                                                data-bs-dismiss="modal">Close</button><button class="btn btn-primary"
+                                                type="submit" id="edit-submit-btn">Edit</button></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal fade" role="dialog" tabindex="-1" id="modal_delete_account">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title">Delete account</h4><button class="btn-close"
+                                                type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h5 class="text-center">Are you sure?</h5>
+                                        </div>
+                                        <div class="modal-footer"><button class="btn btn-light" type="button"
+                                                data-bs-dismiss="modal">Close</button><button
+                                                class="btn btn-danger btn-delete" type="button"
+                                                data-bs-dismiss="modal">Delete</button></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="fixed-add-button"><button class="btn btn-primary btn-sm border rounded-pill btn-circle" type="button"
+            data-bs-toggle="modal" data-bs-target="#modal_add_account"><img src="assets/img/plus-inactive-black.svg"
+                style="width: 28px;"><span class="add-text">Add</span></button></div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <!--<script src="assets/js/device.js"></script> -->
+    <script src="assets/js/general.js"></script>
+    <script src="assets/js/sidebar.js"></script>
+    <script type="module" src="assets/js/account.js"></script>
+</body>
+
+</html>

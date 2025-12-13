@@ -1,0 +1,13 @@
+<svg id="icon_24x24_devices_on_off" data-name="icon / 24x24 / devices / on_off" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="127" height="127" viewBox="0 0 127 127">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_3251" data-name="Rectangle 3251" width="127" height="127" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Group_9895" data-name="Group 9895" clip-path="url(#clip-path)">
+    <path id="Path_4636" data-name="Path 4636" d="M31.267,0A31.267,31.267,0,1,1,0,31.267,31.267,31.267,0,0,1,31.267,0Z" transform="translate(32.232 34.143)" fill="#abdaf9" stroke="#0091ea" stroke-linecap="round" stroke-width="3"/>
+    <line id="Line_1003" data-name="Line 1003" y2="12.182" transform="translate(63.506 48.5)" fill="none" stroke="#0091ea" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+    <path id="Path_4861" data-name="Path 4861" d="M9.976,5.406a12.61,12.61,0,1,0,12.844,0" transform="translate(47.105 48.964)" fill="none" stroke="#0091ea" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+    <path id="Path_4862" data-name="Path 4862" d="M45.249,0A45.249,45.249,0,1,1,0,45.249,45.249,45.249,0,0,1,45.249,0Z" transform="translate(18.25 20.16)" fill="none" stroke="#0091ea" stroke-linecap="round" stroke-width="3"/>
+  </g>
+</svg>
