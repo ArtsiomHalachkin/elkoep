@@ -1,0 +1,12 @@
+<svg id="icon_24x24_history" data-name="icon /  24x24 / history" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <rect id="Rectangle_3069" data-name="Rectangle 3069" width="24" height="24" fill="none"/>
+  <rect id="Rectangle_3070" data-name="Rectangle 3070" width="24" height="24" fill="none"/>
+  <g id="Group_9616" data-name="Group 9616" transform="translate(-0.381 -0.381)">
+    <path id="Path_4468" data-name="Path 4468" d="M5.629,0A5.629,5.629,0,1,1,0,5.629,5.629,5.629,0,0,1,5.629,0Z" transform="translate(6.752 6.752)" fill="#abdaf9"/>
+    <g id="Group_9615" data-name="Group 9615" transform="translate(6.752 6.752)">
+      <circle id="Ellipse_291" data-name="Ellipse 291" cx="5.629" cy="5.629" r="5.629" fill="none" stroke="#0091ea" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+      <path id="Path_4466" data-name="Path 4466" d="M12,8.655v3.485l1.925,1.027" transform="translate(-6.371 -6.512)" fill="none" stroke="#0091ea" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    </g>
+    <path id="Path_4467" data-name="Path 4467" d="M3.991,16.686a9.429,9.429,0,1,1,8.39,5.123" fill="none" stroke="#0091ea" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+  </g>
+</svg>

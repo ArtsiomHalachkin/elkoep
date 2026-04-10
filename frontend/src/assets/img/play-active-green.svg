@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="Group_10047" data-name="Group 10047" transform="translate(-321 -480)">
+    <rect id="Rectangle_3175" data-name="Rectangle 3175" width="24" height="24" transform="translate(321 480)" fill="none"/>
+    <path id="play-circle" d="M18,8A10,10,0,1,0,28,18,10,10,0,0,0,18,8Zm4.665,10.968-7.1,4.073a.969.969,0,0,1-1.44-.847V13.806a.97.97,0,0,1,1.44-.847l7.1,4.315A.971.971,0,0,1,22.665,18.968Z" transform="translate(315 474)" fill="#3cbe52"/>
+  </g>
+</svg>

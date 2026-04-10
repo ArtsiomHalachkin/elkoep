@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="Group_10214" data-name="Group 10214" transform="translate(-384 -201)">
+    <g id="icon_24x24_rooms_workroom" data-name="icon / 24x24 / rooms / workroom" transform="translate(384 201)">
+      <g id="Group_10209" data-name="Group 10209" transform="translate(2.55 2.781)">
+        <path id="Path_5051" data-name="Path 5051" d="M21.875,6.366l-.155-.6-.756-2.273a.625.625,0,0,0-.607-.468H11.9a.631.631,0,0,0-.627.631V6.528a.631.631,0,0,0,.627.63h9.37A.63.63,0,0,0,21.875,6.366Z" transform="translate(-11.271 -3.025)" fill="none" stroke="#8e9b9e" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+        <path id="Path_5053" data-name="Path 5053" d="M2.612,0H0V13.061A1.261,1.261,0,0,0,1.277,14.3h.059a1.261,1.261,0,0,0,1.277-1.244V0Z" transform="translate(3.611 4.133)" fill="none" stroke="#8e9b9e" stroke-linecap="round" stroke-width="1.5"/>
+        <path id="Path_5052" data-name="Path 5052" d="M5.634,13.425V7.363h0V4.331a1.306,1.306,0,0,1,2.612,0v9.094a4.107,4.107,0,0,1,0,7.806V19.259a1.306,1.306,0,1,0-2.612,0v1.972a4.108,4.108,0,0,1,0-7.806Z" transform="translate(8.246 -3.025)" fill="#e4e7ed" stroke="#8e9b9e" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+      </g>
+      <rect id="Rectangle_3509" data-name="Rectangle 3509" width="24" height="24" fill="none"/>
+    </g>
+  </g>
+</svg>

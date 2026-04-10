@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Vrstva_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 24 24">
+  <!-- Generator: Adobe Illustrator 29.5.1, SVG Export Plug-In . SVG Version: 2.1.0 Build 141)  -->
+  <defs>
+    <style>
+      .st0 {
+        stroke-width: 1.8px;
+      }
+
+      .st0, .st1 {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .st0, .st1, .st2 {
+        fill: none;
+        stroke: #0091ea;
+      }
+
+      .st1 {
+        stroke-width: 1.5px;
+      }
+
+      .st3 {
+        fill: #abdaf9;
+        fill-opacity: 0;
+      }
+
+      .st2 {
+        stroke-opacity: 0;
+      }
+    </style>
+  </defs>
+  <g id="user">
+    <path id="Path_3928" class="st3" d="M4.9,20.8v-2.1c0-2.3,1.4-4.4,3.6-5l3.5,2.2,3.5-2.2c2.2.7,3.7,2.7,3.6,5v2.1"/>
+    <circle id="Ellipse_269" class="st1" cx="12" cy="6.8" r="4.2"/>
+    <path id="Path_3929" class="st1" d="M19.5,21.3v-2.2c0-2.4-1.5-4.6-3.8-5.4l-3.7,2.3-3.7-2.3c-2.3.7-3.9,2.9-3.8,5.4v2.2h15Z"/>
+    <path id="Path_3930" class="st0" d="M12,15.6"/>
+    <rect id="Rectangle_2945" class="st2" width="24" height="24"/>
+  </g>
+</svg>
