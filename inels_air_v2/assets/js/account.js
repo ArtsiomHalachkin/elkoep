@@ -1,5 +1,5 @@
 import { API_BASE_URL } from "./config.js";
-import { fetchAccounts, handleDeleteAccount, addAccount, fetchAccountByUsername, updateAccount } from "../requests/account_requests.js";
+import { fetchAccounts, handleDeleteAccount, addAccount, updateAccount } from "../requests/account_requests.js";
 
 
 
@@ -26,9 +26,9 @@ document.addEventListener("DOMContentLoaded", async () => {
         const success = await addAccount(payload); 
 
         if (success) {
-            await populateList(); 
+            await populateList();
             addingForm.reset();
-            const modal = bootstrap.Modal.getInstance(document.getElementById("modal_add_account"));
+            const modal = bootstrap.Modal.getOrCreateInstance(document.getElementById("modal_add_account"));
             modal.hide();
         }
 
@@ -49,9 +49,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                 editForm.username.value = account.username;
                 editForm.password.value = account.password;
                 editForm.description.value = account.description ?? "";
-                editForm.enable.checked = account.enable;
+                editForm.enable.checked = Boolean(Number(account.enable));
 
-                const modal = bootstrap.Modal.getInstance(document.getElementById("modal_edit_account"));
+                const modal = bootstrap.Modal.getOrCreateInstance(document.getElementById("modal_edit_account"));
                 modal.show();
             } catch (err) {
                 console.error("Error loading account details:", err);
@@ -119,12 +119,12 @@ document.addEventListener("DOMContentLoaded", async () => {
         const success = await updateAccount(originalUsername, payload);
 
         if (success) {
-            await populateList(); 
+            await populateList();
             editForm.reset();
-            const modal = bootstrap.Modal.getInstance(document.getElementById("modal_edit_account"));
+            const modal = bootstrap.Modal.getOrCreateInstance(document.getElementById("modal_edit_account"));
             modal.hide();
         }
-        
+
 
     }
 

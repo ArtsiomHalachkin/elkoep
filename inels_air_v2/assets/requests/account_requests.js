@@ -4,7 +4,7 @@ export async function fetchAccounts() {
         try {
             const response = await fetch(`${API_BASE_URL}/account/all`);
             if (!response.ok) {
-                throw new Error(result.detail || result.message || "Unknown error");
+                throw new Error(`HTTP error! status: ${response.status}`);
             }
 
             const data = await response.json();
@@ -12,7 +12,7 @@ export async function fetchAccounts() {
 
         } catch (error) {
             console.error("Failed to load accounts:", error);
-            return []; 
+            return [];
         }
     }
 

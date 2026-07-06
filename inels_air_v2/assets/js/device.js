@@ -1,7 +1,13 @@
- 
+
 import { fetchDevices, fetchDeviceDetails, handleDeleteDevice, updateDevice, addDevice } from "../requests/device_requests.js";
 
 
+// Parses a numeric input value, preserving legitimate 0 (unlike `|| null`).
+function parseNumOrNull(value) {
+    if (value === "" || value === null || value === undefined) return null;
+    const n = parseFloat(value);
+    return Number.isNaN(n) ? null : n;
+}
 
 $(document).ready(async function () {
 
@@ -99,9 +105,9 @@ $(document).ready(async function () {
                 const heatingSettingsDiv = editForm.querySelector('[name="heatingSettings"]');
                 heatingSettingsDiv.style.display = (editForm.heating.value === "1") ? "block" : "none";
 
-                editForm.refresh_interval.value = detailedDevice.refresh_interval || "";
-                editForm.temperature_hysteresis.value = detailedDevice.temperature_hysteresis || "";
-                
+                editForm.refresh_interval.value = detailedDevice.refresh_interval ?? "";
+                editForm.temperature_hysteresis.value = detailedDevice.temperature_hysteresis ?? "";
+
                 // Freezing Detection
                 const freezingDiv = editForm.querySelector('[name="freezingDetectionDiv"]');
                 if (detailedDevice.freezing_temperature != null) {
@@ -119,8 +125,8 @@ $(document).ready(async function () {
                 if (detailedDevice.window_sensitivity != null) {
                     editForm.windowDetection.checked = true;
                     windowDiv.style.display = "block";
-                    editForm.window_sensitivity.value = detailedDevice.window_sensitivity || "";
-                    editForm.window_time.value = detailedDevice.window_time || "";
+                    editForm.window_sensitivity.value = detailedDevice.window_sensitivity ?? "";
+                    editForm.window_time.value = detailedDevice.window_time ?? "";
                 } else {
                     editForm.windowDetection.checked = false;
                     windowDiv.style.display = "none";
@@ -193,22 +199,22 @@ $(document).ready(async function () {
         if (deviceModel === "2") { // RFATV8
             rfatvSettings = {
                 heating: heatingMapping[editForm.heating.value] || null,
-                refresh_interval: parseFloat(editForm.refresh_interval.value) || null,
-                temperature_hysteresis: parseFloat(editForm.temperature_hysteresis.value) || null,
+                refresh_interval: parseNumOrNull(editForm.refresh_interval.value),
+                temperature_hysteresis: parseNumOrNull(editForm.temperature_hysteresis.value),
                 freezing_temperature: editForm.freezingDetection.checked
-                    ? parseFloat(editForm.freezing_temperature.value)
+                    ? parseNumOrNull(editForm.freezing_temperature.value)
                     : null,
                 window_sensitivity: editForm.windowDetection.checked
-                    ? parseFloat(editForm.window_sensitivity.value)
+                    ? parseNumOrNull(editForm.window_sensitivity.value)
                     : null,
                 window_time: editForm.windowDetection.checked
-                    ? parseFloat(editForm.window_time.value)
+                    ? parseNumOrNull(editForm.window_time.value)
                     : null
             };
         }
 
         const payload = { device: deviceData };
-        if (rfatvSettings) 
+        if (rfatvSettings)
             payload.rfatv8_settings = rfatvSettings;
 
         const success = await updateDevice(deviceType, originalEui, payload);
@@ -234,16 +240,16 @@ $(document).ready(async function () {
         if (deviceModel === "2") {
             rfatvSettings = {
                 heating: heatingMapping[addingForm.heating.value],
-                refresh_interval: parseFloat(addingForm.refresh_interval.value) || null,
-                temperature_hysteresis: parseFloat(addingForm.temperature_hysteresis.value) || null,
+                refresh_interval: parseNumOrNull(addingForm.refresh_interval.value),
+                temperature_hysteresis: parseNumOrNull(addingForm.temperature_hysteresis.value),
                 freezing_temperature: addingForm.freezingDetection.checked
-                    ? parseFloat(addingForm.freezing_temperature.value)
+                    ? parseNumOrNull(addingForm.freezing_temperature.value)
                     : null,
                 window_sensitivity: addingForm.windowDetection.checked
-                    ? parseFloat(addingForm.window_sensitivity.value)
+                    ? parseNumOrNull(addingForm.window_sensitivity.value)
                     : null,
                 window_time: addingForm.windowDetection.checked
-                    ? parseFloat(addingForm.window_time.value)
+                    ? parseNumOrNull(addingForm.window_time.value)
                     : null
             };
         }

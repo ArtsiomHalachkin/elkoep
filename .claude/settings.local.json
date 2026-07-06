@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c \"import ast; ast.parse\\(open\\('main.py', encoding='utf-8'\\).read\\(\\)\\); print\\('main.py: syntax OK'\\)\")",
+      "Bash(node --check inels_air_v2/assets/js/device.js)",
+      "Bash(node --check inels_air_v2/assets/js/account.js)",
+      "Bash(node --check inels_air_v2/assets/js/temp_plan.js)",
+      "Bash(node --check inels_air_v2/assets/js/room.js)",
+      "Bash(node --check inels_air_v2/assets/requests/account_requests.js)"
+    ]
+  }
+}

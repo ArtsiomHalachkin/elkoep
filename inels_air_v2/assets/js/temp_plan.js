@@ -761,11 +761,11 @@ $(document).ready(async function () {
         console.log("Adding plan with payload:", payload);
 
         const success = await addTempPlan(payload)
-        
+
         if(success){
             await loadTempPlans()
-            editForm[0].reset();
-            bootstrap.Modal.getInstance(modalAddTempPlan[0]).hide();
+            addingPlanForm[0].reset();
+            bootstrap.Modal.getOrCreateInstance(modalAddTempPlan[0]).hide();
         }
 
     }
@@ -799,9 +799,7 @@ $(document).ready(async function () {
         if(success){
             await loadTempPlans();
             editForm[0].reset();
-            bootstrap.Modal.getInstance(modalEditTempPlan[0]).hide();
-        }else{
-            showAlert(`Error: ${result.message || result.detail}`);
+            bootstrap.Modal.getOrCreateInstance(modalEditTempPlan[0]).hide();
         }
     }
 

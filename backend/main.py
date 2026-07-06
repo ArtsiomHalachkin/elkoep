@@ -1,15 +1,17 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi import HTTPException, Body
+from fastapi.responses import RedirectResponse
 import pymysql  # Keep for MySQLError and cursors
 import aiomysql  # The async library
 from fastapi.staticfiles import StaticFiles
 import os
+import sys
 from dotenv import dotenv_values
 from datetime import datetime, timedelta
 
 
-# --- ---------------- --- 
+# --- ---------------- ---
 # ---  CONFIGURATION ---
 # --- ---------------- ---
 
@@ -19,10 +21,10 @@ DB_HOST = config.get("DATABASE_HOST")
 DB_USER = config.get("DATABASE_USER")
 DB_PASS = config.get("DATABASE_PASSWORD")
 DB_NAME = config.get("DATABASE_NAME")
-DB_PORT = int(config.get("DATABASE_PORT", 3306)) 
+DB_PORT = int(config.get("DATABASE_PORT") or 3306)
 
 if not all([DB_HOST, DB_USER, DB_PASS, DB_NAME]):
-    print("FATAL ERROR: Database configuration is missing from .env file.")
+    sys.exit("FATAL ERROR: Database configuration is missing from .env file.")
 
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -32,7 +34,6 @@ app = FastAPI(title="Inels Air API")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
-    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -76,7 +77,7 @@ def convert_string_to_time(start_time: str, end_time: str) -> tuple:
     return start_time_obj, end_time_obj
 
 
-def seconds_to_hhmm(td: int) -> str:
+def seconds_to_hhmm(td: timedelta) -> str:
 
     total_seconds = int(td.total_seconds())
     hours = total_seconds // 3600
@@ -110,8 +111,8 @@ async def get_connection():
 
 
 @app.get("/")
-async def test():
-    return {"message": "Welcome to the Inels Air API"}
+async def root():
+    return RedirectResponse(url="/static/rooms_en.html")
 
 # --- ---------------- --- 
 # --- ROOM ENDPOINTS ---
@@ -399,19 +400,19 @@ async def update_plan(plan_id: int, payload: dict):
 
             if slots:
                 for slot in slots:
-                    await cursor.execute( 
+                    await cursor.execute(
                         "CALL AddTemperaturePlanSlot(%s, %s, %s, %s, %s)",
                         (
                             int(plan_id),
                             slot.get("day"),
                             slot.get("start_time"),
                             slot.get("end_time"),
-                            slot.get("mode").capitalize(),
+                            (slot.get("mode") or "").capitalize(),
                         ),
                     )
-            
-            await conn.commit() 
-                
+
+            await conn.commit()
+
         return {"message": "Temperature plan and all slots updated successfully"}
 
     except pymysql.MySQLError as err:
@@ -421,20 +422,21 @@ async def update_plan(plan_id: int, payload: dict):
         conn.close()
 
 @app.delete("/temp-plan/slot/delete/{slot_id}")
-async def delete_plan_slot(slot_id: int): 
-    conn = await get_connection() 
+async def delete_plan_slot(slot_id: int):
+    conn = await get_connection()
     try:
-        async with conn.cursor() as cursor: 
-              await cursor.execute( 
+        async with conn.cursor() as cursor:
+            await cursor.execute(
                 "CALL DeleteTemperaturePlanSlot(%s)",
                 (
                     int(slot_id),
                 ),
             )
-        await conn.commit() 
+            await conn.commit()
+        return {"message": "Temperature plan slot deleted successfully"}
 
     except pymysql.MySQLError as err:
-        await conn.rollback() 
+        await conn.rollback()
         raise HTTPException(status_code=400, detail=str(err))
     finally:
         conn.close()
@@ -533,14 +535,14 @@ async def add_temp_plan(payload: dict):
             for slot in slots:
                 print("Inserting slot:", slot)
                 #start_time_obj, end_time_obj = convert_string_to_time(slot.get("start_time"), slot.get("end_time"))
-                await cursor.execute( 
+                await cursor.execute(
                     "CALL AddTemperaturePlanSlot(%s, %s, %s, %s, %s)",
                     (
                         int(last),
                         slot.get("day"),
                         slot.get("start_time"),
                         slot.get("end_time"),
-                        slot.get("mode").capitalize(),
+                        (slot.get("mode") or "").capitalize(),
                     ),
                 )
             await conn.commit() 

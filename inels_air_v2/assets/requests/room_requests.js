@@ -88,31 +88,30 @@ export async function addRoomSetup(room_id, payload) {
 
 }
 
-export async function removeDeviceFromRoom(roomId, devEui, deviceType) {
-   
-    const response = await fetch(`${API_BASE_URL}/room/${roomId}/device/${deviceType}/${devEui}`, {
-        method: "DELETE",
-        headers: { "Content-Type": "application/json" }
-    });
-    return response;
+async function safeDelete(url) {
+    try {
+        return await fetch(url, {
+            method: "DELETE",
+            headers: { "Content-Type": "application/json" }
+        });
+    } catch (err) {
+        console.error("Network error during DELETE:", err);
+        return new Response(
+            JSON.stringify({ detail: "Network error" }),
+            { status: 0, headers: { "Content-Type": "application/json" } }
+        );
+    }
 }
 
+export async function removeDeviceFromRoom(roomId, devEui, deviceType) {
+    return safeDelete(`${API_BASE_URL}/room/${roomId}/device/${deviceType}/${devEui}`);
+}
 
 export async function removeAccountFromRoom(roomId, accountId) {
- 
-    const response = await fetch(`${API_BASE_URL}/room/${roomId}/account/${accountId}`, {
-        method: "DELETE",
-        headers: { "Content-Type": "application/json" }
-    });
-    return response; 
+    return safeDelete(`${API_BASE_URL}/room/${roomId}/account/${accountId}`);
 }
 
-
 export async function removePlanFromRoom(roomId, planId) {
-    const response = await fetch(`${API_BASE_URL}/room/${roomId}/plan/${planId}`, {
-        method: "DELETE",
-        headers: { "Content-Type": "application/json" }
-    });
-    return response; 
+    return safeDelete(`${API_BASE_URL}/room/${roomId}/plan/${planId}`);
 }
 
