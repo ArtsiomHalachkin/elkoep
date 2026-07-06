@@ -31,6 +31,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_DIR = os.path.join(BASE_DIR, "../inels_air_v2")
 
 app = FastAPI(title="Inels Air API")
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
