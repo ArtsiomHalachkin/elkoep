@@ -391,17 +391,10 @@ $(document).ready(async function () {
             return;
         }
 
-        let firstPlan = $(plans[0]);
-        if (firstPlan.data('starttime') !== '00:00') {
-            firstPlan.attr('data-starttime', '00:00').data('starttime', '00:00');
-            firstPlan.find('.time').text('00:00 - ' + firstPlan.data('endtime'));
-        }
-
-        let lastPlan = $(plans[plans.length - 1]);
-        if (lastPlan.data('endtime') !== '24:00') {
-            lastPlan.attr('data-endtime', '24:00').data('endtime', '24:00');
-            lastPlan.find('.time').text(lastPlan.data('starttime') + ' - 24:00');
-        }
+        // NOTE: We intentionally do NOT stretch the first slot to 00:00 or the
+        // last slot to 24:00. Doing so overwrote the user-entered times — most
+        // visibly for a single slot, where the first and last plan are the same
+        // element and it got forced to 00:00 - 24:00.
 
         for (let i = 1; i < plans.length; i++) {
             let prevPlan = $(plans[i - 1]);
