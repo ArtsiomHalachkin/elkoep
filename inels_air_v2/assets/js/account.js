@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 attachEditButtonListener(editBtn, account.username);
 
                 deleteBtn.addEventListener("click", async () => {
-                    if (confirm(`Are you sure you want to delete ${account.username}?`)) {
+                    if (await confirmDelete(`Are you sure you want to delete ${account.username}?`)) {
                        const success = await handleDeleteAccount(account.username);
                         if (success) {
                             await populateList(); 

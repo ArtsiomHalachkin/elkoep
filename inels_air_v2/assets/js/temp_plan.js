@@ -685,7 +685,7 @@ $(document).ready(async function () {
                 attachEditButtonListener(editBtn, plan.plan_id);
 
                 deleteBtn.on("click", async () => {
-                    if (confirm(`Are you sure you want to delete ${plan.name}?`)) {
+                    if (await confirmDelete(`Are you sure you want to delete ${plan.name}?`)) {
                         const success = await handleDeleteTempPlan(plan.plan_id);
                         if(success){
                             await loadTempPlans()
@@ -869,8 +869,8 @@ $(document).ready(async function () {
 
         console.log("Master delete handler. Slot ID:", slotId);
 
-        if (!confirm("Delete this slot?")) {
-            return; 
+        if (!(await confirmDelete("Delete this slot?"))) {
+            return;
         }
 
         if (slotId) {

@@ -235,7 +235,7 @@ $(document).ready(function () {
      */
     async function handleDeleteRoomItem(rowElement, dataId, dataType, deviceType) {
         const roomId = offcanvas.getAttribute("data-room-room_id");
-        if (!confirm("Are you sure you want to remove this item from the room?")) return;
+        if (!(await confirmDelete("Are you sure you want to remove this item from the room?"))) return;
 
         let response;
         try {
@@ -507,7 +507,7 @@ $(document).ready(function () {
                 attachEditButtonListener(editBtn, room.room_id);
 
                 deleteBtn.addEventListener("click", async () => {
-                    if (confirm(`Are you sure you want to delete ${room.name}?`)) {
+                    if (await confirmDelete(`Are you sure you want to delete ${room.name}?`)) {
                         await handleDeleteRoom(room.room_id);
                     }
                 });

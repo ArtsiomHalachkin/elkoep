@@ -249,10 +249,12 @@ async def add_room(payload: dict):
     conn = await get_connection() 
     try:
         async with conn.cursor() as cursor: 
-            await cursor.execute("CALL AddRoom(%s, %s)", 
-                             (payload.get("name", ""),
-                              payload.get("description", ""),)
-                                   )
+            # BUG FIX: Added the third %s placeholder to match the 3 inputs in your tuple
+            await cursor.execute("CALL AddRoom(%s, %s, %s)", 
+                                 (payload.get("floor_id", None),
+                                  payload.get("name", ""),
+                                  payload.get("description", ""))
+                                 )
             await conn.commit() 
         return {"message": "Room added successfully"}
     
@@ -799,6 +801,103 @@ async def update_account(username: str, payload: dict):
     
     except pymysql.MySQLError as err:
         await conn.rollback() 
+        raise HTTPException(status_code=400, detail=str(err))
+    finally:
+        conn.close()\
+
+@app.get("/floor/all")
+async def get_all_floors():
+    conn = await get_connection()
+    try:
+        async with conn.cursor() as cursor:
+            await cursor.execute("CALL GetAllFloors()")
+            rows = await cursor.fetchall()
+        return {"floors": rows}
+
+    except pymysql.MySQLError as err:
+        raise HTTPException(status_code=400, detail=str(err))
+    finally:
+        conn.close()
+
+@app.get("/floor/{floor_id}")
+async def get_floor_by_id(floor_id: int):
+    conn = await get_connection()
+    try:
+        async with conn.cursor() as cursor:
+            await cursor.execute("CALL GetFloorById(%s)", (floor_id,))
+            floor = await cursor.fetchone()
+    except pymysql.MySQLError as err:
+        raise HTTPException(status_code=400, detail=str(err))
+    finally:
+        conn.close()
+    if not floor:
+        raise HTTPException(status_code=404, detail="Floor not found")
+    return {"floor": floor}
+
+@app.post("/floor/add")
+async def add_floor(payload: dict):
+    conn = await get_connection()
+    try:
+        async with conn.cursor() as cursor:
+
+            await cursor.execute("CALL UpsertFloor(%s, %s, %s)", 
+                                 (None,
+                                  payload.get("name", ""), 
+                                  payload.get("level", 0)
+                                  ))
+            await conn.commit()
+        return {"message": "Floor added successfully"}
+
+    except pymysql.MySQLError as err:
+        await conn.rollback()
+        raise HTTPException(status_code=400, detail=str(err))
+    finally:
+        conn.close()
+
+@app.put("/floor/update/{floor_id}")
+async def update_floor(floor_id: int, payload: dict):
+    conn = await get_connection()
+    try:
+        async with conn.cursor() as cursor:
+            await cursor.execute("CALL UpsertFloor(%s, %s, %s)", 
+                                 (floor_id,
+                                  payload.get("name", ""), 
+                                  payload.get("level", 0)
+                                  ))
+            await conn.commit()
+        return {"message": "Floor updated successfully"}
+
+    except pymysql.MySQLError as err:
+        await conn.rollback()
+        raise HTTPException(status_code=400, detail=str(err))
+    finally:
+        conn.close()
+
+@app.delete("/floor/delete/{floor_id}")
+async def delete_floor(floor_id: int):
+    conn = await get_connection()
+    try:
+        async with conn.cursor() as cursor:
+            await cursor.execute("CALL DeleteFloor(%s)", (floor_id,))
+            await conn.commit()
+        return {"message": "Floor deleted successfully"}
+
+    except pymysql.MySQLError as err:
+        await conn.rollback()
+        raise HTTPException(status_code=400, detail=str(err))
+    finally:
+        conn.close()
+
+@app.get("/floor/{floor_id}/rooms")
+async def get_rooms_by_floor(floor_id: int):
+    conn = await get_connection()
+    try:
+        async with conn.cursor() as cursor:
+            await cursor.execute("CALL GetRoomsByFloor(%s)", (floor_id,))
+            rooms = await cursor.fetchall()
+        return {"rooms": rooms}
+
+    except pymysql.MySQLError as err:
         raise HTTPException(status_code=400, detail=str(err))
     finally:
         conn.close()

@@ -4,12 +4,58 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
     <title>inels_air_v2</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/icons.css">
     <link rel="stylesheet" href="assets/css/rooms.css">
+    <link rel="stylesheet" href="assets/css/room-card-modern.css">
     <link rel="stylesheet" href="assets/css/sidebar.css">
     <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        /* Toolbar — matches rooms_template.html overview toolbar */
+        .overview-toolbar {
+            min-height: 2.5rem;
+        }
+
+        .overview-toolbar .overview-search input {
+            min-width: 12rem;
+        }
+
+        .overview-toolbar #floorTabs {
+            gap: 0;
+        }
+
+        .overview-toolbar #floorTabs .nav-link {
+            white-space: nowrap;
+        }
+
+        /* Simple room card for the Floor/Rooms overview */
+        .room-panel .room-card-simple {
+            border: 1px solid rgba(148, 163, 184, 0.22);
+            border-radius: 14px;
+            box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 8px 24px -12px rgba(15, 23, 42, 0.12);
+            transition: box-shadow 0.18s ease, transform 0.18s ease;
+        }
+
+        .room-panel .room-card-simple:hover {
+            box-shadow: 0 2px 4px rgba(15, 23, 42, 0.04), 0 14px 28px -10px rgba(79, 70, 229, 0.16);
+            transform: translateY(-2px);
+        }
+
+        .room-panel .room-card-simple .room-name {
+            font-weight: 600;
+        }
+
+        .overview-page-loading {
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+    </style>
 </head>
 
 <body class="body-background">
@@ -17,15 +63,70 @@
         <li class="nav-item logo-holder">
             <div class="logo py-4 mx-4"><img src="assets/img/logo-inels.svg" style="max-width: 60%;margin-top: -19px;margin-bottom: -11px;"><span class="fs-5 fw-bold text-dark logo" id="title" style="padding-right: 30px;"></span><a class="float-end text-dark" id="sidebarToggleHolder" href="#"><img id="sidebarToggle" src="assets/img/menu-icon-black.svg"></a></div>
         </li>
-        <li class="nav-item"><a class="nav-link active text-start py-1 px-0 text-color" href="rooms_en.html"><img class="navbar-icon" src="assets/img/overview-icon-active.svg"><span class="text-nowrap mx-2">Rooms</span></a></li>
-                <li class="nav-item"><a class="nav-link text-start py-1 px-0 text-color" href="rooms_other.html"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-building fs-5 navbar-icon"></svg><span class="text-nowrap mx-2">Floor/Rooms</span></a></li>
-
+        <li class="nav-item"><a class="nav-link text-start py-1 px-0 text-color" href="rooms_en.html"><img class="navbar-icon" src="assets/img/overview-icon-inactive.svg"><span class="text-nowrap mx-2">Rooms</span></a></li>
+        <li class="nav-item"><a class="nav-link active text-start py-1 px-0 text-color" href="rooms_other.html"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-building fs-5 navbar-icon">
+                    <path d="M4 2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM4 5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zM7.5 5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm2.5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zM4.5 8a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm2.5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5z"></path>
+                    <path d="M2 1a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1zm11 0H3v14h3v-2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5V15h3z"></path>
+                </svg><span class="text-nowrap mx-2">Floor/Rooms</span></a></li>
         <li class="nav-item"><a class="nav-link text-start py-1 px-0 text-color" href="devices.html"><img class="navbar-icon" src="assets/img/settings-icon-inactive.svg"><span class="text-nowrap mx-2">Devices</span></a></li>
         <li class="nav-item"><a class="nav-link text-start py-1 px-0 text-color" href="temp_plans.html"><img class="navbar-icon" src="assets/img/settings-icon-inactive.svg"><span class="text-nowrap mx-2">Temperature plans</span></a></li>
         <li class="nav-item"><a class="nav-link text-start py-1 px-0 text-color" href="accounts.html"><img class="navbar-icon" src="assets/img/settings-icon-inactive.svg"><span class="text-nowrap mx-2">App accounts</span></a></li>
     </ul>
-    <div class="d-flex justify-content-between align-items-center stripe" style="height: 86.3906px;"><span class="d-xxl-flex justify-content-xxl-start page-info-left">Rooms</span><span class="unit-info-right">iNELS Heating</span></div>
-    <section class="text-center position-relative py-2 px-5 section-heading"><span class="second-title page-heading">Rooms</span></section>
+    <div class="d-flex justify-content-between align-items-center stripe" style="height: 86.3906px;"><span class="d-xxl-flex justify-content-xxl-start page-info-left">Floor/Rooms</span><span class="unit-info-right">iNELS Heating</span></div>
+    <section class="text-center position-relative py-2 px-5 section-heading"><span class="second-title page-heading">Floor/Rooms</span></section>
+    <section class="service-template section-expand">
+        <div class="container">
+
+            <!-- View switcher: Floors list <-> Rooms list -->
+            <div class="d-flex justify-content-center mb-4 overview-toolbar">
+                <ul class="nav nav-pills bg-light p-1 border rounded-pill flex-wrap mb-0" id="viewSwitcher" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="px-4 py-1 nav-link rounded-pill active" id="view-floors-tab" type="button"
+                            data-bs-toggle="pill" data-bs-target="#view-floors" role="tab"
+                            aria-controls="view-floors" aria-selected="true">Floors</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="px-4 py-1 nav-link rounded-pill" id="view-rooms-tab" type="button"
+                            data-bs-toggle="pill" data-bs-target="#view-rooms" role="tab"
+                            aria-controls="view-rooms" aria-selected="false">Rooms</button>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="tab-content">
+
+                <!-- Floors list -->
+                <div class="tab-pane fade show active" id="view-floors" role="tabpanel" aria-labelledby="view-floors-tab">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-lg-10 col-xl-9">
+                            <div class="card header-color">
+                                <h4 class="text-center header">List of floors</h4>
+                                <div class="card-body card-color">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Name</th>
+                                                    <th>Level</th>
+                                                    <th class="text-center">Edit</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="list-floors">
+                                                <tr>
+                                                    <td colspan="4" class="text-center text-muted py-3">Loading floors…</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rooms list, grouped by floor -->
+                <div class="tab-pane fade" id="view-rooms" role="tabpanel" aria-labelledby="view-rooms-tab">
     <section class="service-template section-expand">
         <div class="container">
             <div class="row justify-content-center">
@@ -384,16 +485,120 @@
                 </div>
             </div>
         </div>
+        
     </section>
-    <div class="fixed-add-button"><button class="btn btn-primary btn-sm border rounded-pill btn-circle" type="button" data-bs-toggle="modal" data-bs-target="#modal_add_room"><img src="assets/img/plus-icon-inactive.svg" style="width: 28px;"><span class="add-text">Add</span></button></div>
+                    <div class="tab-content" id="floorTabContent">
+                        <div class="overview-page-loading text-muted py-5" aria-live="polite">
+                            <div class="spinner-border spinner-border-sm text-primary" role="status" aria-hidden="true"></div>
+                            <span>Loading rooms…</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Add floor modal -->
+            <div class="modal fade" role="dialog" tabindex="-1" id="modal_add_floor">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header header-color">
+                            <h4 class="modal-title">Add floor</h4>
+                            <button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="add-floor-form">
+                                <div class="mb-3">
+                                    <div class="row">
+                                        <div class="col"><label class="form-label">Name</label><input class="form-control" type="text" name="floor-name"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="row">
+                                        <div class="col"><label class="form-label">Level</label><input class="form-control" type="number" name="floor-level" value="0" step="1"></div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button>
+                            <button class="btn btn-primary" type="button" id="add-floor-submit">Add</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Edit floor modal (floor settings + rooms on this floor) -->
+            <div class="modal fade" role="dialog" tabindex="-1" id="modal_edit_floor">
+                <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header header-color">
+                            <h4 class="modal-title" id="edit-floor-title">Floor setup</h4>
+                            <button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="edit-floor-form">
+                                <input type="hidden" name="floor-id">
+                                <div class="row g-3 mb-4">
+                                    <div class="col-8"><label class="form-label">Name</label><input class="form-control" type="text" name="floor-name"></div>
+                                    <div class="col-4"><label class="form-label">Level</label><input class="form-control" type="number" name="floor-level" step="1"></div>
+                                </div>
+                            </form>
+                            <div>
+                                <h6 class="text-uppercase fw-bold text-muted mb-3">Rooms on this floor</h6>
+                                <div id="floor-rooms-empty" class="text-center text-muted bg-light py-3 px-2 rounded border small empty-message" style="display:none;"><i class="bi bi-info-circle me-1"></i><span> No rooms on this floor</span></div>
+                                <div class="table-responsive" id="floor-rooms-table-container">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Name</th>
+                                                <th>Description</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="floor-rooms-list"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button>
+                            <button class="btn btn-primary" type="button" id="edit-floor-submit">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <div class="fixed-add-button"><button class="btn btn-primary btn-sm border rounded-pill btn-circle" type="button" data-bs-toggle="modal" data-bs-target="#modal_add_floor"><img src="assets/img/plus-icon-inactive.svg" style="width: 28px;"><span class="add-text">Add</span></button></div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/chart.js"></script>
-    <!--<script src="assets/js/device.js"></script>-->
     <script src="assets/js/general.js?v=20260713a"></script>
-    <script src="assets/js/graph.js"></script>
     <script src="assets/js/sidebar.js"></script>
-    <script type="module" src="assets/js/room.js?v=20260713a"></script>
+    <script>
+  
+        (function () {
+            const search = document.getElementById('searchRooms');
+            const content = document.getElementById('floorTabContent');
+            if (!search || !content) return;
+            search.addEventListener('input', () => {
+                const q = search.value.trim().toLowerCase();
+                content.querySelectorAll('.room-panel').forEach((panel) => {
+                    const nameEl = panel.querySelector('.room-name');
+                    const name = ((nameEl ? nameEl.textContent : '') || '').toLowerCase();
+                    panel.style.display = name.includes(q) ? '' : 'none';
+                });
+                // Hide floor sections that have no visible rooms.
+                content.querySelectorAll('.floor-section').forEach((section) => {
+                    const anyVisible = Array.from(section.querySelectorAll('.room-panel'))
+                        .some((p) => p.style.display !== 'none');
+                    section.style.display = anyVisible ? '' : 'none';
+                });
+            });
+        })();
+    </script>
+    <script type="module" src="assets/js/floor.js?v=20260713a"></script>
+    <script type="module" src="assets/js/room.js"></script>
 </body>
 
 </html>

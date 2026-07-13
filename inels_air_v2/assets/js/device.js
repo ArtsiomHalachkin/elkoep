@@ -170,7 +170,7 @@ $(document).ready(async function () {
                 attachEditButtonListener(editBtn, device);
                 
                 deleteBtn.addEventListener("click", async () => {
-                    if (confirm(`Are you sure you want to delete ${device.device_type} ${device.dev_eui}?`)) {
+                    if (await confirmDelete(`Are you sure you want to delete ${device.device_type} ${device.dev_eui}?`)) {
                         const success = await handleDeleteDevice(device.device_type, device.dev_eui);
                         if (success) {
                             await populateList(); 
