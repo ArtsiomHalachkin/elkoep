@@ -1,0 +1,8 @@
+<svg id="icon_24x24_detector_active" data-name="icon / 24x24 / detector / active" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <g id="Group_9492" data-name="Group 9492" transform="translate(8.445 5)">
+    <path id="Path_3922" data-name="Path 3922" d="M24.632,9.143H8.548a3.513,3.513,0,0,0-3.512,3.512V25.371a3.513,3.513,0,0,0,3.512,3.512H24.632a3.513,3.513,0,0,0,3.512-3.512V12.655A3.513,3.513,0,0,0,24.632,9.143Zm-8.042,13a3.19,3.19,0,1,1,3.189-3.191A3.189,3.189,0,0,1,16.59,22.139Z" transform="translate(-5.036 1.117)" fill="#e4e7ed" stroke="#8e9b9e" stroke-width="2"/>
+    <path id="Path_3923" data-name="Path 3923" d="M7.943,12.959V9.533a6.648,6.648,0,0,1,6.731-6.574,6.648,6.648,0,0,1,6.731,6.574v3.424" transform="translate(-3.12 -2.959)" fill="none" stroke="#8e9b9e" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+  </g>
+  <rect id="Rectangle_2938" data-name="Rectangle 2938" width="40" height="40" fill="none"/>
+  <rect id="Rectangle_2939" data-name="Rectangle 2939" width="40" height="40" fill="none"/>
+</svg>

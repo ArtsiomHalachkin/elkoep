@@ -6,7 +6,9 @@
       "Bash(node --check inels_air_v2/assets/js/account.js)",
       "Bash(node --check inels_air_v2/assets/js/temp_plan.js)",
       "Bash(node --check inels_air_v2/assets/js/room.js)",
-      "Bash(node --check inels_air_v2/assets/requests/account_requests.js)"
+      "Bash(node --check inels_air_v2/assets/requests/account_requests.js)",
+      "Bash(ls -1 logo-inels*)",
+      "Bash(ls -1 plus*)"
     ]
   }
 }

@@ -1,0 +1,17 @@
+<svg id="ico_keychain" xmlns="http://www.w3.org/2000/svg" width="126" height="126" viewBox="0 0 126 126">
+  <g id="Group_11563" data-name="Group 11563" transform="translate(-2)">
+    <path id="Path_5873" data-name="Path 5873" d="M101,110V94H45v16a4,4,0,0,0,4,4H97a4,4,0,0,0,4-4" fill="#abdaf9"/>
+    <rect id="Rectangle_4607" data-name="Rectangle 4607" width="56" height="101" rx="4" transform="translate(45 13)" fill="none" stroke="#0090ea" stroke-linecap="round" stroke-width="3"/>
+    <path id="Path_5874" data-name="Path 5874" d="M101,110V94H45v16a4,4,0,0,0,4,4H97A4,4,0,0,0,101,110Z" fill="none" stroke="#0090ea" stroke-linecap="round" stroke-width="3"/>
+    <path id="Path_5875" data-name="Path 5875" d="M29.313,13.333a16,16,0,0,0-16,16" fill="none" stroke="#0090ea" stroke-linecap="round" stroke-width="3"/>
+    <path id="Path_5876" data-name="Path 5876" d="M29.313,20.333a9,9,0,0,0-9,9" fill="none" stroke="#0090ea" stroke-linecap="round" stroke-width="3"/>
+    <path id="Path_5877" data-name="Path 5877" d="M28.8,26.833a2.023,2.023,0,0,0-1.42.559,2.116,2.116,0,0,0-.58,1.428,2.035,2.035,0,0,0,.16.765,2.094,2.094,0,0,0,.42.664,2.018,2.018,0,0,0,2.84,0,2.094,2.094,0,0,0,.42-.664,1.711,1.711,0,0,0,.16-.765,2.084,2.084,0,0,0-.58-1.428,2.023,2.023,0,0,0-1.42-.559" fill="#0090ea"/>
+    <path id="Path_5878" data-name="Path 5878" d="M58.917,20.417h0a8,8,0,1,0,8,8A8,8,0,0,0,58.917,20.417Z" fill="none" stroke="#0090ea" stroke-linecap="round" stroke-width="3"/>
+    <path id="Path_5879" data-name="Path 5879" d="M72.917,27.25a1.5,1.5,0,1,0,1.5,1.5,1.5,1.5,0,0,0-1.5-1.5" fill="#0090ea"/>
+    <path id="Path_5880" data-name="Path 5880" d="M86.917,20.417h0a8,8,0,1,0,8,8A8,8,0,0,0,86.917,20.417Z" fill="none" stroke="#0090ea" stroke-linecap="round" stroke-width="3"/>
+    <path id="Path_5881" data-name="Path 5881" d="M58.917,44.417h0a8,8,0,1,0,8,8A8,8,0,0,0,58.917,44.417Z" fill="none" stroke="#0090ea" stroke-linecap="round" stroke-width="3"/>
+    <path id="Path_5882" data-name="Path 5882" d="M86.917,44.417h0a8,8,0,1,0,8,8A8,8,0,0,0,86.917,44.417Z" fill="none" stroke="#0090ea" stroke-linecap="round" stroke-width="3"/>
+    <line id="Line_2040" data-name="Line 2040" x2="42" transform="translate(52 104)" fill="none" stroke="#0090ea" stroke-linecap="round" stroke-width="3"/>
+    <rect id="Rectangle_4608" data-name="Rectangle 4608" width="126" height="126" transform="translate(2)" fill="none"/>
+  </g>
+</svg>

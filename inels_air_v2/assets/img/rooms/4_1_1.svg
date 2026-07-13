@@ -1,0 +1,12 @@
+<svg id="doNotDisturb" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <rect id="Rectangle_3070" data-name="Rectangle 3070" width="40" height="40" fill="none"/>
+  <path id="Path_6254" data-name="Path 6254" d="M26.505,6.387a2.318,2.318,0,0,0-2.318,2.318V6.072a2.319,2.319,0,1,0-4.637,0V3.318a2.319,2.319,0,0,0-4.637,0v1.95a2.319,2.319,0,1,0-4.637,0V15.983a1.53,1.53,0,0,1-2.317,1.312L4.19,15.033a2.107,2.107,0,0,0-2.478,3.386L9.052,24.9l3.811,2.97a7.562,7.562,0,0,0,4.648,1.6h4.318a7,7,0,0,0,6.995-7V8.705A2.319,2.319,0,0,0,26.505,6.387Z" transform="translate(4.684 4.351)" fill="#ffcdd2" stroke="#e53935" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+  <line id="Line_2173" data-name="Line 2173" y2="9.964" transform="translate(19.596 9.62)" fill="#ffcdd2"/>
+  <line id="Line_2174" data-name="Line 2174" y2="9.964" transform="translate(19.596 9.62)" fill="none" stroke="#e53935" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+  <line id="Line_2175" data-name="Line 2175" y2="9.964" transform="translate(24.234 9.62)" fill="#ffcdd2"/>
+  <line id="Line_2176" data-name="Line 2176" y2="9.964" transform="translate(24.234 9.62)" fill="none" stroke="#e53935" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+  <line id="Line_2177" data-name="Line 2177" y2="7.379" transform="translate(28.867 13.057)" fill="#ffcdd2"/>
+  <line id="Line_2178" data-name="Line 2178" y2="7.379" transform="translate(28.867 13.057)" fill="none" stroke="#e53935" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+  <line id="Line_2179" data-name="Line 2179" x2="24.529" y2="24.53" transform="translate(9.789 10.119)" fill="#ffcdd2"/>
+  <line id="Line_2180" data-name="Line 2180" x2="24.529" y2="24.53" transform="translate(9.789 10.119)" fill="none" stroke="#e53935" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+</svg>

@@ -1,0 +1,12 @@
+<svg id="icon_24x24_detector_active" data-name="icon / 24x24 / detector / active" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="Group_9492" data-name="Group 9492" transform="translate(0.022 0.03)">
+    <path id="Path_3922" data-name="Path 3922" d="M16.793,9.143H7.143A2.108,2.108,0,0,0,5.036,11.25V18.88a2.108,2.108,0,0,0,2.107,2.107h9.65A2.108,2.108,0,0,0,18.9,18.88V11.25A2.108,2.108,0,0,0,16.793,9.143Zm-4.825,7.8a1.914,1.914,0,1,1,1.913-1.914A1.913,1.913,0,0,1,11.968,16.94Z" transform="translate(0 -0.028)" fill="#ffcdd2" stroke="#e53935" stroke-width="1"/>
+    <rect id="Rectangle_2937" data-name="Rectangle 2937" width="13.865" height="11.844" rx="1.957" transform="translate(5.036 9.115)" fill="none" stroke="#e53935" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    <path id="Path_3923" data-name="Path 3923" d="M7.985,8.957A11.708,11.708,0,0,1,7.943,6.9a4.04,4.04,0,0,1,8.077,0V8.957" transform="translate(-0.013 0)" fill="none" stroke="#e53935" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    <g id="Group_9491" data-name="Group 9491" transform="translate(10.055 13.123)">
+      <circle id="Ellipse_268" data-name="Ellipse 268" cx="1.914" cy="1.914" r="1.914" fill="none" stroke="#e53935" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    </g>
+  </g>
+  <rect id="Rectangle_2938" data-name="Rectangle 2938" width="24" height="24" fill="none"/>
+  <rect id="Rectangle_2939" data-name="Rectangle 2939" width="24" height="24" fill="none"/>
+</svg>

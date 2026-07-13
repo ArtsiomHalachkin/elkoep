@@ -1,0 +1,12 @@
+<svg id="eco" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <rect id="Rectangle_3070" data-name="Rectangle 3070" width="40" height="40" fill="none"/>
+  <line id="Line_2160" data-name="Line 2160" x1="25.833" y2="25.833" transform="translate(7.084 7.083)" fill="#abdaf9"/>
+  <line id="Line_2162" data-name="Line 2162" x1="1.18" y1="8.636" transform="translate(19.658 10.525)" fill="#abdaf9"/>
+  <line id="Line_2164" data-name="Line 2164" y1="0.341" x2="8.313" transform="translate(22.418 17.242)" fill="#abdaf9"/>
+  <g id="icons" transform="translate(7.092 20.204)">
+    <path id="share" d="M24.713,21.247,18.4,26.985c-.479.477-1.053,0-1.053-.765V23.35a11.4,11.4,0,0,1-10.135-6.5A14.539,14.539,0,0,1,5.875,12.93c-.191-.956,1.242-1.435,1.816-.574A11.452,11.452,0,0,0,17.349,17.9V14.746c0-.765.574-1.242,1.053-.765l6.311,5.736A1.163,1.163,0,0,1,24.713,21.247Z" transform="translate(-5.858 -11.907)" fill="#abdaf9" stroke="#0091ea" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+  </g>
+  <g id="icons-2" data-name="icons" transform="translate(13.766 5.325)">
+    <path id="share-2" data-name="share" d="M9.32,10.755l6.311-5.738c.479-.477,1.053,0,1.053.765v2.87a11.4,11.4,0,0,1,10.135,6.5,14.539,14.539,0,0,1,1.339,3.919c.191.956-1.242,1.435-1.816.574A11.452,11.452,0,0,0,16.684,14.1v3.156c0,.765-.574,1.242-1.053.765L9.32,12.285A1.163,1.163,0,0,1,9.32,10.755Z" transform="translate(-9.034 -4.826)" fill="#abdaf9" stroke="#0091ea" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+  </g>
+</svg>

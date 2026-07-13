@@ -1,0 +1,19 @@
+.server-status-ok {
+  color: #198754;
+  font-weight: 600;
+}
+.server-status-bad {
+  color: #dc3545;
+  font-weight: 600;
+}
+.server-status-warn {
+  color: #856404;
+  font-weight: 600;
+}
+#server-host-table td:first-child {
+  width: 38%;
+  color: #6c757d;
+}
+.server-actions .btn {
+  min-width: 220px;
+}

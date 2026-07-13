@@ -1,0 +1,11 @@
+<svg id="eco" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <rect id="Rectangle_3070" data-name="Rectangle 3070" width="40" height="40" fill="none"/>
+  <path id="Path_6181" data-name="Path 6181" d="M26.833,1S3.777.778,8.444,19.444c0,0,15.445,8.389,18.389-18.444" transform="translate(6.084 6.083)" fill="#abdaf9"/>
+  <path id="Path_6182" data-name="Path 6182" d="M26.833,1S3.777.778,8.444,19.444C8.444,19.444,23.889,27.833,26.833,1Z" transform="translate(6.084 6.083)" fill="none" stroke="#43a047" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+  <line id="Line_2160" data-name="Line 2160" x1="25.833" y2="25.833" transform="translate(7.084 7.083)" fill="#c8e6c9"/>
+  <line id="Line_2161" data-name="Line 2161" x1="25.833" y2="25.833" transform="translate(7.084 7.083)" fill="none" stroke="#43a047" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+  <line id="Line_2162" data-name="Line 2162" x1="1.18" y1="8.636" transform="translate(19.658 10.525)" fill="#c8e6c9"/>
+  <line id="Line_2163" data-name="Line 2163" x1="1.18" y1="8.636" transform="translate(19.658 10.525)" fill="none" stroke="#43a047" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+  <line id="Line_2164" data-name="Line 2164" y1="0.341" x2="8.313" transform="translate(22.418 17.242)" fill="#c8e6c9"/>
+  <line id="Line_2165" data-name="Line 2165" y1="0.341" x2="8.313" transform="translate(22.418 17.242)" fill="none" stroke="#43a047" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+</svg>

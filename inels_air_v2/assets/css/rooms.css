@@ -92,15 +92,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 0 1.2rem 1.2rem;
+  /*padding: 0 1.2rem 1.2rem;*/
   width: 100%;
 }
 
 .ButtonsGrid_grid__1BRFW {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 0.9rem;
   width: 100%;
+  justify-content: flex-start;
 }
 
 .ButtonsGrid_button_wrapper__2NBWx {
@@ -115,7 +116,7 @@
   justify-content: center;
   align-items: center;
   border: 1px solid #ededed;
-  padding: 1rem;
+  padding: 0.8rem;
   border-radius: 50%;
   cursor: pointer;
 }
@@ -125,7 +126,7 @@
 }
 
 .ButtonsGrid_icon__7wI7o {
-  width: 2rem;
+  width: 1.8rem;
   height: auto;
 }
 
@@ -153,13 +154,14 @@
 /* ************************** */
 
 .ControlSection_main__gMphG {
-  padding: 0.67rem 0.8rem 0.33rem;
+  /*padding: 0.67rem 0.8rem 0.33rem;*/
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 14.67rem;
+  margin-bottom: 1.5rem;
+  /*height: 14.67rem;*/
 }
 
 .ControlSection_main_center__1XS2N {
@@ -175,32 +177,36 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 0 0.67rem;
-  width: 12rem;
-  height: 12rem;
+  padding: 0 0.59rem;
+  width: 10.56rem;
+  height: 10.56rem;
   border-radius: 50%;
-  border: 0.67rem solid #ff7f4e;
+  border: 0.59rem solid #ff7f4e;
 }
 
 .CenterText_icon__12X2J {
-  height: 2.67rem;
-  width: 2.67rem;
-  margin-bottom: 0.4rem;
+  height: 2.35rem;
+  width: 2.35rem;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin-bottom: 0.35rem;
 }
 
 .CenterText_text__2a1zA {
-  font: 500 2.27rem Roboto, sans-serif;
+  font: 500 2.00rem Roboto, sans-serif;
   color: #000;
 }
 
 .CenterText_subtext__105IB {
-  font: 400 0.8rem Roboto, sans-serif;
+  font: 400 0.72rem Roboto, sans-serif;
   color: #8e9b9e;
-  margin: 0.33rem;
+  margin: 0.3rem;
 }
 
 .CenterText_infoText__2QkjS {
-  font: 500 1.07rem Roboto, sans-serif;
+  font: 500 0.95rem Roboto, sans-serif;
   color: #000;
 }
 
@@ -209,7 +215,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 5.33rem;
+  height: 4.81rem;
 }
 
 .UpDownControl_left__2SBEV, .UpDownControl_middle__3sCbD {
@@ -240,31 +246,32 @@
   border-radius: 50%;
   border: 1px solid #ededed;
   background: none;
-  width: 3.33rem;
-  height: 3.33rem;
+  width: 2.40rem;
+  height: 2.40rem;
+  margin-bottom: 0.36rem;
 }
 
 .Button_Button__2u65g {
-  box-shadow: 0 0.67px 1.33px rgba(8, 39, 57, .05);
-  transition: all .2s ease-in-out;
+  box-shadow: 0 0.61px 1.20px rgba(8, 39, 57, 0.05);
+  transition: all 0.2s ease-in-out;
   outline: none;
   position: relative;
 }
 
 .UpDownControl_label__1vcgs {
-  font: 400 0.8rem Roboto, sans-serif;
+  font: 400 0.72rem Roboto, sans-serif;
   color: #000;
   text-align: center;
   white-space: nowrap;
 }
 
 .UpDownControl_button_icon__1y9dx {
-  width: 1.6rem;
-  transform: translateY(1px);
+  width: 1.08rem;
+  transform: translateY(0.90px);
 }
 
 .UpDownControl_subtext__EN85F {
-  font: 400 0.8rem Roboto, sans-serif;
+  font: 400 0.72rem Roboto, sans-serif;
   color: #8e9b9e;
   text-align: center;
   white-space: nowrap;
@@ -275,6 +282,7 @@
   color: #000;
   text-align: center;
   white-space: nowrap;
+  margin-bottom: 0.25rem;
 }
 
 .FooterTempRegulation {
@@ -318,9 +326,9 @@
   background: transparent;
   border-left: none;
   letter-spacing: 0;
-  font: 400 0.93rem Roboto, sans-serif;
+  font: 400 0.74rem Roboto, sans-serif;
   color: #8e9b9e;
-  padding: 0.67rem 1.33rem;
+  padding: 0.54rem 1.06rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -340,10 +348,9 @@
 
 .Button_Button__item_elipse_active__LE4mE {
   background: #0091ea 0 0 no-repeat padding-box;
-  /*border: 1px solid #0091ea;*/
-  font: 400 0.93rem Roboto, sans-serif;
+  font: 400 0.74rem Roboto, sans-serif;
   color: #fff;
-  padding: 0.67rem 1.33rem;
+  padding: 0.54rem 1.06rem;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -375,4 +382,134 @@
   margin-bottom: 1rem;
   text-transform: uppercase;
 }
+
+.room-header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  padding-bottom: 1rem;
+}
+
+.vertical-divider {
+  width: 5px;
+  background-color: #ededed;
+  align-self: stretch;
+  border-radius: 1rem;
+  margin-right: 0.5rem;
+}
+
+.room-state {
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: default;
+}
+
+.room-hotel-wrap {
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.room-hotel-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ededed;
+  padding: 0.8rem;
+  border-radius: var(--bs-border-radius);
+  width: 3.4rem;
+  height: 3.4rem;
+  cursor: pointer;
+}
+
+.room-hotel-icons img {
+  width: 1.8rem;
+  height: auto;
+}
+
+.room-hotel-label {
+  font: 400 0.67rem Roboto, sans-serif;
+  color: #000;
+  margin-top: 0.4rem;
+  text-align: center;
+}
+
+.my-scroll-tabs {
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.my-scroll-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+/* Třída pro drag-scrolling (volitelné viz JS) */
+
+.my-scroll-tabs.active {
+  cursor: grabbing;
+}
+
+/* Lepší mezera mezi pilly */
+
+.my-scroll-tabs .nav-link {
+  margin-right: 0.2rem;
+}
+
+.value.deg {
+  font: 500 1rem Roboto, sans-serif;  /* podobná velikost jako ikonky */
+  color: #000;
+  text-align: center;
+}
+
+/* Stejný průměr jako u vločky: 1.8rem ikona + 0.8rem padding vlevo + 0.8rem vpravo = 3.4rem */
+.ButtonsGrid_button__3krCp.btn-circle {
+  width: 3.4rem;
+  height: 3.4rem;
+  padding: 0;                 /* už nepotřebujeme padding */
+  display: flex;              /* už tam je, jen pro jistotu */
+  align-items: center;
+  justify-content: center;
+}
+
+.value.deg {
+  font: 500 1rem Roboto, sans-serif; /* vizuálně srovnatelné s ikonou */
+  line-height: 1;                    /* aby výška textu nekazila kruh */
+  text-align: center;
+}
+
+/* Zůstává: zachovat rozměry, vypnout klikání */
+.icons-pending .ButtonsGrid_button_wrapper__2NBWx {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Overlay + spinner před obsah (aby byl vidět) */
+.icons-pending {
+  position: relative;
+}
+.icons-pending::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: rgba(255,255,255,0.6);
+  z-index: 2;              /* ← nad obsahem panelu */
+}
+.icons-pending::before {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 32px; height: 32px;
+  margin: -16px 0 0 -16px;
+  border-radius: 50%;
+  border: 3px solid #bbb;
+  border-top-color: #0091ea;  /* barva spinneru */
+  animation: spin 0.9s linear infinite;
+  z-index: 3;              /* ← nad overlayem */
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+
+
 

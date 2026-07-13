@@ -1,0 +1,14 @@
+<svg id="icon_24x24_rooms_guestroom" data-name="icon / 24x24 / rooms / guestroom" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="Group_10217" data-name="Group 10217" transform="translate(-0.809 -0.776)">
+    <g id="Group_10216" data-name="Group 10216" transform="translate(11.729 19.538)">
+      <line id="Line_1333" data-name="Line 1333" y2="2.949" transform="translate(0)" fill="none" stroke="#0091ea" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+      <line id="Line_1334" data-name="Line 1334" y2="2.949" transform="translate(9.081 0)" fill="none" stroke="#0091ea" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    </g>
+    <path id="Path_5079" data-name="Path 5079" d="M9.648,6.492H3.325a.508.508,0,0,1-.509-.577,3.716,3.716,0,0,1,7.342,0A.509.509,0,0,1,9.648,6.492Z" transform="translate(0 0)" fill="none" stroke="#0091ea" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    <path id="Path_5080" data-name="Path 5080" d="M8.24,21.372h-3.7a.376.376,0,0,1-.372-.441,2.264,2.264,0,0,1,4.442,0A.376.376,0,0,1,8.24,21.372Z" transform="translate(0.095 1.141)" fill="none" stroke="#0091ea" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    <line id="Line_1335" data-name="Line 1335" y1="13.757" transform="translate(6.486 6.492)" fill="none" stroke="#0091ea" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    <path id="Path_5081" data-name="Path 5081" d="M21.966,13.591v4.123a1.123,1.123,0,0,1-1.123,1.123H10.752a1.123,1.123,0,0,1-1.123-1.123V13.586a1.141,1.141,0,0,1,1.142-1.141h0a1.141,1.141,0,0,1,1.141,1.141v1.055a.58.58,0,0,0,.58.581h6.6a.581.581,0,0,0,.58-.581v-1.05a1.146,1.146,0,0,1,1.145-1.146h0A1.146,1.146,0,0,1,21.966,13.591Z" transform="translate(0.476 0.701)" fill="#abdaf9" stroke="#0091ea" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    <path id="Path_5082" data-name="Path 5082" d="M19.532,10.431v4.546a.581.581,0,0,1-.58.581h-6.6a.58.58,0,0,1-.58-.581V10.431a2.98,2.98,0,0,1,2.98-2.981h1.8A2.98,2.98,0,0,1,19.532,10.431Z" transform="translate(0.62 0.365)" fill="#abdaf9" stroke="#0091ea" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+  </g>
+  <rect id="Rectangle_3518" data-name="Rectangle 3518" width="24" height="24" fill="none"/>
+</svg>

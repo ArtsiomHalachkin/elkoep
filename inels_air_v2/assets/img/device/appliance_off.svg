@@ -1,0 +1,12 @@
+<svg id="icon_24x24_devices_on_off" data-name="icon / 24x24 / devices / on_off" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="40" viewBox="0 0 40 40">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_3251" data-name="Rectangle 3251" width="40" height="40" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Group_9895" data-name="Group 9895" clip-path="url(#clip-path)">
+    <path id="Path_4636" data-name="Path 4636" d="M7.9,0A7.9,7.9,0,1,1,0,7.9,7.9,7.9,0,0,1,7.9,0Z" transform="translate(12.098 12.699)" fill="#e4e7ed" stroke="#8e9b9e" stroke-linecap="round" stroke-width="2"/>
+    <path id="Path_4863" data-name="Path 4863" d="M0,0V14.713" transform="translate(20.002 5.344)" fill="none" stroke="#8e9b9e" stroke-linecap="round" stroke-width="2"/>
+    <path id="Path_4635" data-name="Path 4635" d="M10.782,5.406a14.251,14.251,0,1,0,14.516,0" transform="translate(1.961 3.1)" fill="none" stroke="#8e9b9e" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+  </g>
+</svg>

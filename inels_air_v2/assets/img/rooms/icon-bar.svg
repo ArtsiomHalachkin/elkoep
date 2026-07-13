@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24.339" viewBox="0 0 24 24.339">
+  <g id="icon_24x24_rooms_bar" data-name="icon / 24x24 / rooms / bar" transform="translate(0 0.339)">
+    <g id="Group_10212" data-name="Group 10212" transform="translate(4.11 4)">
+      <path id="Path_5067" data-name="Path 5067" d="M-61.708,12.739l-7.664-7.493c-.457-.512-.175-1.48.431-1.48h14.465c.607,0,.889.968.431,1.48Z" transform="translate(69.598 -3.766)" fill="#abdaf9" stroke="#0091ea" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+      <line id="Line_1330" data-name="Line 1330" y2="7.611" transform="translate(7.89 8.756)" fill="none" stroke="#0091ea" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+      <line id="Line_1331" data-name="Line 1331" x2="8.505" transform="translate(3.638 16.933)" fill="none" stroke="#0091ea" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    </g>
+    <line id="Line_1332" data-name="Line 1332" y1="6.201" x2="3.647" transform="translate(13.375 0.688)" fill="none" stroke="#0091ea" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    <rect id="Rectangle_3515" data-name="Rectangle 3515" width="24" height="24" fill="none"/>
+  </g>
+</svg>

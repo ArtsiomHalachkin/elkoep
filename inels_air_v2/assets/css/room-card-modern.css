@@ -1,0 +1,753 @@
+/* Room cards — modern dashboard style (reception + admin overview) */
+
+.service-template .container-fluid,
+#floorTabContent,
+#floorTabContent .tab-pane {
+  width: 100%;
+  max-width: 100%;
+}
+
+.rooms-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(196px, 1fr)) !important;
+  gap: clamp(6px, 0.9vw, 10px) !important;
+  width: 100% !important;
+}
+
+@media (min-width: 720px) {
+  .rooms-grid { grid-template-columns: repeat(auto-fill, minmax(208px, 1fr)) !important; }
+}
+@media (min-width: 1100px) {
+  .rooms-grid { grid-template-columns: repeat(auto-fill, minmax(218px, 1fr)) !important; }
+}
+
+.room-panel {
+  width: 100% !important;
+  min-width: 0;
+}
+
+.room-panel .card {
+  width: 100%;
+  margin: 0;
+}
+
+.room-card-scaled .room-card-scale-inner {
+  transform: none !important;
+  width: 100% !important;
+  margin-bottom: 0 !important;
+}
+
+/* —— Card shell —— */
+.room-card-scaled {
+  --rc-radius: 14px;
+  --rc-surface: #ffffff;
+  --rc-muted: #64748b;
+  --rc-border: rgba(148, 163, 184, 0.22);
+  --rc-panel: linear-gradient(155deg, #f8fafc 0%, #eef2ff 48%, #f4f6fb 100%);
+  --rc-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 8px 24px -12px rgba(15, 23, 42, 0.12);
+  --rc-shadow-hover: 0 2px 4px rgba(15, 23, 42, 0.04), 0 14px 28px -10px rgba(79, 70, 229, 0.16);
+  --chip-icon-box: 34px;
+  --chip-icon-img: 20px;
+  --chip-label-size: 0.54rem;
+  --chip-stack-row-h: 3.35rem;
+  --chip-tray-bg: rgba(248, 250, 252, 0.92);
+  --chip-tray-border: rgba(226, 232, 240, 0.55);
+  --chip-active-ring: 0 0 0 1.5px var(--chip-ring-color, rgba(99, 102, 241, 0.45));
+  --chip-active-shadow: var(--chip-active-ring), 0 4px 10px rgba(15, 23, 42, 0.07);
+  container-type: inline-size;
+  container-name: room-card;
+  position: relative;
+  border: 1px solid var(--rc-border);
+  border-radius: var(--rc-radius);
+  background: var(--rc-surface);
+  box-shadow: var(--rc-shadow);
+  overflow: hidden;
+  transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+}
+
+.room-card-scaled:hover {
+  box-shadow: var(--rc-shadow-hover);
+  transform: translateY(-2px);
+  border-color: rgba(99, 102, 241, 0.25);
+}
+
+.room-card-scaled::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #94a3b8, #cbd5e1);
+  z-index: 3;
+}
+
+.room-card-scaled:has(.room-card-header--success)::before {
+  background: linear-gradient(90deg, #22c55e, #4ade80);
+}
+.room-card-scaled:has(.room-card-header--warning)::before {
+  background: linear-gradient(90deg, #f59e0b, #fbbf24);
+}
+.room-card-scaled:has(.room-card-header--danger)::before {
+  background: linear-gradient(90deg, #ef4444, #f87171);
+}
+.room-card-scaled:has(.room-card-header--primary)::before {
+  background: linear-gradient(90deg, #3b82f6, #818cf8);
+}
+.room-card-scaled:has(.room-card-header--secondary)::before {
+  background: linear-gradient(90deg, #64748b, #94a3b8);
+}
+
+.room-card-scaled .card-body {
+  padding: 7px 7px 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* —— Header —— */
+.room-card-scaled .room-card-header {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.room-card-scaled .room-card-header__row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 0;
+}
+
+.room-card-scaled .room-card-name {
+  display: block;
+  font-size: 0.98rem;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.045em;
+  color: #0f172a;
+}
+
+.room-card-scaled .room-card-type {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.62rem;
+  font-weight: 600;
+  color: var(--rc-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.room-card-scaled .room-card-status {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  max-width: 44%;
+  padding: 3px 7px 3px 6px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: 0.56rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  white-space: nowrap;
+  backdrop-filter: blur(8px);
+}
+
+.room-card-scaled .room-card-status__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: currentColor;
+  box-shadow: 0 0 0 3px currentColor;
+  opacity: 0.35;
+}
+
+.room-card-scaled .room-card-status--success {
+  color: #15803d;
+  background: rgba(220, 252, 231, 0.9);
+  border-color: rgba(134, 239, 172, 0.6);
+}
+.room-card-scaled .room-card-status--warning {
+  color: #b45309;
+  background: rgba(254, 243, 199, 0.95);
+  border-color: rgba(253, 230, 138, 0.7);
+}
+.room-card-scaled .room-card-status--danger {
+  color: #b91c1c;
+  background: rgba(254, 226, 226, 0.95);
+  border-color: rgba(252, 165, 165, 0.7);
+}
+.room-card-scaled .room-card-status--primary {
+  color: #1d4ed8;
+  background: rgba(219, 234, 254, 0.95);
+  border-color: rgba(147, 197, 253, 0.7);
+}
+.room-card-scaled .room-card-status--secondary {
+  color: #475569;
+  background: rgba(241, 245, 249, 0.95);
+  border-color: rgba(203, 213, 225, 0.8);
+}
+
+/* Chip rows — icon above label */
+.room-card-scaled .room-card-services,
+.room-card-scaled .room-card-status-row,
+.room-card-scaled .room-card-scenes-row {
+  display: flex;
+  gap: 3px;
+  width: 100%;
+  min-height: var(--chip-stack-row-h);
+  align-items: stretch;
+}
+
+.room-card-scaled .room-card-services,
+.room-card-scaled .room-card-status-row {
+  padding: 3px;
+  border-radius: 10px;
+  background: var(--chip-tray-bg);
+  border: 1px solid var(--chip-tray-border);
+  box-shadow: none;
+  backdrop-filter: blur(6px);
+}
+
+.room-card-scaled .room-card-scenes-row {
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.room-card-scaled .room-card-scenes-row--bottom {
+  margin-top: 0;
+  padding-top: 6px;
+  border-top: 1px solid rgba(226, 232, 240, 0.6);
+}
+
+/* Strip legacy rooms.css circle button chrome (avoids double rectangle on DND etc.) */
+.room-card-scaled .room-service-chip .ButtonsGrid_button__3krCp,
+.room-card-scaled .room-status-chip .ButtonsGrid_button__3krCp,
+.room-card-scaled .room-scene-chip .ButtonsGrid_button__3krCp,
+.room-card-scaled .room-climate-chip .ButtonsGrid_button__3krCp:not(.room-climate-tile-btn) {
+  border: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.room-card-scaled .room-service-chip,
+.room-card-scaled .room-status-chip,
+.room-card-scaled .room-scene-chip,
+.room-card-scaled .room-climate-chip {
+  display: flex !important;
+  flex: 1 1 0;
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  margin: 0 !important;
+  padding: 2px 2px 1px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background: transparent;
+  transition: background 0.2s ease, box-shadow 0.15s ease;
+}
+
+.room-card-scaled .room-service-chip,
+.room-card-scaled .room-scene-chip {
+  cursor: pointer;
+}
+
+.room-card-scaled .room-service-chip:hover:not(.room-service-chip--active) {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.room-card-scaled .room-service-chip--active {
+  background: #ffffff !important;
+  box-shadow: var(--chip-active-shadow);
+}
+
+.room-card-scaled .room-service-chip--active[data-name="DND"] {
+  --chip-ring-color: rgba(239, 68, 68, 0.5);
+}
+.room-card-scaled .room-service-chip--active[data-name="DND"] .room-service-chip__label {
+  color: #dc2626;
+}
+.room-card-scaled .room-service-chip--active[data-name="DND"] .room-service-chip__icon {
+  background: rgba(254, 242, 242, 0.95);
+}
+
+.room-card-scaled .room-service-chip--active[data-name="Buttler"] {
+  --chip-ring-color: rgba(245, 158, 11, 0.55);
+}
+.room-card-scaled .room-service-chip--active[data-name="Buttler"] .room-service-chip__label {
+  color: #d97706;
+}
+.room-card-scaled .room-service-chip--active[data-name="Buttler"] .room-service-chip__icon {
+  background: rgba(255, 251, 235, 0.95);
+}
+
+.room-card-scaled .room-service-chip--active[data-name="MUR"] {
+  --chip-ring-color: rgba(16, 185, 129, 0.5);
+}
+.room-card-scaled .room-service-chip--active[data-name="MUR"] .room-service-chip__label {
+  color: #059669;
+}
+.room-card-scaled .room-service-chip--active[data-name="MUR"] .room-service-chip__icon {
+  background: rgba(236, 253, 245, 0.95);
+}
+
+.room-card-scaled .room-service-chip__icon,
+.room-card-scaled .room-status-chip__icon,
+.room-card-scaled .room-scene-chip__icon,
+.room-card-scaled .room-climate-chip__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--chip-icon-box);
+  height: var(--chip-icon-box);
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.88);
+  border: none;
+  box-shadow: none;
+  flex-shrink: 0;
+  transition: background 0.15s ease;
+}
+
+.room-card-scaled .room-service-chip--active .room-service-chip__icon,
+.room-card-scaled .room-status-chip--active .room-status-chip__icon,
+.room-card-scaled .room-scene-chip--active .room-scene-chip__icon,
+.room-card-scaled .room-climate-chip--active .room-climate-chip__icon {
+  box-shadow: none;
+}
+
+.room-card-scaled .room-service-chip .ButtonsGrid_icon__7wI7o,
+.room-card-scaled .room-status-chip .ButtonsGrid_icon__7wI7o,
+.room-card-scaled .room-scene-chip .ButtonsGrid_icon__7wI7o,
+.room-card-scaled .room-climate-chip .ButtonsGrid_icon__7wI7o {
+  width: var(--chip-icon-img) !important;
+  height: var(--chip-icon-img) !important;
+  margin: 0 !important;
+}
+
+.room-card-scaled .room-service-chip__label,
+.room-card-scaled .room-service-chip .ButtonsGrid_button_label__1d6gb,
+.room-card-scaled .room-status-chip__label,
+.room-card-scaled .room-status-chip .ButtonsGrid_button_label__1d6gb,
+.room-card-scaled .room-scene-chip__label,
+.room-card-scaled .room-scene-chip .ButtonsGrid_button_label__1d6gb,
+.room-card-scaled .room-climate-chip__label,
+.room-card-scaled .room-climate-chip .ButtonsGrid_button_label__1d6gb {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 !important;
+  padding: 0 2px;
+  font-size: var(--chip-label-size) !important;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--rc-muted);
+  line-height: 1.2;
+  text-align: center;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: nowrap;
+}
+
+/* Status chips — read-only */
+.room-card-scaled .room-status-chip {
+  cursor: default;
+  pointer-events: none;
+  opacity: 1 !important;
+}
+
+.room-card-scaled .room-status-chip--active {
+  background: #ffffff !important;
+  box-shadow: var(--chip-active-shadow);
+}
+
+.room-card-scaled .room-status-chip--active[data-name="Door-Status"] {
+  --chip-ring-color: rgba(59, 130, 246, 0.45);
+}
+.room-card-scaled .room-status-chip--active[data-name="Door-Status"] .room-status-chip__label {
+  color: #2563eb;
+}
+
+.room-card-scaled .room-status-chip--active[data-name="Window-Status"],
+.room-card-scaled .room-status-chip--active[data-name="Window"] {
+  --chip-ring-color: rgba(14, 165, 233, 0.45);
+}
+.room-card-scaled .room-status-chip--active[data-name="Window-Status"] .room-status-chip__label,
+.room-card-scaled .room-status-chip--active[data-name="Window"] .room-status-chip__label {
+  color: #0284c7;
+}
+
+.room-card-scaled .room-status-chip--active[data-name="Occupancy"],
+.room-card-scaled .room-status-chip--active[data-name="Room"] {
+  --chip-ring-color: rgba(16, 185, 129, 0.45);
+}
+.room-card-scaled .room-status-chip--active[data-name="Occupancy"] .room-status-chip__label,
+.room-card-scaled .room-status-chip--active[data-name="Room"] .room-status-chip__label {
+  color: #059669;
+}
+
+.room-card-scaled .room-card-scenes-row .ButtonsGrid_button_wrapper__2NBWx.hidden {
+  display: none !important;
+}
+
+.room-card-scaled .room-scene-chip.readonly {
+  cursor: default;
+  pointer-events: none;
+  opacity: 1 !important;
+}
+
+.room-card-scaled .room-scene-chip:hover:not(.room-scene-chip--active):not(.readonly) {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.room-card-scaled .room-scene-chip--active {
+  background: #ffffff !important;
+  box-shadow: var(--chip-active-shadow);
+  --chip-ring-color: rgba(99, 102, 241, 0.45);
+}
+
+.room-card-scaled .room-scene-chip--active .room-scene-chip__label {
+  color: #4f46e5;
+}
+
+/* —— Controls panel (climate) —— */
+.room-card-scaled .room-center-layout {
+  --climate-accent: #6366f1;
+  display: block !important;
+  width: 100%;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding: 6px 6px 6px 9px;
+  border-radius: 12px;
+  background: var(--rc-panel);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 1px 2px rgba(15, 23, 42, 0.04);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Mode feedback — left edge of whole climate block (not a second “card” stripe) */
+.room-card-scaled .room-center-layout::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--climate-accent);
+  border-radius: 14px 0 0 14px;
+  z-index: 2;
+}
+
+.room-card-scaled .room-center-layout__climate {
+  min-width: 0;
+  width: 100%;
+}
+
+.room-card-scaled .ControlSection_main__gMphG,
+.room-card-scaled .ControlSection_footer__pppOo {
+  height: auto !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  max-width: 100%;
+  display: block !important;
+}
+
+.room-card-scaled .ControlSection_main_center__1XS2N {
+  width: 100% !important;
+  height: auto !important;
+  display: block !important;
+}
+
+/* Climate widget — flat inside panel (no nested card) */
+.room-card-scaled .room-climate-combined.CenterText_wrapper__fxp5g {
+  --climate-accent: #6366f1;
+  display: block !important;
+  width: 100% !important;
+  max-width: 100%;
+  height: 100%;
+  min-height: 0;
+  box-sizing: border-box;
+  border: none !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  position: static;
+  overflow: visible;
+  text-align: left !important;
+  align-items: stretch !important;
+}
+
+/* Climate panel — left half temps, right half modes/fan/stepper (always side-by-side) */
+.room-card-scaled .room-climate-panel {
+  --climate-tile-h: 2.25rem;
+  --climate-modes-row-h: var(--climate-tile-h);
+  --climate-stepper-row-h: var(--climate-tile-h);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 6px;
+  align-items: stretch;
+  min-height: calc(var(--climate-tile-h) * 2 + 4px);
+  width: 100%;
+}
+
+.room-card-scaled .room-climate-panel__temps {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 6px;
+  min-width: 0;
+  padding: 4px 6px;
+  border-radius: 8px;
+  background: linear-gradient(145deg, rgba(238, 242, 255, 0.55) 0%, rgba(255, 255, 255, 0.15) 55%);
+}
+
+.room-card-scaled .room-climate-panel__label,
+.room-card-scaled .room-climate-panel .UpDownControl_label__1vcgs {
+  display: block;
+  margin: 0 0 2px !important;
+  padding: 0 !important;
+  font-size: 0.52rem !important;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #94a3b8;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.room-card-scaled .room-climate-panel__actual,
+.room-card-scaled .room-climate-panel__set {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 0;
+}
+
+.room-card-scaled .room-climate-panel__actual .UpDownControl_text__2Tmvq,
+.room-card-scaled .room-climate-panel__set .CenterText_text__2a1zA {
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1 !important;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  text-align: left !important;
+}
+
+.room-card-scaled .room-climate-panel__actual .UpDownControl_text__2Tmvq {
+  font-size: 1.55rem !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.045em;
+  color: #0f172a !important;
+}
+
+.room-card-scaled .room-climate-panel__set .CenterText_text__2a1zA {
+  font-size: 0.88rem !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em;
+  color: #475569 !important;
+  padding-left: 1px;
+}
+
+.room-card-scaled .room-climate-panel__actual .UpDownControl_text__2Tmvq span,
+.room-card-scaled .room-climate-panel__set .CenterText_text__2a1zA span {
+  font-size: inherit !important;
+}
+
+.room-card-scaled .room-climate-panel__aside {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  width: 100%;
+  min-width: 0;
+  max-width: none;
+}
+
+.room-card-scaled .room-climate-panel .room-climate-tile.room-climate-chip {
+  flex-direction: row;
+  align-items: stretch;
+  padding: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  cursor: default;
+}
+
+.room-card-scaled .room-climate-panel__modes-row,
+.room-card-scaled .room-climate-panel__stepper-row {
+  display: flex;
+  gap: 4px;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  align-items: stretch;
+  min-height: var(--climate-tile-h);
+}
+
+/* Climate tiles — mode, fan, and +/- share one compact control style */
+.room-card-scaled .room-climate-panel__modes-row .room-climate-chip,
+.room-card-scaled .room-climate-panel__stepper-row .room-climate-stepper-chip,
+.room-card-scaled .room-climate-panel__modes-row .room-climate-tile,
+.room-card-scaled .room-climate-panel__stepper-row .room-climate-tile {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex !important;
+  align-items: stretch;
+  justify-content: center;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: none !important;
+  background: transparent !important;
+  gap: 0;
+}
+
+.room-card-scaled .room-climate-tile-btn.ButtonsGrid_button__3krCp {
+  width: 100% !important;
+  height: var(--climate-tile-h) !important;
+  min-height: var(--climate-tile-h) !important;
+  max-height: var(--climate-tile-h) !important;
+  margin: 0 !important;
+  padding: 2px 3px !important;
+  border-radius: 9px !important;
+  border: none !important;
+  background: rgba(255, 255, 255, 0.92) !important;
+  box-shadow: 0 0 0 1px rgba(226, 232, 240, 0.75) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 1px !important;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.room-card-scaled .room-climate-stepper-btn.room-climate-tile-btn {
+  justify-content: center !important;
+  padding: 0 !important;
+}
+
+.room-card-scaled .room-climate-tile-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(99, 102, 241, 0.14) !important;
+}
+
+.room-card-scaled .room-climate-chip--active .room-climate-tile-btn {
+  background: #ffffff !important;
+  box-shadow: var(--chip-active-shadow);
+  --chip-ring-color: rgba(99, 102, 241, 0.45);
+}
+
+.room-card-scaled .room-climate-chip--active .room-climate-chip__label,
+.room-card-scaled .room-climate-chip--active .ButtonsGrid_button_label__1d6gb {
+  color: #4f46e5;
+}
+
+.room-card-scaled .room-climate-tile-btn .ButtonsGrid_icon__7wI7o {
+  width: 18px !important;
+  height: 18px !important;
+  margin: 0 !important;
+  flex-shrink: 0;
+}
+
+.room-card-scaled .room-climate-stepper-btn .ButtonsGrid_icon__7wI7o {
+  width: 20px !important;
+  height: 20px !important;
+}
+
+.room-card-scaled .room-climate-tile-btn .room-climate-chip__label,
+.room-card-scaled .room-climate-tile-btn .ButtonsGrid_button_label__1d6gb {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 !important;
+  padding: 0 1px !important;
+  font-size: 0.48rem !important;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #64748b;
+  line-height: 1.1;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.room-card-scaled .room-climate-data-fields {
+  display: none !important;
+}
+
+.room-card-scaled .UpDownControl_left__2SBEV,
+.room-card-scaled .UpDownControl_right__176Ez {
+  margin: 0 !important;
+}
+
+/* State-batch loading: show placeholders until live MQTT values arrive */
+.room-card-scaled.icons-pending .room-climate-panel__actual .UpDownControl_text__2Tmvq span,
+.room-card-scaled.icons-pending .room-climate-panel__set .CenterText_text__2a1zA span,
+.room-card-scaled.icons-pending .room-climate-chip__label {
+  visibility: hidden;
+}
+
+.room-card-scaled.icons-pending .room-climate-panel__actual .UpDownControl_text__2Tmvq::after,
+.room-card-scaled.icons-pending .room-climate-panel__set .CenterText_text__2a1zA::after {
+  content: "—";
+  display: inline-block;
+  font-weight: 700;
+  visibility: visible;
+}
+
+.room-card-scaled.icons-pending .room-service-chip__icon img {
+  opacity: 0.45;
+}
+
+.room-card-scaled.icons-pending .room-status-chip__icon img {
+  opacity: 0.45;
+}
+
+/* Keep controls clickable while values load */
+.room-card-scaled.icons-pending::before,
+.room-card-scaled.icons-pending::after {
+  display: none !important;
+}
+
+.room-card-scaled.icons-pending .ButtonsGrid_button_wrapper__2NBWx:not(.readonly) {
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+.room-card-scaled.icons-pending .room-climate-stepper-btn {
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+.room-card-scaled .room-climate-data-fields,
+.room-card-scaled .room-scene-data-fields {
+  display: none !important;
+}

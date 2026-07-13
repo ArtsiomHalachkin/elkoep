@@ -120,7 +120,7 @@ async def root():
 # --- ---------------- ---
 
 @app.delete("/room/{room_id}/device/{dev_type}/{dev_eui}")
-async def remove_device_from_room(room_id: int, dev_type: str, dev_eui: int):
+async def remove_device_from_room(room_id: int, dev_type: str, dev_eui: str):
     
     conn = await get_connection() 
 

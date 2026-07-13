@@ -1,0 +1,85 @@
+.selected_button {
+  background-color: #0091ea;
+  color: white;
+  border-radius: 20px;
+  padding: 3px 7px 3px 7px;
+  cursor: pointer;
+}
+
+.unselected_button {
+  color: #8e9b9e;
+  padding: 3px 7px 3px 7px;
+  margin-left: 0.2rem;
+  cursor: pointer;
+}
+
+.divider_vertical_small {
+  background-color: #d7dfe0;
+  margin-left: 0.8rem;
+  margin-right: 0.8rem;
+  height: 1.5rem;
+  width: 1px;
+  color: #8e9b9e;
+}
+
+.divider_vertical_small_dashed {
+  margin-left: 2rem;
+  height: 30px;
+  width: 1px;
+  border-right: 1px dashed #d7dfe0;
+}
+
+.divider_vertical_tall {
+  background-color: #d7dfe0;
+  height: 100%;
+  width: 1px;
+  color: #8e9b9e;
+}
+
+.p-info {
+  margin-top: -10px;
+  margin-left: 0.5rem;
+  font-size: 15px;
+  color: #8e9b9e;
+}
+
+.circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #0091ea;
+  display: inline-block;
+}
+
+.condition {
+  color: #0091ea;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.editable-heading {
+  cursor: pointer;
+  padding: 1.6px 2px 0.5px;
+  text-align: center !important;
+  font-size: 1.5rem;
+  margin-bottom: 0;
+  margin-top: 0;
+  font-weight: 500;
+  line-height: var(--bs-modal-title-line-height);
+  color: var(--bs-heading-color);
+  position: relative;
+}
+
+.edit-icon {
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.editable-heading:hover .edit-icon {
+  display: inline-block;
+}
+
+.edit-mode {
+  display: none;
+}
+

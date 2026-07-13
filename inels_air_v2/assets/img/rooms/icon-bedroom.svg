@@ -1,0 +1,12 @@
+<svg id="icon_24x24_rooms_bedroom" data-name="icon / 24x24 / rooms / bedroom" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <rect id="Rectangle_3493" data-name="Rectangle 3493" width="18.067" height="3.395" transform="translate(2.967 14.584)" fill="none" stroke="#0091ea" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+  <line id="Line_1307" data-name="Line 1307" y2="2.731" transform="translate(2.967 18.002)" fill="none" stroke="#0091ea" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+  <line id="Line_1308" data-name="Line 1308" y2="2.731" transform="translate(21.033 18.002)" fill="none" stroke="#0091ea" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+  <path id="Rectangle_3494" data-name="Rectangle 3494" d="M4.108,0h9.851a4.108,4.108,0,0,1,4.108,4.108v.163a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0V4.108A4.108,4.108,0,0,1,4.108,0Z" transform="translate(2.967 10.287)" fill="#abdaf9" stroke="#0091ea" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+  <path id="Path_5040" data-name="Path 5040" d="M90.814,12V5.3a1.493,1.493,0,0,0-1.437-1.545H75.6A1.493,1.493,0,0,0,74.168,5.3V12" transform="translate(-70.491 -0.053)" fill="none" stroke="#0091ea" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+  <g id="Group_10197" data-name="Group 10197" transform="translate(5.543 6.734)">
+    <path id="Rectangle_3495" data-name="Rectangle 3495" d="M1.74,0H4.717a1.74,1.74,0,0,1,1.74,1.74V3.434a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0V1.74A1.74,1.74,0,0,1,1.74,0Z" transform="translate(6.457)" fill="#abdaf9" stroke="#0091ea" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    <path id="Rectangle_3496" data-name="Rectangle 3496" d="M1.74,0H4.717a1.74,1.74,0,0,1,1.74,1.74V3.434a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0V1.74A1.74,1.74,0,0,1,1.74,0Z" fill="#abdaf9" stroke="#0091ea" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+  </g>
+  <rect id="Rectangle_3497" data-name="Rectangle 3497" width="24" height="24" fill="none"/>
+</svg>

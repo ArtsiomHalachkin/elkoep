@@ -1,0 +1,13 @@
+<svg id="airflow" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+  <g id="Group_12073" data-name="Group 12073">
+    <rect id="Rectangle_4892" data-name="Rectangle 4892" width="40" height="40" fill="none"/>
+  </g>
+  <path id="Path_6227" data-name="Path 6227" d="M19.506,5.973c-3.925-.689-10.811,3.706-.427,15.542,0,0-1.594-2.42.734-5.806,1.921-2.793,7.307-8.4-.307-9.736" transform="translate(0.82 1.752)" fill="#abdaf9"/>
+  <path id="Path_6228" data-name="Path 6228" d="M19.506,5.973c-3.925-.689-10.811,3.706-.427,15.542,0,0-1.594-2.42.734-5.806C21.734,12.917,27.12,7.309,19.506,5.973Z" transform="translate(0.82 1.752)" fill="none" stroke="#0091ea" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+  <path id="Path_6229" data-name="Path 6229" d="M32.084,29.52c2.56-3.055,2.2-11.215-13.246-8.14,0,0,2.892-.172,4.66,3.538,1.458,3.06,3.622,10.527,8.586,4.6" transform="translate(0.17 -0.092)" fill="#abdaf9"/>
+  <path id="Path_6230" data-name="Path 6230" d="M32.084,29.52c2.56-3.055,2.2-11.215-13.246-8.14,0,0,2.892-.172,4.66,3.538C24.956,27.978,27.119,35.446,32.084,29.52Z" transform="translate(0.17 -0.092)" fill="none" stroke="#0091ea" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+  <path id="Path_6231" data-name="Path 6231" d="M5.607,29.125c1.366,3.744,8.614,7.51,13.673-7.4,0,0-1.3,2.59-5.4,2.266-3.378-.267-10.928-2.128-8.278,5.134" transform="translate(1.887 -0.219)" fill="#abdaf9"/>
+  <path id="Path_6232" data-name="Path 6232" d="M5.607,29.125c1.366,3.744,8.614,7.51,13.673-7.4,0,0-1.3,2.59-5.4,2.266C10.507,23.723,2.957,21.862,5.607,29.125Z" transform="translate(1.887 -0.219)" fill="none" stroke="#0091ea" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+  <path id="Path_6233" data-name="Path 6233" d="M23,21.815a3.5,3.5,0,1,0-3.5,3.5,3.5,3.5,0,0,0,3.5-3.5" transform="translate(0.523 0.206)" fill="#fff"/>
+  <ellipse id="Ellipse_782" data-name="Ellipse 782" cx="3.502" cy="3.502" rx="3.502" ry="3.502" transform="translate(16.523 18.518)" fill="none" stroke="#0091ea" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+</svg>
