@@ -7,14 +7,14 @@ import {
     deleteFloor,
 } from "../requests/floor_requests.js?v=20260713a";
 
-// The floor stored procedures are not part of the SQL scripts in this repo,
-// so read identifiers defensively to tolerate small naming differences.
+
 const floorId = (f) => f.floor_id ?? f.id ?? f.fid;
 const floorName = (f) => f.name ?? f.fname ?? "";
 const floorLevel = (f) => f.level ?? f.flevel ?? "";
+const roomsCountAtFloor = (f) => f.rooms_count ?? f.room_count ?? 0;
 const roomId = (r) => r.room_id ?? r.rid ?? r.id;
-const roomName = (r) => r.name ?? r.rname ?? "";
-const roomDesc = (r) => r.description ?? r.rdescription ?? "";
+const roomName = (r) => r.room_name ?? r.name ?? r.rname ?? "";
+const roomDesc = (r) => r.room_description ?? r.description ?? r.rdescription ?? "";
 
 let floorsCache = [];
 
@@ -47,6 +47,7 @@ function renderFloorsTable(floors) {
                 <td>${idx + 1}</td>
                 <td>${escapeHtml(floorName(f)) || "-"}</td>
                 <td>${escapeHtml(floorLevel(f))}</td>
+                <td>${escapeHtml(roomsCountAtFloor(f))}</td>
                 <td class="text-nowrap text-center">
                     <span class="icon icon-edit cursor me-2" data-action="edit-floor" data-floor-id="${escapeHtml(id)}"
                         data-bs-toggle="modal" data-bs-target="#modal_edit_floor"></span>
@@ -69,7 +70,7 @@ function roomPanelHtml(r) {
                 </div>`;
 }
 
-// Render all rooms (including rooms not assigned to any floor) into #floorTabContent.
+
 async function renderRooms() {
     const content = $("#floorTabContent");
     if (!content) return;
@@ -153,7 +154,7 @@ function wireEditModal() {
     const title = $("#edit-floor-title");
     if (!panel || !form || !submit) return;
 
-    // Populate the edit form and load this floor's rooms when the panel is opened.
+
     document.addEventListener("click", async (e) => {
         const trigger = e.target.closest('[data-action="edit-floor"]');
         if (!trigger) return;

@@ -4,6 +4,7 @@ import { fetchDevices } from "../requests/device_requests.js";
 import { fetchTemperaturePlans } from "../requests/temp_plan_requests.js";
 import { fetchRoomAccounts, fetchRooms, fetchRoomTemperaturePlan, fetchRoomDevices, addRoomSetup,
      removeAccountFromRoom, removeDeviceFromRoom, removePlanFromRoom} from "../requests/room_requests.js";
+import { fetchFloors } from "../requests/floor_requests.js";
 
 // --- UI HELPERS (from file 1) ---
 const ICONS = {
@@ -431,6 +432,7 @@ $(document).ready(function () {
         const payload = {
             name: addingForm.name.value,
             description: addingForm.description.value,
+            floor_id: addingForm.floor_id.value || null
         };
 
         try {
@@ -517,6 +519,25 @@ $(document).ready(function () {
         }
     }
 
+    async function populateFloorDropdown() {
+        const floorSelect = document.getElementById("floor-select");
+        
+        if (!floorSelect) return;
+
+        const floors = await fetchFloors();
+
+        
+        floorSelect.innerHTML = '<option value=""> - </option>';
+
+        
+        floors.forEach(floor => {
+            const option = document.createElement("option");
+            option.value = floor.floor_id;  
+            option.textContent = floor.name; 
+            floorSelect.appendChild(option);
+        });
+    }
+
     /**
      * Handles editing an existing room.
      */
@@ -550,6 +571,8 @@ $(document).ready(function () {
     }
 
     // --- INITIALIZE ALL LISTENERS AND LOAD DATA ---
+
+    
 
     // Init listeners from file 1
     addItemsToTable({
@@ -598,7 +621,6 @@ $(document).ready(function () {
         const room_id = offcanvas.getAttribute("data-room-room_id");
         if (!room_id) return;
         
-        // Populate all room setup tables and forms
         await populateRoomSetupTables(room_id);
         await populateLinkedAccountsForm();
         await populateLinkedThermostatForm();
@@ -611,5 +633,6 @@ $(document).ready(function () {
     savingSubmitBtn.addEventListener("click", handleSaveRoom);
 
     // --- Load Initial Room List ---
+    populateFloorDropdown();
     populateRoomList();
 });

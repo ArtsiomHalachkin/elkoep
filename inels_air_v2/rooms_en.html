@@ -18,11 +18,13 @@
             <div class="logo py-4 mx-4"><img src="assets/img/logo-inels.svg" style="max-width: 60%;margin-top: -19px;margin-bottom: -11px;"><span class="fs-5 fw-bold text-dark logo" id="title" style="padding-right: 30px;"></span><a class="float-end text-dark" id="sidebarToggleHolder" href="#"><img id="sidebarToggle" src="assets/img/menu-icon-black.svg"></a></div>
         </li>
         <li class="nav-item"><a class="nav-link active text-start py-1 px-0 text-color" href="rooms_en.html"><img class="navbar-icon" src="assets/img/overview-icon-active.svg"><span class="text-nowrap mx-2">Rooms</span></a></li>
-                <li class="nav-item"><a class="nav-link text-start py-1 px-0 text-color" href="rooms_other.html"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-building fs-5 navbar-icon"></svg><span class="text-nowrap mx-2">Floor/Rooms</span></a></li>
-
+                  <li class="nav-item"><a class="nav-link text-start py-1 px-0 text-color" href="rooms_other.html"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-building fs-5 navbar-icon">
+                    <path d="M4 2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM4 5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zM7.5 5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm2.5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zM4.5 8a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm2.5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5z"></path>
+                    <path d="M2 1a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1zm11 0H3v14h3v-2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5V15h3z"></path>
+                </svg><span class="text-nowrap mx-2">Floor/Rooms</span></a></li>
         <li class="nav-item"><a class="nav-link text-start py-1 px-0 text-color" href="devices.html"><img class="navbar-icon" src="assets/img/settings-icon-inactive.svg"><span class="text-nowrap mx-2">Devices</span></a></li>
         <li class="nav-item"><a class="nav-link text-start py-1 px-0 text-color" href="temp_plans.html"><img class="navbar-icon" src="assets/img/settings-icon-inactive.svg"><span class="text-nowrap mx-2">Temperature plans</span></a></li>
-        <li class="nav-item"><a class="nav-link text-start py-1 px-0 text-color" href="accounts.html"><img class="navbar-icon" src="assets/img/settings-icon-inactive.svg"><span class="text-nowrap mx-2">App accounts</span></a></li>
+        <li class="nav-item"><a class="nav-link text-start py-1 px-0 text-color" href="accounts.html"><img class="navbar-icon" src="assets/img/user.svg"><span class="text-nowrap mx-2">App accounts</span></a></li>
     </ul>
     <div class="d-flex justify-content-between align-items-center stripe" style="height: 86.3906px;"><span class="d-xxl-flex justify-content-xxl-start page-info-left">Rooms</span><span class="unit-info-right">iNELS Heating</span></div>
     <section class="text-center position-relative py-2 px-5 section-heading"><span class="second-title page-heading">Rooms</span></section>
@@ -31,7 +33,7 @@
             <div class="row justify-content-center">
                 <div class="col-12 col-md-10 col-lg-8">
                     <div class="card header-color">
-                        <h4 class="text-center header">List of rooms</h4>
+                        <h4 class="text-center header">Rooms</h4>
                         <div class="card-body card-color">
                             <div class="modal fade" role="dialog" tabindex="-1" id="modal_add_room">
                                 <div class="modal-dialog" role="document">
@@ -46,6 +48,19 @@
                                                         <div class="col"><label class="form-label">Name</label><input class="form-control" type="text" name="name"></div>
                                                     </div>
                                                 </div>
+
+                                                <div class="mb-3">
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <label class="form-label">Floor</label>
+                                                            <select class="form-select" name="floor_id" id="floor-select">
+                                                                <option value=""> - </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                            
+
                                                 <div>
                                                     <div class="row">
                                                         <div class="col"><label class="form-label">Description</label><input class="form-control" type="text" name="description"></div>
