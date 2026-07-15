@@ -989,3 +989,17 @@ async def delete_zone(zone_id: int):
         raise HTTPException(status_code=400, detail=str(err))
     finally:
         conn.close()
+
+@app.get("/zone/{zone_id}/rooms")
+async def get_rooms_by_zone(zone_id: int):
+    conn = await get_connection()
+    try:
+        async with conn.cursor() as cursor:
+            await cursor.execute("CALL GetRoomsByZone(%s)", (zone_id,))
+            rooms = await cursor.fetchall()
+        return {"rooms": rooms}
+
+    except pymysql.MySQLError as err:
+        raise HTTPException(status_code=400, detail=str(err))
+    finally:
+        conn.close()

@@ -13,6 +13,7 @@ import {
     updateZone,
     deleteZone,
     fetchZones,
+    fetchZoneRooms
 } from "../requests/zone_requests.js?v=20260713a";
 
 
@@ -319,6 +320,18 @@ function wireEditZoneModal() {
         form.querySelector('[name="zone-name"]').value = z.name ?? z.zname ?? "";
         form.querySelector('[name="zone-temperature"]').value = z.target_temperature ?? z.temperature ?? "";
         if (title) title.textContent = `${z.name ?? "Zone"} setup`;
+
+        const tbody = $("#zone-rooms-list");
+        if (tbody) {
+            tbody.innerHTML = `<tr><td colspan="3" class="text-center text-muted py-3">Loading rooms…</td></tr>`;
+        }
+        try {
+            const rooms = await fetchZoneRooms(z.zone_id ?? z.id ?? z.zid);
+            renderZoneRoomsList(rooms);
+        } catch {
+            renderZoneRoomsList([]);
+        }
+
     });
 
     submit.addEventListener("click", async () => {
