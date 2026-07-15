@@ -8,11 +8,13 @@
     <meta http-equiv="Pragma" content="no-cache">
     <title>inels_air_v2</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-icons.css">
     <link rel="stylesheet" href="assets/css/icons.css">
     <link rel="stylesheet" href="assets/css/rooms.css">
     <link rel="stylesheet" href="assets/css/room-card-modern.css">
     <link rel="stylesheet" href="assets/css/sidebar.css">
     <link rel="stylesheet" href="assets/css/styles.css">
+
     <style>
         /* Toolbar — matches rooms_template.html overview toolbar */
         .overview-toolbar {
@@ -46,8 +48,14 @@
 
         .room-panel .room-card-simple .room-name {
             font-weight: 600;
+            /* Optional: set room name title size here if you want, e.g., font-size: 14px; */
         }
 
+        /* Place your smaller font size and margin styles here on the description element */
+        .room-panel .room-card-simple .room-desc {
+            font-size: 11px;
+            margin-top: 4px;
+        }
         .overview-page-loading {
             min-height: 200px;
             display: flex;
@@ -55,6 +63,9 @@
             justify-content: center;
             gap: 0.5rem;
         }
+        
+
+        
     </style>
 </head>
 
@@ -178,14 +189,17 @@
                     </div>
                 </div>
 
-                <!-- Rooms list, grouped by floor -->
+                <!-- Rooms list -->
                 <div class="tab-pane fade" id="view-rooms" role="tabpanel" aria-labelledby="view-rooms-tab">
     <section class="service-template section-expand">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12 col-md-10 col-lg-8">
                     <div class="card header-color">
+                        
                         <h4 class="text-center header">Rooms</h4>
+                        
+                        
                         <div class="card-body card-color">
                             <div class="modal fade" role="dialog" tabindex="-1" id="modal_add_room">
                                 <div class="modal-dialog" role="document">

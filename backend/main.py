@@ -901,3 +901,51 @@ async def get_rooms_by_floor(floor_id: int):
         raise HTTPException(status_code=400, detail=str(err))
     finally:
         conn.close()
+
+
+@app.get("/zone/all")
+async def get_all_zones():
+    conn = await get_connection()
+    try:
+        async with conn.cursor() as cursor:
+            await cursor.execute("CALL GetAllZones()")
+            rows = await cursor.fetchall()
+        return {"zones": rows}
+
+    except pymysql.MySQLError as err:
+        raise HTTPException(status_code=400, detail=str(err))
+    finally:
+        conn.close()
+
+@app.get("/zone/{zone_id}")
+async def get_zone_by_id(zone_id: int):
+    conn = await get_connection()
+    try:
+        async with conn.cursor() as cursor:
+            await cursor.execute("CALL GetZoneById(%s)", (zone_id,))
+            zone = await cursor.fetchone()
+        return {"zone": zone}
+    except pymysql.MySQLError as err:
+        raise HTTPException(status_code=400, detail=str(err))
+    finally:
+        conn.close()
+
+@app.post("/zone/add")
+async def add_zone(payload: dict):
+    conn = await get_connection()
+    try:
+        async with conn.cursor() as cursor:
+            await cursor.execute("CALL UpsertZone(%s, %s, %s, %s)", 
+                                 (payload.get("zone_id", None),
+                                  payload.get("name", ""), 
+                                  payload.get("is_active", 0),
+                                  payload.get("target_temperature", None)
+                                  ))
+            await conn.commit()
+        return {"message": "Zone added successfully"}
+
+    except pymysql.MySQLError as err:
+        await conn.rollback()
+        raise HTTPException(status_code=400, detail=str(err))
+    finally:
+        conn.close()
