@@ -3,8 +3,12 @@ import { fetchAccounts } from "../requests/account_requests.js";
 import { fetchDevices } from "../requests/device_requests.js";
 import { fetchTemperaturePlans } from "../requests/temp_plan_requests.js";
 import { fetchRoomAccounts, fetchRooms, fetchRoomTemperaturePlan, fetchRoomDevices, addRoomSetup,
-     removeAccountFromRoom, removeDeviceFromRoom, removePlanFromRoom} from "../requests/room_requests.js";
+     removeAccountFromRoom, removeDeviceFromRoom, removePlanFromRoom,
+     fetchRoomById} from "../requests/room_requests.js";
 import { fetchFloors } from "../requests/floor_requests.js";
+import { fetchZones } from "../requests/zone_requests.js";
+import { fetchFloor } from "../requests/floor_requests.js";
+import { fetchZone } from "../requests/zone_requests.js";
 
 // --- UI HELPERS (from file 1) ---
 const ICONS = {
@@ -367,17 +371,19 @@ $(document).ready(function () {
     function attachEditButtonListener(editBtn, room_id) {
         editBtn.addEventListener("click", async () => {
             try {
-                const response = await fetch(`${API_BASE_URL}/room/details/${room_id}`);
-                if (!response.ok) throw new Error("Failed to fetch room");
-                const data = await response.json();
-                const room = data.room;
-
+                const room = await fetchRoomById(room_id);
+                
                 editForm.reset();
                 editForm.setAttribute("data-room-room_id", room_id);
+
+                await populateFloorDropdown("floor-select-edit");
+                await populateZoneDropdown("zone-select-edit");
+
                 editForm.name.value = room.name ?? "";
+                editForm.floor_id.value = room.floor_id != null ? String(room.floor_id) : "";
+                editForm.zone_id.value = room.zone_id != null ? String(room.zone_id) : "";
                 editForm.description.value = room.description ?? "";
 
-                // Note: We are using jQuery to find and show the modal
                 $('#modal_edit_room').modal('show');
 
             } catch (err) {
@@ -432,7 +438,8 @@ $(document).ready(function () {
         const payload = {
             name: addingForm.name.value,
             description: addingForm.description.value,
-            floor_id: addingForm.floor_id.value || null
+            floor_id: addingForm.floor_id.value || null,
+            zone_id: addingForm.zone_id.value || null
         };
 
         try {
@@ -519,17 +526,16 @@ $(document).ready(function () {
         }
     }
 
-    async function populateFloorDropdown() {
-        const floorSelect = document.getElementById("floor-select");
-        
+
+    /**
+     * Dropdown population functions.
+     */
+    async function populateFloorDropdown(selectId = "floor-select") {
+        const floorSelect = document.getElementById(selectId);
         if (!floorSelect) return;
-
+        
         const floors = await fetchFloors();
-
-        
         floorSelect.innerHTML = '<option value=""> - </option>';
-
-        
         floors.forEach(floor => {
             const option = document.createElement("option");
             option.value = floor.floor_id;  
@@ -537,6 +543,21 @@ $(document).ready(function () {
             floorSelect.appendChild(option);
         });
     }
+
+    async function populateZoneDropdown(selectId = "zone-select") {
+        const zoneSelect = document.getElementById(selectId);
+        if (!zoneSelect) return;
+        
+        const zones = await fetchZones();
+        zoneSelect.innerHTML = '<option value=""> - </option>';
+        zones.forEach(zone => {
+            const option = document.createElement("option");
+            option.value = zone.zone_id;
+            option.textContent = zone.name;
+            zoneSelect.appendChild(option);
+        });
+    }
+
 
     /**
      * Handles editing an existing room.
@@ -546,6 +567,8 @@ $(document).ready(function () {
         const room_id = editForm.getAttribute('data-room-room_id');
         const payload = {
             name: editForm.name.value,
+            floor_id: editForm.floor_id.value || null,
+            zone_id: editForm.zone_id.value || null,
             description: editForm.description.value,
         };
 
@@ -634,5 +657,8 @@ $(document).ready(function () {
 
     // --- Load Initial Room List ---
     populateFloorDropdown();
+    populateZoneDropdown();
+    populateFloorDropdown("floor-select-edit");
+    populateZoneDropdown("zone-select-edit");
     populateRoomList();
 });

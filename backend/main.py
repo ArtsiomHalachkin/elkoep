@@ -250,10 +250,13 @@ async def add_room(payload: dict):
     try:
         async with conn.cursor() as cursor: 
             # BUG FIX: Added the third %s placeholder to match the 3 inputs in your tuple
-            await cursor.execute("CALL AddRoom(%s, %s, %s)", 
+            await cursor.execute("CALL AddRoom(%s, %s, %s, %s)", 
                                  (payload.get("floor_id", None),
+                                  payload.get("zone_id", None),
                                   payload.get("name", ""),
-                                  payload.get("description", ""))
+                                  payload.get("description", "")
+                                  
+                                  )
                                  )
             await conn.commit() 
         return {"message": "Room added successfully"}
@@ -290,9 +293,11 @@ async def update_room(room_id: int, payload: dict):
     conn = await get_connection() 
     try:
         async with conn.cursor() as cursor: 
-            await cursor.execute("CALL UpdateRoom(%s, %s, %s)", 
+            await cursor.execute("CALL UpdateRoom(%s, %s, %s, %s, %s)", 
                              (
                              int(room_id), 
+                             payload.get("floor_id", None),
+                             payload.get("zone_id", None),
                              payload.get("name", ""), 
                              payload.get("description", ""),
                              )
@@ -971,7 +976,7 @@ async def update_zone(zone_id: int, payload: dict):
         conn.close()
 
 @app.delete("/zone/delete/{zone_id}")
-async def delete_zone(zone_id: int):
+async def delete_zone(zone_id: int):    
     conn = await get_connection()
     try:
         async with conn.cursor() as cursor:

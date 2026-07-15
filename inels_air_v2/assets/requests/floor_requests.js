@@ -73,3 +73,15 @@ export async function deleteFloor(floorId) {
     }
     return response.json();
 }
+
+export async function fetchFloor(floorId) {
+    try {
+        const response = await fetch(`${API_BASE_URL}/floor/${floorId}`);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        const data = await response.json();
+        return data.floor || null;
+    } catch (error) {
+        console.error("Failed to load floor:", error);
+        return null;
+    }
+}

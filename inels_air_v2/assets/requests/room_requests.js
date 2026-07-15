@@ -103,6 +103,18 @@ async function safeDelete(url) {
     }
 }
 
+export async function fetchRoomById(roomId) {
+    try {
+        const response = await fetch(`${API_BASE_URL}/room/details/${roomId}`);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        const data = await response.json();
+        return data.room || null;
+    } catch (error) {
+        console.error("Failed to load room:", error);
+        return null;
+    }
+}
+
 export async function removeDeviceFromRoom(roomId, devEui, deviceType) {
     return safeDelete(`${API_BASE_URL}/room/${roomId}/device/${deviceType}/${devEui}`);
 }
