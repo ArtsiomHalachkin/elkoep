@@ -128,7 +128,7 @@ $(document).ready(function () {
     const savingSubmitBtn = document.getElementById("room-save");
     const addingForm = document.getElementById("add-room-form");
     const editForm = document.getElementById("edit-room-form");
-    const tableBody = document.getElementById("device-add-1"); // Main room list table
+    const tableBody = document.getElementById("list-rooms"); // Main room list table
     const offcanvas = document.getElementById("canvas_setup_room");
 
     /**

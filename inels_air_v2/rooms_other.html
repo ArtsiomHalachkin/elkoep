@@ -269,386 +269,638 @@
 
                 <!-- Rooms list -->
                 <div class="tab-pane fade" id="view-rooms" role="tabpanel" aria-labelledby="view-rooms-tab">
-    <section class="service-template section-expand">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-12 col-md-10 col-lg-8">
-                    <div class="card header-color">
-                        
-                        <h4 class="text-center header">Rooms</h4>
-                        
-                        
-                        <div class="card-body card-color">
-                            <div class="modal fade" role="dialog" tabindex="-1" id="modal_add_room">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header header-color">
-                                            <h4 class="modal-title">Add room</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <form id="add-room-form">
-                                                <div class="mb-3">
-                                                    <div class="row">
-                                                        <div class="col"><label class="form-label">Name</label><input class="form-control" type="text" name="name"></div>
+                    <section class="service-template section-expand">
+                        <div class="container">
+                            <div class="row justify-content-center">
+                                <div class="col-12 col-md-10 col-lg-8">
+                                    <div class="card header-color">
+                
+                                        <h4 class="text-center header">Rooms</h4>
+                
+                
+                                        <div class="card-body card-color">
+                                            <div class="modal fade" role="dialog" tabindex="-1" id="modal_add_room">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header header-color">
+                                                            <h4 class="modal-title">Add room</h4><button class="btn-close" type="button"
+                                                                aria-label="Close" data-bs-dismiss="modal"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form id="add-room-form">
+                                                                <div class="mb-3">
+                                                                    <div class="row">
+                                                                        <div class="col"><label class="form-label">Name</label><input class="form-control" type="text" name="name"></div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="mb-3">
+                                                                    <div class="row">
+                                                                        <div class="col">
+                                                                            <label class="form-label">Floor</label>
+                                                                            <select class="form-select" name="floor_id" id="floor-select">
+                                                                                <option value=""> - </option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="mb-3">
+                                                                    <div class="row">
+                                                                        <div class="col">
+                                                                            <label class="form-label">Zone</label>
+                                                                            <select class="form-select" name="zone_id" id="zone-select">
+                                                                                <option value=""> - </option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                            
+                                            
+
+                                                                <div>
+                                                                    <div class="row">
+                                                                        <div class="col"><label class="form-label">Description</label><input class="form-control" type="text" name="description"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                                        <div class="modal-footer"><button class="btn btn-light" type="button"
+                                                                data-bs-dismiss="modal">Close</button><button class="btn btn-primary"
+                                                                type="submit" id="add-room-sibmit">Add</button></div>
                                                     </div>
                                                 </div>
-                                                <div>
-                                                    <div class="row">
-                                                        <div class="col"><label class="form-label">Description</label><input class="form-control" type="text" name="description"></div>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-                                        <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit" id="add-room-sibmit">Add</button></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="float-none">
-                                <div class="modal fade" role="dialog" tabindex="-1" id="modal_edit_room">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header header-color">
-                                                <h4 class="modal-title">Edit Room</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
                                             </div>
-                                            <div class="modal-body">
-                                                <form id="edit-room-form">
-                                                    <div class="mb-3">
-                                                        <div class="row">
-                                                            <div class="col"><label class="form-label" for="add-product-type">Name</label><input class="form-control" type="text" name="name"></div>
+                                            <div class="float-none">
+                                                <div class="modal fade" role="dialog" tabindex="-1" id="modal_edit_room">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header header-color">
+                                                                <h4 class="modal-title">Edit Room</h4><button class="btn-close"
+                                                                    type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form id="edit-room-form">
+                                                                    <div class="mb-3">
+                                                                        <div class="row">
+                                                                            <div class="col"><label class="form-label"
+                                                                                    for="add-product-type">Name</label><input
+                                                                                    class="form-control" type="text" name="name"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <div class="row">
+                                                                            <div class="col"><label class="form-label"
+                                                                                    for="add-product-type">Floor</label>
+                                                                                <select class="form-control" name="floor_id"
+                                                                                    id="floor-select-edit">
+                                                                                    <option value=""> - </option>
+                
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="mb-3">
+                                                                        <div class="row">
+                                                                            <div class="col"><label class="form-label"
+                                                                                    for="add-product-type">Zone</label>
+                                                                                <select class="form-control" name="zone_id"
+                                                                                    id="zone-select-edit">
+                                                                                    <option value=""> - </option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div>
+                                                                        <div class="row">
+                                                                            <div class="col"><label
+                                                                                    class="form-label">Description</label><input
+                                                                                    class="form-control" type="text" name="description">
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                            <div class="modal-footer"><button class="btn btn-light" type="button"
+                                                                    data-bs-dismiss="modal">Close</button><button
+                                                                    class="btn btn-primary" type="submit"
+                                                                    id="edit-room-submit">Edit</button></div>
                                                         </div>
                                                     </div>
-                                                    <div class="mb-3">
-                                                        <div class="row">
-                                                            <div class="col"><label class="form-label" for="add-product-type">Floor</label>
-                                                            <select class="form-control" name="floor_id" id="floor-select-edit">
-                                                                <option value=""> - </option>
-                                                           
-                                                            </select></div>
+                                                </div>
+                                                <div class="modal fade" role="dialog" tabindex="-1" id="modal_delete_room">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h4 class="modal-title">Delete room</h4><button class="btn-close"
+                                                                    type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <h5 class="text-center">Are you sure?</h5>
+                                                            </div>
+                                                            <div class="modal-footer"><button class="btn btn-light" type="button"
+                                                                    data-bs-dismiss="modal">Close</button><button
+                                                                    class="btn btn-danger btn-delete" type="button"
+                                                                    data-bs-dismiss="modal">Delete</button></div>
                                                         </div>
                                                     </div>
-                                                    <div class="mb-3">
-                                                        <div class="row">
-                                                            <div class="col"><label class="form-label" for="add-product-type">Zone</label>
-                                                            <select class="form-control" name="zone_id" id="zone-select-edit">
-                                                                <option value=""> - </option>
-                                                            </select></div>
-                                                        </div>
+                                                </div>
+                                                <div class="offcanvas offcanvas-end" tabindex="-1" data-bs-keyboard="false"
+                                                    id="canvas_setup_room">
+                                                    <div class="offcanvas-header header-color">
+                                                        <h5 class="offcanvas-title">Room 101 setup</h5><button class="btn-close"
+                                                            type="button" aria-label="Close" data-bs-dismiss="offcanvas"
+                                                            data-bs-target="#canvas_setup_room"></button>
                                                     </div>
-                                                    <div>
-                                                        <div class="row">
-                                                            <div class="col"><label class="form-label">Description</label><input class="form-control" type="text"  name="description"></div>
+                                                    <div class="offcanvas-body">
+                                                        <div class="d-flex justify-content-center gap-5 mb-5 mt-4">
+                                                            <span class="icon-thermo icon bigger cursor" data-bs-toggle="modal"
+                                                                data-bs-target="#modal_add_thermostat" title="Add thermostat"></span>
+                                                            <span class="icon-heating icon bigger cursor" data-bs-toggle="modal"
+                                                                data-bs-target="#modal_add_valve" title="Add thermostatic valve">
+                
+                                                            </span>
+                                                            <span class="icon-automat-on icon bigger cursor" data-bs-toggle="modal"
+                                                                data-bs-target="#modal_add_plan" title="Add temperature plan">
+                
+                                                            </span>
+                                                            <span class="icon-user icon bigger cursor" data-bs-toggle="modal"
+                                                                data-bs-target="#modal_add_link_account" title="Link account">
+                
+                                                            </span>
                                                         </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" type="submit" id="edit-room-submit">Edit</button></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal fade" role="dialog" tabindex="-1" id="modal_delete_room">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h4 class="modal-title">Delete room</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <h5 class="text-center">Are you sure?</h5>
-                                            </div>
-                                            <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-danger btn-delete" type="button" data-bs-dismiss="modal">Delete</button></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="offcanvas offcanvas-end" tabindex="-1" data-bs-keyboard="false" id="canvas_setup_room">
-                                    <div class="offcanvas-header header-color">
-                                        <h5 class="offcanvas-title">Room 101 setup</h5><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="offcanvas" data-bs-target="#canvas_setup_room"></button>
-                                    </div>
-                                    <div class="offcanvas-body">
-                                        <div class="d-flex justify-content-center gap-5 mb-5 mt-4">
-                                            <span class="icon-thermo icon bigger cursor" data-bs-toggle="modal" data-bs-target="#modal_add_thermostat" title="Add thermostat"></span>
-                                            <span class="icon-heating icon bigger cursor" data-bs-toggle="modal" data-bs-target="#modal_add_valve" title="Add thermostatic valve">
-        
-                                            </span>
-                                            <span class="icon-automat-on icon bigger cursor" data-bs-toggle="modal" data-bs-target="#modal_add_plan" title="Add temperature plan">
-
-                                            </span>
-                                            <span class="icon-user icon bigger cursor" data-bs-toggle="modal" data-bs-target="#modal_add_link_account" title="Link account">
-
-                                            </span>
-                                        </div>
-                                        <div class="mb-4">
-                                            <div class="mb-4">
-                                                <h6 class="text-uppercase fw-bold text-muted mb-3">Thermostat</h6>
-                                                <div id="thermostat-empty"  class="text-center text-muted bg-light py-3 px-2 rounded border small empty-message" style="display:none;"><i class="bi bi-info-circle me-1"></i><span> No added thermostat</span></div>
-                                                <div class="table-responsive" id="thermostat-table-container">
-                                                    <table class="table">
-                                                        <tbody id="room-thermostat-list">
-
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="mb-4">
-                                            <div class="mb-4">
-                                                <h6 class="text-uppercase fw-bold text-muted mb-3">thermostatic valves</h6>
-                                                <div id="valve-empty" class="text-center text-muted bg-light py-3 px-2 rounded border small empty-message" style="display:none;"><i class="bi bi-info-circle me-1"></i><span> No added thermostatic valve</span></div>
-                                                <div class="table-responsive" id="valve-table-container">
-                                                    <table class="table">
-                                                        <tbody id="room-valves-list">
-
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="mb-4">
-                                            <div class="mb-4">
-                                                <h6 class="text-uppercase fw-bold text-muted mb-3">temperature plan</h6>
-                                                <div id="plan-empty" class="text-center text-muted bg-light py-3 px-2 rounded border small empty-message" style="display:none;"><i class="bi bi-info-circle me-1"></i><span> No added temperature plan</span></div>
-                                                <div class="table-responsive" id="plan-table-container">
-                                                    <table class="table">
-                                                        <tbody id ="room-plan-list">
-
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <h6 class="text-uppercase fw-bold text-muted mb-3">Linked accounts</h6>
-                                            <div class="mb-4">
-                                                <div id="account-empty" class="text-center text-muted bg-light py-3 px-2 rounded border small empty-message" style="display:none;"><i class="bi bi-info-circle me-1"></i><span> No linked account</span></div>
-                                                <div class="table-responsive" id="linkedAccounts-table-container">
-                                                    <table class="table">
-                                                        <tbody id="room-accounts-list">
-
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex justify-content-end"><button class="btn btn-light me-2" type="button" data-bs-dismiss="offcanvas" data-bs-target="#canvas_setup_room">Close</button><button class="btn btn-primary" id="room-save" type="submit">Save</button></div>
-                                    </div>
-                                </div>
-                                <div class="modal fade" role="dialog" tabindex="-1" data-bs-backdrop="static" id="modal_add_thermostat">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header header-color">
-                                                <h4 class="modal-title">RFTC-8</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form id="add-thermostat-form">
-                                                    <hr>
-                                                    <div>
-                                                        <div class="row">
-                                                            <div class="col" id="thermostat-container">
-                                                                <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-4" name="thermostat"><label class="form-check-label" for="formCheck-4">05020C – Room 101</label></div>
-                                                                <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-5" name="thermostat"><label class="form-check-label" for="formCheck-5">05020E – Gym</label></div>
+                                                        <div class="mb-4">
+                                                            <div class="mb-4">
+                                                                <h6 class="text-uppercase fw-bold text-muted mb-3">Thermostat</h6>
+                                                                <div id="thermostat-empty"
+                                                                    class="text-center text-muted bg-light py-3 px-2 rounded border small empty-message"
+                                                                    style="display:none;"><i class="bi bi-info-circle me-1"></i><span>
+                                                                        No added thermostat</span></div>
+                                                                <div class="table-responsive" id="thermostat-table-container">
+                                                                    <table class="table">
+                                                                        <tbody id="room-thermostat-list">
+                
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <hr>
-                                                </form>
-                                            </div>
-                                            <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" id="add-thermostat-to-room" type="button">Add</button></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal fade" role="dialog" tabindex="-1" data-bs-backdrop="static" id="modal_add_valve">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header header-color">
-                                                <h4 class="modal-title">RFATV-8</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form id="add-valve-form">
-                                                    <hr>
-                                                    <div>
-                                                        <div class="row">
-                                                            <div class="col" id="valve-container">
-                                                                <div class="form-check no-select"><input class="form-check-input" type="checkbox" id="formCheck-9"><label class="form-check-label" for="formCheck-9">00F41A; – Room 101/A</label></div>
-                                                                <div class="form-check no-select"><input class="form-check-input" type="checkbox" id="formCheck-10"><label class="form-check-label" for="formCheck-10">00F5A8 – Room 101/B</label></div>
+                                                        <div class="mb-4">
+                                                            <div class="mb-4">
+                                                                <h6 class="text-uppercase fw-bold text-muted mb-3">thermostatic valves
+                                                                </h6>
+                                                                <div id="valve-empty"
+                                                                    class="text-center text-muted bg-light py-3 px-2 rounded border small empty-message"
+                                                                    style="display:none;"><i class="bi bi-info-circle me-1"></i><span>
+                                                                        No added thermostatic valve</span></div>
+                                                                <div class="table-responsive" id="valve-table-container">
+                                                                    <table class="table">
+                                                                        <tbody id="room-valves-list">
+                
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" id="add-valve-to-room" type="button">Add</button></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal fade" role="dialog" tabindex="-1" data-bs-backdrop="static" id="modal_add_plan">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header header-color">
-                                                <h4 class="modal-title">Temperature plan</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form id="edit-room-form-3">
-                                                    <hr>
-                                                    <div>
-                                                        <div class="row">
-                                                            <div class="col" id="plan-container">
-                                                                <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-1" name="tempPlan"><label class="form-check-label" for="formCheck-1">Working week</label></div>
-                                                                <div class="form-check"><input class="form-check-input" type="radio" id="formCheck-3" name="tempPlan"><label class="form-check-label" for="formCheck-3">Temp plan 2</label></div>
+                                                        <div class="mb-4">
+                                                            <div class="mb-4">
+                                                                <h6 class="text-uppercase fw-bold text-muted mb-3">temperature plan</h6>
+                                                                <div id="plan-empty"
+                                                                    class="text-center text-muted bg-light py-3 px-2 rounded border small empty-message"
+                                                                    style="display:none;"><i class="bi bi-info-circle me-1"></i><span>
+                                                                        No added temperature plan</span></div>
+                                                                <div class="table-responsive" id="plan-table-container">
+                                                                    <table class="table">
+                                                                        <tbody id="room-plan-list">
+                
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <hr>
-                                                </form>
-                                            </div>
-                                            <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" id="add-plan-to-room" type="button">Add</button></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal fade" role="dialog" tabindex="-1" data-bs-backdrop="static" id="modal_add_link_account">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header header-color">
-                                                <h4 class="modal-title">Link accounts</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form id="link-app-form">
-                                                    <hr>
-                                                    <div>
-                                                        <div class="row">
-                                                            <div class="col" id="account-container">
-                                                                
-                                                                <div class="form-check no-select"><input class="form-check-input" type="checkbox" id="formCheck-2"><label class="form-check-label" for="formCheck-2">Jan Havelka</label></div>
-                                                                <div class="form-check no-select"><input class="form-check-input" type="checkbox" id="formCheck-7"><label class="form-check-label" for="formCheck-7">Jan Kejik</label></div>
-                                                                <div class="form-check no-select"><input class="form-check-input" type="checkbox" id="formCheck-8"><label class="form-check-label" for="formCheck-8">Karel Kessner</label></div>
+                                                        <div>
+                                                            <h6 class="text-uppercase fw-bold text-muted mb-3">Linked accounts</h6>
+                                                            <div class="mb-4">
+                                                                <div id="account-empty"
+                                                                    class="text-center text-muted bg-light py-3 px-2 rounded border small empty-message"
+                                                                    style="display:none;"><i class="bi bi-info-circle me-1"></i><span>
+                                                                        No linked account</span></div>
+                                                                <div class="table-responsive" id="linkedAccounts-table-container">
+                                                                    <table class="table">
+                                                                        <tbody id="room-accounts-list">
+                
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
                                                             </div>
                                                         </div>
+                                                        <div class="d-flex justify-content-end"><button class="btn btn-light me-2"
+                                                                type="button" data-bs-dismiss="offcanvas"
+                                                                data-bs-target="#canvas_setup_room">Close</button><button
+                                                                class="btn btn-primary" id="room-save" type="submit">Save</button></div>
                                                     </div>
-                                                    <hr>
-                                                </form>
-                                            </div>
-                                            <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button><button class="btn btn-primary" id="add-link-account-to-room" type="button">Add</button></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal fade" role="dialog" tabindex="-1" id="modal_control_room">
-                                    <div class="modal-dialog modal-lg" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header modal-header-color">
-                                                <h4 class="modal-title">Control room</h4><button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <ul class="nav nav-tabs mb-3" id="roomTabs" role="tablist">
-                                                    <li class="nav-item"><button class="active nav-link" id="control-tab" data-bs-toggle="tab" data-bs-target="#control" type="button" role="tab">Control</button></li>
-                                                    <li class="nav-item"><button id="graph-tab" class="nav-link" data-bs-toggle="tab" data-bs-target="#graph" type="button" role="tab">Graph</button></li>
-                                                </ul>
-                                                <div class="tab-content">
-                                                    <div id="control" class="tab-pane fade show active" role="tabpanel">
-                                                        <div class="row">
-                                                            <div class="col">
-                                                                <div class="row">
-                                                                    <div class="col">
-                                                                        <div class="ControlSection_main__gMphG">
-                                                                            <div class="ControlSection_main_center__1XS2N">
-                                                                                <div class="CenterText_wrapper__fxp5g"><img src="https://ee493eab-98ea-45ad-a0a6-978a1185046c.ams3.cdn.digitaloceanspaces.com/web/dist/assets/icons/devices/thermometer.svg" alt="" class="CenterText_icon__12X2J">
-                                                                                    <div class="CenterText_text__2a1zA"><span>28.0°C</span></div>
-                                                                                    <div class="CenterText_subtext__105IB"><span>Set temp.</span></div>
-                                                                                    <div class="CenterText_infoText__2QkjS"><span>Heating</span></div>
+                                                </div>
+                                                <div class="modal fade" role="dialog" tabindex="-1" data-bs-backdrop="static"
+                                                    id="modal_add_thermostat">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header header-color">
+                                                                <h4 class="modal-title">RFTC-8</h4><button class="btn-close"
+                                                                    type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form id="add-thermostat-form">
+                                                                    <hr>
+                                                                    <div>
+                                                                        <div class="row">
+                                                                            <div class="col" id="thermostat-container">
+                                                                                <div class="form-check"><input class="form-check-input"
+                                                                                        type="radio" id="formCheck-4"
+                                                                                        name="thermostat"><label
+                                                                                        class="form-check-label"
+                                                                                        for="formCheck-4">05020C – Room 101</label>
+                                                                                </div>
+                                                                                <div class="form-check"><input class="form-check-input"
+                                                                                        type="radio" id="formCheck-5"
+                                                                                        name="thermostat"><label
+                                                                                        class="form-check-label"
+                                                                                        for="formCheck-5">05020E – Gym</label></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <hr>
+                                                                </form>
+                                                            </div>
+                                                            <div class="modal-footer"><button class="btn btn-light" type="button"
+                                                                    data-bs-dismiss="modal">Close</button><button
+                                                                    class="btn btn-primary" id="add-thermostat-to-room"
+                                                                    type="button">Add</button></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal fade" role="dialog" tabindex="-1" data-bs-backdrop="static"
+                                                    id="modal_add_valve">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header header-color">
+                                                                <h4 class="modal-title">RFATV-8</h4><button class="btn-close"
+                                                                    type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form id="add-valve-form">
+                                                                    <hr>
+                                                                    <div>
+                                                                        <div class="row">
+                                                                            <div class="col" id="valve-container">
+                                                                                <div class="form-check no-select"><input
+                                                                                        class="form-check-input" type="checkbox"
+                                                                                        id="formCheck-9"><label class="form-check-label"
+                                                                                        for="formCheck-9">00F41A; – Room 101/A</label>
+                                                                                </div>
+                                                                                <div class="form-check no-select"><input
+                                                                                        class="form-check-input" type="checkbox"
+                                                                                        id="formCheck-10"><label
+                                                                                        class="form-check-label"
+                                                                                        for="formCheck-10">00F5A8 – Room 101/B</label>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="ControlSection_footer__pppOo">
-                                                                            <div class="FooterTempRegulation">
-                                                                                <div class="UpDownControl_wrapper__BS0Ef">
-                                                                                    <div class="UpDownControl_left__2SBEV"><button class="Button_Button__2u65g Button_Button__item_circle_arrow__293Se"><img src="https://ee493eab-98ea-45ad-a0a6-978a1185046c.ams3.cdn.digitaloceanspaces.com/web/dist/assets/icons/subtract.svg" alt="" class="UpDownControl_button_icon__1y9dx"><span></span></button><span class="UpDownControl_label__1vcgs">Decrease</span></div>
-                                                                                    <div class="UpDownControl_middle__3sCbD">
-                                                                                        <div class="UpDownControl_middle__3sCbD">
-                                                                                            <div class="UpDownControl_subtext__EN85F"><span>0 °C</span></div>
-                                                                                            <div title="" class="UpDownControl_text__2Tmvq"><span>20 °C</span></div>
-                                                                                            <div class="UpDownControl_label__1vcgs"><span>Actual temp.</span></div>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                            <div class="modal-footer"><button class="btn btn-light" type="button"
+                                                                    data-bs-dismiss="modal">Close</button><button
+                                                                    class="btn btn-primary" id="add-valve-to-room"
+                                                                    type="button">Add</button></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal fade" role="dialog" tabindex="-1" data-bs-backdrop="static"
+                                                    id="modal_add_plan">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header header-color">
+                                                                <h4 class="modal-title">Temperature plan</h4><button class="btn-close"
+                                                                    type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form id="edit-room-form-3">
+                                                                    <hr>
+                                                                    <div>
+                                                                        <div class="row">
+                                                                            <div class="col" id="plan-container">
+                                                                                <div class="form-check"><input class="form-check-input"
+                                                                                        type="radio" id="formCheck-1"
+                                                                                        name="tempPlan"><label class="form-check-label"
+                                                                                        for="formCheck-1">Working week</label></div>
+                                                                                <div class="form-check"><input class="form-check-input"
+                                                                                        type="radio" id="formCheck-3"
+                                                                                        name="tempPlan"><label class="form-check-label"
+                                                                                        for="formCheck-3">Temp plan 2</label></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <hr>
+                                                                </form>
+                                                            </div>
+                                                            <div class="modal-footer"><button class="btn btn-light" type="button"
+                                                                    data-bs-dismiss="modal">Close</button><button
+                                                                    class="btn btn-primary" id="add-plan-to-room"
+                                                                    type="button">Add</button></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal fade" role="dialog" tabindex="-1" data-bs-backdrop="static"
+                                                    id="modal_add_link_account">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header header-color">
+                                                                <h4 class="modal-title">Link accounts</h4><button class="btn-close"
+                                                                    type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form id="link-app-form">
+                                                                    <hr>
+                                                                    <div>
+                                                                        <div class="row">
+                                                                            <div class="col" id="account-container">
+                
+                                                                                <div class="form-check no-select"><input
+                                                                                        class="form-check-input" type="checkbox"
+                                                                                        id="formCheck-2"><label class="form-check-label"
+                                                                                        for="formCheck-2">Jan Havelka</label></div>
+                                                                                <div class="form-check no-select"><input
+                                                                                        class="form-check-input" type="checkbox"
+                                                                                        id="formCheck-7"><label class="form-check-label"
+                                                                                        for="formCheck-7">Jan Kejik</label></div>
+                                                                                <div class="form-check no-select"><input
+                                                                                        class="form-check-input" type="checkbox"
+                                                                                        id="formCheck-8"><label class="form-check-label"
+                                                                                        for="formCheck-8">Karel Kessner</label></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <hr>
+                                                                </form>
+                                                            </div>
+                                                            <div class="modal-footer"><button class="btn btn-light" type="button"
+                                                                    data-bs-dismiss="modal">Close</button><button
+                                                                    class="btn btn-primary" id="add-link-account-to-room"
+                                                                    type="button">Add</button></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal fade" role="dialog" tabindex="-1" id="modal_control_room">
+                                                    <div class="modal-dialog modal-lg" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header modal-header-color">
+                                                                <h4 class="modal-title">Control room</h4><button class="btn-close"
+                                                                    type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <ul class="nav nav-tabs mb-3" id="roomTabs" role="tablist">
+                                                                    <li class="nav-item"><button class="active nav-link"
+                                                                            id="control-tab" data-bs-toggle="tab"
+                                                                            data-bs-target="#control" type="button"
+                                                                            role="tab">Control</button></li>
+                                                                    <li class="nav-item"><button id="graph-tab" class="nav-link"
+                                                                            data-bs-toggle="tab" data-bs-target="#graph" type="button"
+                                                                            role="tab">Graph</button></li>
+                                                                </ul>
+                                                                <div class="tab-content">
+                                                                    <div id="control" class="tab-pane fade show active" role="tabpanel">
+                                                                        <div class="row">
+                                                                            <div class="col">
+                                                                                <div class="row">
+                                                                                    <div class="col">
+                                                                                        <div class="ControlSection_main__gMphG">
+                                                                                            <div
+                                                                                                class="ControlSection_main_center__1XS2N">
+                                                                                                <div class="CenterText_wrapper__fxp5g">
+                                                                                                    <img src="https://ee493eab-98ea-45ad-a0a6-978a1185046c.ams3.cdn.digitaloceanspaces.com/web/dist/assets/icons/devices/thermometer.svg"
+                                                                                                        alt=""
+                                                                                                        class="CenterText_icon__12X2J">
+                                                                                                    <div class="CenterText_text__2a1zA">
+                                                                                                        <span>28.0°C</span></div>
+                                                                                                    <div
+                                                                                                        class="CenterText_subtext__105IB">
+                                                                                                        <span>Set temp.</span></div>
+                                                                                                    <div
+                                                                                                        class="CenterText_infoText__2QkjS">
+                                                                                                        <span>Heating</span></div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="ControlSection_footer__pppOo">
+                                                                                            <div class="FooterTempRegulation">
+                                                                                                <div
+                                                                                                    class="UpDownControl_wrapper__BS0Ef">
+                                                                                                    <div
+                                                                                                        class="UpDownControl_left__2SBEV">
+                                                                                                        <button
+                                                                                                            class="Button_Button__2u65g Button_Button__item_circle_arrow__293Se"><img
+                                                                                                                src="https://ee493eab-98ea-45ad-a0a6-978a1185046c.ams3.cdn.digitaloceanspaces.com/web/dist/assets/icons/subtract.svg"
+                                                                                                                alt=""
+                                                                                                                class="UpDownControl_button_icon__1y9dx"><span></span></button><span
+                                                                                                            class="UpDownControl_label__1vcgs">Decrease</span>
+                                                                                                    </div>
+                                                                                                    <div
+                                                                                                        class="UpDownControl_middle__3sCbD">
+                                                                                                        <div
+                                                                                                            class="UpDownControl_middle__3sCbD">
+                                                                                                            <div
+                                                                                                                class="UpDownControl_subtext__EN85F">
+                                                                                                                <span>0 °C</span></div>
+                                                                                                            <div title=""
+                                                                                                                class="UpDownControl_text__2Tmvq">
+                                                                                                                <span>20 °C</span></div>
+                                                                                                            <div
+                                                                                                                class="UpDownControl_label__1vcgs">
+                                                                                                                <span>Actual
+                                                                                                                    temp.</span></div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div
+                                                                                                        class="UpDownControl_right__176Ez">
+                                                                                                        <button
+                                                                                                            class="Button_Button__2u65g Button_Button__item_circle_arrow__293Se"><img
+                                                                                                                src="https://ee493eab-98ea-45ad-a0a6-978a1185046c.ams3.cdn.digitaloceanspaces.com/web/dist/assets/icons/add.svg"
+                                                                                                                alt=""
+                                                                                                                class="UpDownControl_button_icon__1y9dx"><span></span></button><span
+                                                                                                            class="UpDownControl_label__1vcgs">Increase</span>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div
+                                                                                                    class="UpDownControl_extraButtons__T-WLm">
+                                                                                                </div>
+                                                                                            </div>
                                                                                         </div>
                                                                                     </div>
-                                                                                    <div class="UpDownControl_right__176Ez"><button class="Button_Button__2u65g Button_Button__item_circle_arrow__293Se"><img src="https://ee493eab-98ea-45ad-a0a6-978a1185046c.ams3.cdn.digitaloceanspaces.com/web/dist/assets/icons/add.svg" alt="" class="UpDownControl_button_icon__1y9dx"><span></span></button><span class="UpDownControl_label__1vcgs">Increase</span></div>
                                                                                 </div>
-                                                                                <div class="UpDownControl_extraButtons__T-WLm"></div>
+                                                                            </div>
+                                                                            <div class="col-auto">
+                                                                                <div class="Divider_Devider_vertical__1s5Ts"></div>
+                                                                            </div>
+                                                                            <div class="col">
+                                                                                <div class="col Col_Col__5JLgh my-col-first">
+                                                                                    <div class="col Col_Col__5JLgh my-col-second">
+                                                                                        <div>
+                                                                                            <div class="ButtonsRow_label__iLPvC">
+                                                                                                <span>Select mode</span></div>
+                                                                                            <div
+                                                                                                class="Button_Button__multiple_switch__2IRpL">
+                                                                                                <div
+                                                                                                    class="Button_Button__item_elipse_inactive__dQaXQ">
+                                                                                                    <span>15°C</span></div>
+                                                                                                <div
+                                                                                                    class="Button_Button__item_elipse_inactive__dQaXQ">
+                                                                                                    <span>20°C</span></div>
+                                                                                                <div
+                                                                                                    class="Button_Button__item_elipse_inactive__dQaXQ">
+                                                                                                    <span>24°C</span></div>
+                                                                                                <div
+                                                                                                    class="Button_Button__item_elipse_active__LE4mE">
+                                                                                                    <span>28°C</span></div>
+                                                                                            </div>
+                                                                                            <div class="ButtonsRow_mode_section__3Ji0B">
+                                                                                                <img src="https://ee493eab-98ea-45ad-a0a6-978a1185046c.ams3.cdn.digitaloceanspaces.com/web/dist/assets/icons/dashboard/comfort.svg"
+                                                                                                    alt=""><span
+                                                                                                    class="ButtonsRow_mode_label__1nRLF">Comfort</span>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="mt-3">
+                                                                                            <div class="ButtonsGrid_label__2lMx9">
+                                                                                                <span>Control</span></div>
+                                                                                            <div class="ButtonsGrid_grid__1BRFW">
+                                                                                                <div
+                                                                                                    class="ButtonsGrid_button_wrapper__2NBWx">
+                                                                                                    <div
+                                                                                                        class="ButtonsGrid_button__3krCp">
+                                                                                                        <img src="https://ee493eab-98ea-45ad-a0a6-978a1185046c.ams3.cdn.digitaloceanspaces.com/web/dist/assets/icons/dashboard/on_40.svg"
+                                                                                                            alt=""
+                                                                                                            class="ButtonsGrid_icon__7wI7o">
+                                                                                                    </div><span
+                                                                                                        class="ButtonsGrid_button_label__1d6gb">On/Off</span>
+                                                                                                </div>
+                                                                                                <div
+                                                                                                    class="ButtonsGrid_button_wrapper__2NBWx">
+                                                                                                    <div
+                                                                                                        class="ButtonsGrid_button__3krCp">
+                                                                                                        <img src="https://ee493eab-98ea-45ad-a0a6-978a1185046c.ams3.cdn.digitaloceanspaces.com/web/dist/assets/icons/dashboard/automat_off.svg"
+                                                                                                            alt=""
+                                                                                                            class="ButtonsGrid_icon__7wI7o">
+                                                                                                    </div><span
+                                                                                                        class="ButtonsGrid_button_label__1d6gb">Automat</span>
+                                                                                                </div>
+                                                                                                <div
+                                                                                                    class="ButtonsGrid_button_wrapper__2NBWx">
+                                                                                                    <div
+                                                                                                        class="ButtonsGrid_button__3krCp">
+                                                                                                        <img src="https://ee493eab-98ea-45ad-a0a6-978a1185046c.ams3.cdn.digitaloceanspaces.com/web/dist/assets/icons/dashboard/vacation_off.svg"
+                                                                                                            alt=""
+                                                                                                            class="ButtonsGrid_icon__7wI7o">
+                                                                                                    </div><span
+                                                                                                        class="ButtonsGrid_button_label__1d6gb">Holiday</span>
+                                                                                                </div>
+                                                                                                <div
+                                                                                                    class="ButtonsGrid_button_wrapper__2NBWx">
+                                                                                                    <div
+                                                                                                        class="ButtonsGrid_button__3krCp">
+                                                                                                        <img src="https://ee493eab-98ea-45ad-a0a6-978a1185046c.ams3.cdn.digitaloceanspaces.com/web/dist/assets/icons/dashboard/manual_on.svg"
+                                                                                                            alt=""
+                                                                                                            class="ButtonsGrid_icon__7wI7o">
+                                                                                                    </div><span
+                                                                                                        class="ButtonsGrid_button_label__1d6gb">Manual</span>
+                                                                                                </div>
+                                                                                                <div
+                                                                                                    class="ButtonsGrid_button_wrapper__2NBWx">
+                                                                                                    <div
+                                                                                                        class="ButtonsGrid_button__3krCp">
+                                                                                                        <img src="https://ee493eab-98ea-45ad-a0a6-978a1185046c.ams3.cdn.digitaloceanspaces.com/web/dist/assets/icons/dashboard/manual_off.svg"
+                                                                                                            alt=""
+                                                                                                            class="ButtonsGrid_icon__7wI7o">
+                                                                                                    </div><span
+                                                                                                        class="ButtonsGrid_button_label__1d6gb">Temporary<br>manual</span>
+                                                                                                </div>
+                                                                                                <div
+                                                                                                    class="ButtonsGrid_button_wrapper__2NBWx">
+                                                                                                    <div
+                                                                                                        class="ButtonsGrid_button__3krCp">
+                                                                                                        <img src="https://ee493eab-98ea-45ad-a0a6-978a1185046c.ams3.cdn.digitaloceanspaces.com/web/dist/assets/icons/devices/heating.svg"
+                                                                                                            alt=""
+                                                                                                            class="ButtonsGrid_icon__7wI7o">
+                                                                                                    </div><span
+                                                                                                        class="ButtonsGrid_button_label__1d6gb">Heat</span>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-auto">
-                                                                <div class="Divider_Devider_vertical__1s5Ts"></div>
-                                                            </div>
-                                                            <div class="col">
-                                                                <div class="col Col_Col__5JLgh my-col-first">
-                                                                    <div class="col Col_Col__5JLgh my-col-second">
-                                                                        <div>
-                                                                            <div class="ButtonsRow_label__iLPvC"><span>Select mode</span></div>
-                                                                            <div class="Button_Button__multiple_switch__2IRpL">
-                                                                                <div class="Button_Button__item_elipse_inactive__dQaXQ"><span>15°C</span></div>
-                                                                                <div class="Button_Button__item_elipse_inactive__dQaXQ"><span>20°C</span></div>
-                                                                                <div class="Button_Button__item_elipse_inactive__dQaXQ"><span>24°C</span></div>
-                                                                                <div class="Button_Button__item_elipse_active__LE4mE"><span>28°C</span></div>
-                                                                            </div>
-                                                                            <div class="ButtonsRow_mode_section__3Ji0B"><img src="https://ee493eab-98ea-45ad-a0a6-978a1185046c.ams3.cdn.digitaloceanspaces.com/web/dist/assets/icons/dashboard/comfort.svg" alt=""><span class="ButtonsRow_mode_label__1nRLF">Comfort</span></div>
-                                                                        </div>
-                                                                        <div class="mt-3">
-                                                                            <div class="ButtonsGrid_label__2lMx9"><span>Control</span></div>
-                                                                            <div class="ButtonsGrid_grid__1BRFW">
-                                                                                <div class="ButtonsGrid_button_wrapper__2NBWx">
-                                                                                    <div class="ButtonsGrid_button__3krCp"><img src="https://ee493eab-98ea-45ad-a0a6-978a1185046c.ams3.cdn.digitaloceanspaces.com/web/dist/assets/icons/dashboard/on_40.svg" alt="" class="ButtonsGrid_icon__7wI7o"></div><span class="ButtonsGrid_button_label__1d6gb">On/Off</span>
-                                                                                </div>
-                                                                                <div class="ButtonsGrid_button_wrapper__2NBWx">
-                                                                                    <div class="ButtonsGrid_button__3krCp"><img src="https://ee493eab-98ea-45ad-a0a6-978a1185046c.ams3.cdn.digitaloceanspaces.com/web/dist/assets/icons/dashboard/automat_off.svg" alt="" class="ButtonsGrid_icon__7wI7o"></div><span class="ButtonsGrid_button_label__1d6gb">Automat</span>
-                                                                                </div>
-                                                                                <div class="ButtonsGrid_button_wrapper__2NBWx">
-                                                                                    <div class="ButtonsGrid_button__3krCp"><img src="https://ee493eab-98ea-45ad-a0a6-978a1185046c.ams3.cdn.digitaloceanspaces.com/web/dist/assets/icons/dashboard/vacation_off.svg" alt="" class="ButtonsGrid_icon__7wI7o"></div><span class="ButtonsGrid_button_label__1d6gb">Holiday</span>
-                                                                                </div>
-                                                                                <div class="ButtonsGrid_button_wrapper__2NBWx">
-                                                                                    <div class="ButtonsGrid_button__3krCp"><img src="https://ee493eab-98ea-45ad-a0a6-978a1185046c.ams3.cdn.digitaloceanspaces.com/web/dist/assets/icons/dashboard/manual_on.svg" alt="" class="ButtonsGrid_icon__7wI7o"></div><span class="ButtonsGrid_button_label__1d6gb">Manual</span>
-                                                                                </div>
-                                                                                <div class="ButtonsGrid_button_wrapper__2NBWx">
-                                                                                    <div class="ButtonsGrid_button__3krCp"><img src="https://ee493eab-98ea-45ad-a0a6-978a1185046c.ams3.cdn.digitaloceanspaces.com/web/dist/assets/icons/dashboard/manual_off.svg" alt="" class="ButtonsGrid_icon__7wI7o"></div><span class="ButtonsGrid_button_label__1d6gb">Temporary<br>manual</span>
-                                                                                </div>
-                                                                                <div class="ButtonsGrid_button_wrapper__2NBWx">
-                                                                                    <div class="ButtonsGrid_button__3krCp"><img src="https://ee493eab-98ea-45ad-a0a6-978a1185046c.ams3.cdn.digitaloceanspaces.com/web/dist/assets/icons/devices/heating.svg" alt="" class="ButtonsGrid_icon__7wI7o"></div><span class="ButtonsGrid_button_label__1d6gb">Heat</span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
+                                                                    <div id="graph" class="tab-pane fade" role="tabpanel">
+                                                                        <div><canvas id="myChart"></canvas></div>
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            <div class="modal-footer"><button class="btn btn-light" type="button"
+                                                                    data-bs-dismiss="modal">Close</button></div>
                                                         </div>
                                                     </div>
-                                                    <div id="graph" class="tab-pane fade" role="tabpanel">
-                                                        <div><canvas id="myChart"></canvas></div>
+                                                </div>
+
+                                                <!-- Room List table -->
+                              
+                                       
+                                           
+                                                <div class="d-flex justify-content-between align-items-center mb-4 px-2">
+                                                    <div class="d-flex align-items-center">
+                                                        <h4 class="mb-0 me-2 fw-bold" style="color: #2196f3; font-size: 1.4rem;">Rooms</h4>
+                                                        <button class="btn btn-link p-0 border-0 d-flex align-items-center" type="button" data-bs-toggle="modal"
+                                                            data-bs-target="#modal_add_room" style="text-decoration: none;">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16"
+                                                                class="bi bi-plus-circle fs-4 plus-icon" data-bs-toggle="modal" data-bs-target="#modal_add_room">
+                                                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"></path>
+                                                                <path
+                                                                    d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4">
+                                                                </path>
+                                                            </svg> </button>
+                                                    </div>
+
+                                                    <div class="d-flex align-items-center">
+                                                        <span class="me-2 text-secondary" style="font-size: 0.9rem;">Search:</span>
+                                                        <input type="text" id="room-search-input" class="form-control form-control-sm"
+                                                            style="width: 180px; border-radius: 6px; background-color: #f1f3f5; border: 1px solid #ced4da;">
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="modal-footer"><button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="table-responsive text-nowrap" style="margin-top: 10px;">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th class="text-start">#</th>
-                                                <th scope="col">Name</th>
-                                                <th>Description</th>
-                                                <th class="text-center">ON / OFF</th>
-                                                <th class="text-center" scope="col">Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="device-add-1">
+
+                                                <div class="table-responsive">
+                                                    <table class="table table-hover align-middle mb-1" style="border-collapse: separate; border-spacing: 0;">
+                                                        <thead>
+                                                            <tr class="text-secondary" style="font-size: 0.85rem; background-color: #f8f9fa;">
+                                                                <th style="width: 80px; font-weight: 800; border-bottom: 2px solid #dee2e6;">#</th>
+                                                                <th scope="col" style="font-weight: 800; border-bottom: 2px solid #dee2e6;">Name</th>
+                                                                <th style="font-weight: 800; border-bottom: 2px solid #dee2e6;">Description</th>
+                                                                <th class="text-center" style="font-weight: 800; border-bottom: 2px solid #dee2e6;">ON / OFF</th>
+                                                                <th class="text-center" scope="col" style="font-weight: 800; border-bottom: 2px solid #dee2e6;">Action</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="list-rooms" style="font-size: 0.95rem; font-weight: 500;">
+                                                            <tr>
+                                                                <td colspan="5" class="text-center text-muted py-4">Loading rooms…</td>
+                                                            </tr>
+            
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             
-                                        </tbody>
-                                    </table>
-                                </div>
+                                    
+                            
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-    </section>
+                
+                    </section>
                     <div class="tab-content" id="floorTabContent">
                         <div class="overview-page-loading text-muted py-5" aria-live="polite">
                             <div class="spinner-border spinner-border-sm text-primary" role="status" aria-hidden="true"></div>
@@ -656,258 +908,309 @@
                         </div>
                     </div>
                 </div>
-
-            </div>
-
-            <!-- Add floor modal -->
-            <div class="modal fade" role="dialog" tabindex="-1" id="modal_add_floor">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header header-color">
-                            <h4 class="modal-title">Add floor</h4>
-                            <button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form id="add-floor-form">
-                                <div class="mb-3">
-                                    <div class="row">
-                                        <div class="col"><label class="form-label">Name</label><input class="form-control" type="text" name="floor-name"></div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="row">
-                                        <div class="col"><label class="form-label">Level</label><input class="form-control" type="number" name="floor-level" value="0" step="1"></div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button>
-                            <button class="btn btn-primary" type="button" id="add-floor-submit">Add</button>
-                        </div>
-                    </div>
+                
                 </div>
-            </div>
-
-            <!-- Edit floor modal (floor settings + rooms on this floor) -->
-            <div class="modal fade" role="dialog" tabindex="-1" id="modal_edit_floor">
-                <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header header-color">
-                            <h4 class="modal-title" id="edit-floor-title">Floor setup</h4>
-                            <button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form id="edit-floor-form">
-                                <input type="hidden" name="floor-id">
-                                <div class="row g-3 mb-4 ">
-                                    <div class="col-6"><label class="form-label">Name</label><input class="form-control" type="text" name="floor-name"></div>
-                                    <div class="col-6"><label class="form-label">Level</label><input class="form-control" type="number" name="floor-level" step="1"></div>
-                                </div>
-                            </form>
-                            <div>
-                                <div id="" class="d-flex align-items-center justify-content-between mb-3"><div id="" class="roomsLabel">
-                <h6 class="text-uppercase fw-bold text-muted mb-0">
-                    LIST OF ROOMS
-                </h6>
-                </div><div class="dt-search"><label for="dt-search-1">Search:</label><input type="search" class="form-control form-control-sm" id="dt-search-1" placeholder="" aria-controls="floorRoomsTable"></div></div>
-                                
-                                <div id="floor-rooms-empty" class="text-center text-muted bg-light py-3 px-2 rounded border small empty-message" style="display:none;"><i class="bi bi-info-circle me-1"></i><span> No rooms on this floor</span></div>
-                                <div class="table-responsive" id="floor-rooms-table-container">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Name</th>
-                                                <th>Description</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="floor-rooms-list"></tbody>
-                                    </table>
-                                </div>
+                
+                <!-- Add floor modal -->
+                <div class="modal fade" role="dialog" tabindex="-1" id="modal_add_floor">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header header-color">
+                                <h4 class="modal-title">Add floor</h4>
+                                <button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="add-floor-form">
+                                    <div class="mb-3">
+                                        <div class="row">
+                                            <div class="col"><label class="form-label">Name</label><input class="form-control"
+                                                    type="text" name="floor-name"></div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="row">
+                                            <div class="col"><label class="form-label">Level</label><input class="form-control"
+                                                    type="number" name="floor-level" value="0" step="1"></div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button>
+                                <button class="btn btn-primary" type="button" id="add-floor-submit">Add</button>
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button>
-                            <button class="btn btn-primary" type="button" id="edit-floor-submit">Save</button>
-                        </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Add zone modal -->
-            <div class="modal fade" role="dialog" tabindex="-1" id="modal_add_zone">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header header-color">
-                            <h4 class="modal-title">Add zone</h4>
-                            <button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form id="add-zone-form">
-                                <div class="mb-3">
-                                    <div class="row">
-                                        <div class="col"><label class="form-label">Name</label><input class="form-control" type="text" name="zone-name"></div>
+                
+                <!-- Edit floor modal (floor settings + rooms on this floor) -->
+                <div class="modal fade" role="dialog" tabindex="-1" id="modal_edit_floor">
+                    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header header-color">
+                                <h4 class="modal-title" id="edit-floor-title">Floor setup</h4>
+                                <button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="edit-floor-form">
+                                    <input type="hidden" name="floor-id">
+                                    <div class="row g-3 mb-4 ">
+                                        <div class="col-6"><label class="form-label">Name</label><input class="form-control" type="text"
+                                                name="floor-name"></div>
+                                        <div class="col-6"><label class="form-label">Level</label><input class="form-control"
+                                                type="number" name="floor-level" step="1"></div>
                                     </div>
-                                </div>
+                                </form>
                                 <div>
-                                    <div class="row">
-                                        <div class="col"><label class="form-label">Temperature</label><input class="form-control" type="number" name="zone-temperature" value="0.0" step="0.1"></div>
+                                    <div id="" class="d-flex align-items-center justify-content-between mb-3">
+                                        <div id="" class="roomsLabel">
+                                            <h6 class="text-uppercase fw-bold text-muted mb-0">
+                                                LIST OF ROOMS
+                                            </h6>
+                                        </div>
+                                        <div class="dt-search"><label for="dt-search-1">Search:</label><input type="search"
+                                                class="form-control form-control-sm" id="dt-search-1" placeholder=""
+                                                aria-controls="floorRoomsTable"></div>
                                     </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button>
-                            <button class="btn btn-primary" type="button" id="add-zone-submit">Add</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Edit zone modal (zone settings + rooms in this zone) -->
-            <div class="modal fade" role="dialog" tabindex="-1" id="modal_edit_zone">
-                <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header header-color">
-                            <h4 class="modal-title" id="edit-zone-title">Zone setup</h4>
-                            <button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form id="edit-zone-form">
-                                <input type="hidden" name="zone-id">
-                                <div class="row g-3 mb-4 ">
-                                    <div class="col-6"><label class="form-label">Name</label><input class="form-control" type="text" name="zone-name"></div>
-                                    <div class="col-6"><label class="form-label">Temperature</label><input class="form-control" type="number" name="zone-temperature" step="1"></div>
-                                </div>
-                            </form>
-                            <div>
-                                <div id="" class="d-flex align-items-center justify-content-between mb-3"><div id="" class="roomsLabel">
-                <h6 class="text-uppercase fw-bold text-muted mb-0">
-                    LIST OF ROOMS
-                </h6>
-                </div><div class="dt-search"><label for="dt-search-1">Search:</label><input type="search" class="form-control form-control-sm" id="dt-search-1" placeholder="" aria-controls="floorRoomsTable"></div></div>
-                                
-                                <div id="zone-rooms-empty" class="text-center text-muted bg-light py-3 px-2 rounded border small empty-message" style="display:none;"><i class="bi bi-info-circle me-1"></i><span> No rooms on this zone</span></div>
-                                <div class="table-responsive" id="zone-rooms-table-container">
-                                    <table class="table">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Name</th>
-                                                <th>Description</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="zone-rooms-list"></tbody>
-                                    </table>
+                
+                                    <div id="floor-rooms-empty"
+                                        class="text-center text-muted bg-light py-3 px-2 rounded border small empty-message"
+                                        style="display:none;"><i class="bi bi-info-circle me-1"></i><span> No rooms on this floor</span>
+                                    </div>
+                                    <div class="table-responsive" id="floor-rooms-table-container">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Name</th>
+                                                    <th>Description</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="floor-rooms-list"></tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button>
-                            <button class="btn btn-primary" type="button" id="edit-zone-submit">Save</button>
+                            <div class="modal-footer">
+                                <button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button>
+                                <button class="btn btn-primary" type="button" id="edit-floor-submit">Save</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- End of Edit Zone Modal -->
+                
+                <!-- Add zone modal -->
+                <div class="modal fade" role="dialog" tabindex="-1" id="modal_add_zone">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header header-color">
+                                <h4 class="modal-title">Add zone</h4>
+                                <button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="add-zone-form">
+                                    <div class="mb-3">
+                                        <div class="row">
+                                            <div class="col"><label class="form-label">Name</label><input class="form-control"
+                                                    type="text" name="zone-name"></div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="row">
+                                            <div class="col"><label class="form-label">Temperature</label><input class="form-control"
+                                                    type="number" name="zone-temperature" value="0.0" step="0.1"></div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button>
+                                <button class="btn btn-primary" type="button" id="add-zone-submit">Add</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Edit zone modal (zone settings + rooms in this zone) -->
+                <div class="modal fade" role="dialog" tabindex="-1" id="modal_edit_zone">
+                    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header header-color">
+                                <h4 class="modal-title" id="edit-zone-title">Zone setup</h4>
+                                <button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="edit-zone-form">
+                                    <input type="hidden" name="zone-id">
+                                    <div class="row g-3 mb-4 ">
+                                        <div class="col-6"><label class="form-label">Name</label><input class="form-control" type="text"
+                                                name="zone-name"></div>
+                                        <div class="col-6"><label class="form-label">Temperature</label><input class="form-control"
+                                                type="number" name="zone-temperature" step="1"></div>
+                                    </div>
+                                </form>
+                                <div>
+                                    <div id="" class="d-flex align-items-center justify-content-between mb-3">
+                                        <div id="" class="roomsLabel">
+                                            <h6 class="text-uppercase fw-bold text-muted mb-0">
+                                                LIST OF ROOMS
+                                            </h6>
+                                        </div>
+                                        <div class="dt-search"><label for="dt-search-1">Search:</label><input type="search"
+                                                class="form-control form-control-sm" id="dt-search-1" placeholder=""
+                                                aria-controls="floorRoomsTable"></div>
+                                    </div>
+                
+                                    <div id="zone-rooms-empty"
+                                        class="text-center text-muted bg-light py-3 px-2 rounded border small empty-message"
+                                        style="display:none;"><i class="bi bi-info-circle me-1"></i><span> No rooms on this zone</span>
+                                    </div>
+                                    <div class="table-responsive" id="zone-rooms-table-container">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Name</th>
+                                                    <th>Description</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="zone-rooms-list"></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button>
+                                <button class="btn btn-primary" type="button" id="edit-zone-submit">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of Edit Zone Modal -->
+                
+                </div>
+                </section>
+                <script src="assets/js/jquery.min.js"></script>
+                <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+                <script src="assets/js/general.js?v=20260713a"></script>
+                <script src="assets/js/sidebar.js"></script>
+                <script>
 
-        </div>
-    </section>
-        <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/general.js?v=20260713a"></script>
-    <script src="assets/js/sidebar.js"></script>
-    <script>
-  
-        (function () {
-            const searchInput = document.getElementById('dt-search-1');
-            const tableBody = document.getElementById('floor-rooms-list');
-            
-            if (!searchInput || !tableBody) return;
+                    (function () {
+                        const searchInput = document.getElementById('dt-search-1');
+                        const tableBody = document.getElementById('floor-rooms-list');
 
-            searchInput.addEventListener('input', () => {
-                const query = searchInput.value.trim().toLowerCase();
-                const rows = tableBody.querySelectorAll('tr');
+                        if (!searchInput || !tableBody) return;
 
-                rows.forEach((row) => {
-                   
-                    const cells = row.querySelectorAll('td');
-                    if (cells.length < 3) return; 
+                        searchInput.addEventListener('input', () => {
+                            const query = searchInput.value.trim().toLowerCase();
+                            const rows = tableBody.querySelectorAll('tr');
 
-                    const roomName = cells[1].textContent.toLowerCase();
-                    const roomDesc = cells[2].textContent.toLowerCase();
+                            rows.forEach((row) => {
 
-                    // Show row if query matches either name or description
-                    if (roomName.includes(query) || roomDesc.includes(query)) {
-                        row.style.display = '';
-                    } else {
-                        row.style.display = 'none';
-                    }
-                });
-            });
-        })();
+                                const cells = row.querySelectorAll('td');
+                                if (cells.length < 3) return;
 
-        (function () {
-            const searchInput = document.getElementById('floor-search-input');
-            const tableBody = document.getElementById('list-floors');
-            
-            if (!searchInput || !tableBody) return;
+                                const roomName = cells[1].textContent.toLowerCase();
+                                const roomDesc = cells[2].textContent.toLowerCase();
 
-            searchInput.addEventListener('input', () => {
-                const query = searchInput.value.trim().toLowerCase();
-                const rows = tableBody.querySelectorAll('tr');
+                                // Show row if query matches either name or description
+                                if (roomName.includes(query) || roomDesc.includes(query)) {
+                                    row.style.display = '';
+                                } else {
+                                    row.style.display = 'none';
+                                }
+                            });
+                        });
+                    })();
 
-                rows.forEach((row) => {
-                    const cells = row.querySelectorAll('td');
-                   
-                    if (cells.length < 5) return;
+                    (function () {
+                        const searchInput = document.getElementById('floor-search-input');
+                        const tableBody = document.getElementById('list-floors');
 
-          
-                    const floorName = cells[1].textContent.toLowerCase();
-                    const floorLevel = cells[2].textContent.toLowerCase();
+                        if (!searchInput || !tableBody) return;
 
-                    if (floorName.includes(query) || floorLevel.includes(query)) {
-                        row.style.display = '';
-                    } else {
-                        row.style.display = 'none';
-                    }
-                });
-            });
-        })();
+                        searchInput.addEventListener('input', () => {
+                            const query = searchInput.value.trim().toLowerCase();
+                            const rows = tableBody.querySelectorAll('tr');
 
-          (function () {
-            const searchInput = document.getElementById('zone-search-input');
-            const tableBody = document.getElementById('list-zones');
-            
-            if (!searchInput || !tableBody) return;
+                            rows.forEach((row) => {
+                                const cells = row.querySelectorAll('td');
 
-            searchInput.addEventListener('input', () => {
-                const query = searchInput.value.trim().toLowerCase();
-                const rows = tableBody.querySelectorAll('tr');
-
-                rows.forEach((row) => {
-                    const cells = row.querySelectorAll('td');
-                   
-                    if (cells.length < 5) return;
-
-          
-                    const zoneName = cells[1].textContent.toLowerCase();
-                    const zoneLevel = cells[2].textContent.toLowerCase();
-
-                    if (zoneName.includes(query) || zoneLevel.includes(query)) {
-                        row.style.display = '';
-                    } else {
-                        row.style.display = 'none';
-                    }
-                });
-            });
-        })();
+                                if (cells.length < 5) return;
 
 
-    </script>
-    <script type="module" src="assets/js/floor.js?v=20260713a"></script>
-    <script type="module" src="assets/js/room.js"></script>
-</body>
+                                const floorName = cells[1].textContent.toLowerCase();
+                                const floorLevel = cells[2].textContent.toLowerCase();
 
-</html>
+                                if (floorName.includes(query) || floorLevel.includes(query)) {
+                                    row.style.display = '';
+                                } else {
+                                    row.style.display = 'none';
+                                }
+                            });
+                        });
+                    })();
+
+                    (function () {
+                        const searchInput = document.getElementById('zone-search-input');
+                        const tableBody = document.getElementById('list-zones');
+
+                        if (!searchInput || !tableBody) return;
+
+                        searchInput.addEventListener('input', () => {
+                            const query = searchInput.value.trim().toLowerCase();
+                            const rows = tableBody.querySelectorAll('tr');
+
+                            rows.forEach((row) => {
+                                const cells = row.querySelectorAll('td');
+
+                                if (cells.length < 5) return;
+
+
+                                const zoneName = cells[1].textContent.toLowerCase();
+                                const zoneLevel = cells[2].textContent.toLowerCase();
+
+                                if (zoneName.includes(query) || zoneLevel.includes(query)) {
+                                    row.style.display = '';
+                                } else {
+                                    row.style.display = 'none';
+                                }
+                            });
+                        });
+                    })();
+
+                    (function () {
+                        const searchInput = document.getElementById('room-search-input');
+                        const tableBody = document.getElementById('list-rooms');
+
+                        if (!searchInput || !tableBody) return;
+
+                        searchInput.addEventListener('input', () => {
+                            const query = searchInput.value.trim().toLowerCase();
+                            const rows = tableBody.querySelectorAll('tr');
+
+                            rows.forEach((row) => {
+                                const cells = row.querySelectorAll('td');
+
+                                if (cells.length < 5) return;
+
+                                const roomName = cells[1].textContent.toLowerCase();
+                                const roomDesc = cells[2].textContent.toLowerCase();
+
+                                if (roomName.includes(query) || roomDesc.includes(query)) {
+                                    row.style.display = '';
+                                } else {
+                                    row.style.display = 'none';
+                                }
+                            });
+                        });
+                    })();
+
+
+                </script>
+                <script type="module" src="assets/js/floor.js?v=20260713a"></script>
+                <script type="module" src="assets/js/room.js"></script>
+                </body>
+                
+                </html>
