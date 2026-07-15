@@ -5,7 +5,15 @@ import {
     addFloor,
     updateFloor,
     deleteFloor,
+
 } from "../requests/floor_requests.js?v=20260713a";
+
+import {
+    addZone,
+    updateZone,
+    deleteZone,
+    fetchZones,
+} from "../requests/zone_requests.js?v=20260713a";
 
 
 const floorId = (f) => f.floor_id ?? f.id ?? f.fid;
@@ -16,7 +24,9 @@ const roomId = (r) => r.room_id ?? r.rid ?? r.id;
 const roomName = (r) => r.room_name ?? r.name ?? r.rname ?? "";
 const roomDesc = (r) => r.room_description ?? r.description ?? r.rdescription ?? "";
 
+
 let floorsCache = [];
+let zonesCache = [];
 
 const $ = (sel) => document.querySelector(sel);
 
@@ -58,6 +68,47 @@ function renderFloorsTable(floors) {
         .join("");
 }
 
+function renderZonesTable(zones) {
+    const tbody = document.getElementById("list-zones");
+    if (!tbody) return;
+
+    if (!zones.length) {
+        tbody.innerHTML = `<tr><td colspan="5" class="text-center text-muted py-3">No zones</td></tr>`;
+        return;
+    }
+
+    tbody.innerHTML = zones
+        .map((z, idx) => {
+            const id = z.zone_id ?? z.id ?? z.zid;
+            return `
+            <tr data-zone-id="${escapeHtml(id)}">
+                <td>${idx + 1}</td>
+                <td>${escapeHtml(z.name ?? z.zname) || "-"}</td>
+                <td>${z.enable ? "Yes" : "No"}</td>
+                <td>${escapeHtml(z.target_temperature ?? z.temperature ?? "")}</td>
+                <td class="text-nowrap text-center">
+                    <span class="icon icon-edit cursor me-2" data-action="edit-zone" data-zone-id="${escapeHtml(id)}"
+                        data-bs-toggle="modal" data-bs-target="#modal_edit_zone"></span>
+                    <span class="icon icon-delete cursor" data-action="delete-zone" data-zone-id="${escapeHtml(id)}"></span>
+                </td>
+            </tr>`;
+        })
+        .join("");
+}
+
+
+function zonePanelHtml(z) {
+    return `
+                <div class="zone-panel" data-zone-id="${escapeHtml(z.zone_id)}">
+                    <div class="card zone-card-simple h-100">
+                        <div class="card-body">
+                            <h5 class="zone-name mb-1">${escapeHtml(z.name) || "-"}</h5>
+                            <p class="zone-desc text-muted small mb-0">${escapeHtml(z.target_temperature) || ""}</p>
+                        </div>
+                    </div>
+                </div>`;
+}
+
 function roomPanelHtml(r) {
     return `
                 <div class="room-panel" data-room-id="${escapeHtml(roomId(r))}">
@@ -84,9 +135,13 @@ async function renderRooms() {
     content.innerHTML = `<div class="rooms-grid">${rooms.map(roomPanelHtml).join("")}</div>`;
 }
 
+
+
 async function reload() {
     floorsCache = await fetchFloors();
+    zonesCache = await fetchZones();
     renderFloorsTable(floorsCache);
+    renderZonesTable(zonesCache);
     await renderRooms();
 }
 
@@ -97,6 +152,8 @@ function readForm(form) {
         level: level === "" ? 0 : Number(level),
     };
 }
+
+
 
 function wireAddModal() {
     const form = $("#add-floor-form");
@@ -113,6 +170,31 @@ function wireAddModal() {
             await addFloor(payload);
             form.reset();
             bootstrap.Modal.getInstance($("#modal_add_floor"))?.hide();
+            await reload();
+        } catch (err) {
+            alert(err.message);
+        }
+    });
+}
+
+function wireAddZoneModal() {
+    const form = $("#add-zone-form");
+    const submit = $("#add-zone-submit");
+    if (!form || !submit) return;
+
+    submit.addEventListener("click", async () => {
+        const payload = {
+            name: form.querySelector('[name="zone-name"]').value.trim(),
+            target_temperature: parseFloat(form.querySelector('[name="zone-temperature"]').value),
+        };
+        if (!payload.name) {
+            alert("Zone name is required");
+            return;
+        }
+        try {
+            await addZone(payload);
+            form.reset();
+            bootstrap.Modal.getInstance($("#modal_add_zone"))?.hide();
             await reload();
         } catch (err) {
             alert(err.message);
@@ -146,6 +228,33 @@ function renderFloorRoomsList(rooms) {
         )
         .join("");
 }
+
+function renderZoneRoomsList(rooms) {
+    const tbody = $("#zone-rooms-list");
+    const empty = $("#zone-rooms-empty");
+    const container = $("#zone-rooms-table-container");
+    if (!tbody) return;
+    
+    if (!rooms.length) {
+        tbody.innerHTML = "";
+        if (empty) empty.style.display = "";
+        if (container) container.style.display = "none";
+        return;
+    }
+
+    if (empty) empty.style.display = "none";
+    if (container) container.style.display = "";
+    tbody.innerHTML = rooms
+        .map(
+            (r, idx) => `
+            <tr data-room-id="${escapeHtml(roomId(r))}">
+                <td>${idx + 1}</td>
+                <td>${escapeHtml(roomName(r)) || "-"}</td>
+                <td>${escapeHtml(roomDesc(r)) || ""}</td>
+            </tr>`
+        )
+        .join("");
+}  
 
 function wireEditModal() {
     const panel = $("#modal_edit_floor");
@@ -194,8 +303,65 @@ function wireEditModal() {
     });
 }
 
+function wireEditZoneModal() {
+    const panel = $("#modal_edit_zone");
+    const form = $("#edit-zone-form");
+    const submit = $("#edit-zone-submit");
+    const title = $("#edit-zone-title");
+    if (!panel || !form || !submit) return;
+
+    document.addEventListener("click", async (e) => {
+        const trigger = e.target.closest('[data-action="edit-zone"]');
+        if (!trigger) return;
+        const z = zonesCache.find((x) => String(x.zone_id ?? x.id ?? x.zid) === String(trigger.dataset.zoneId));
+        if (!z) return;
+        form.querySelector('[name="zone-id"]').value = z.zone_id ?? z.id ?? z.zid;
+        form.querySelector('[name="zone-name"]').value = z.name ?? z.zname ?? "";
+        form.querySelector('[name="zone-temperature"]').value = z.target_temperature ?? z.temperature ?? "";
+        if (title) title.textContent = `${z.name ?? "Zone"} setup`;
+    });
+
+    submit.addEventListener("click", async () => {
+        const id = form.querySelector('[name="zone-id"]').value;
+        const payload = {
+            name: form.querySelector('[name="zone-name"]').value.trim(),
+            target_temperature: parseFloat(form.querySelector('[name="zone-temperature"]').value),
+        };
+        if (!payload.name) {
+            alert("Zone name is required");
+            return;
+        }
+        try {
+            await updateZone(id, payload);
+            bootstrap.Modal.getInstance(panel)?.hide();
+            await reload();
+        } catch (err) {
+            alert(err.message);
+        }
+    });
+}
+
+function wireDeleteZoneModal() {
+    document.addEventListener("click", async (e) => {
+        const trigger = e.target.closest('[data-action="delete-zone"]');
+        if (!trigger) return;
+        const id = trigger.dataset.zoneId;
+        if (id == null) return;
+
+        const z = zonesCache.find((x) => String(x.zone_id ?? x.id ?? x.zid) === String(id));
+        const name = z ? z.name ?? z.zname ?? "" : "";
+        if (!(await confirmDelete(name ? `Are you sure you want to delete ${name}?` : "Are you sure?"))) return;
+
+        try {
+            await deleteZone(id);
+            await reload();
+        } catch (err) {
+            alert(err.message);
+        }
+    });
+}
+
 function wireDeleteModal() {
-    // Uses the shared confirmation modal (window.confirmDelete) like every other delete.
     document.addEventListener("click", async (e) => {
         const trigger = e.target.closest('[data-action="delete-floor"]');
         if (!trigger) return;
@@ -217,7 +383,11 @@ function wireDeleteModal() {
 
 document.addEventListener("DOMContentLoaded", async () => {
     wireAddModal();
+    wireAddZoneModal();
+    wireEditZoneModal();
     wireEditModal();
     wireDeleteModal();
+    wireDeleteZoneModal();
     await reload();
+
 });

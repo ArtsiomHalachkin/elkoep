@@ -41,6 +41,19 @@
             transition: box-shadow 0.18s ease, transform 0.18s ease;
         }
 
+        .zone-panel .zone-card-simple {
+            border: 1px solid rgba(148, 163, 184, 0.22);
+            border-radius: 14px;
+            box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 8px 24px -12px rgba(15, 23, 42, 0.12);
+            transition: box-shadow 0.18s ease, transform 0.18s 
+        }
+
+
+        .zone-panel .zoom-card-simple:hover {
+          box-shadow: 0 2px 4px rgba(15, 23, 42, 0.04), 0 14px 28px -10px rgba(79, 70, 229, 0.16);
+            transform: translateY(-2px);
+        }
+
         .room-panel .room-card-simple:hover {
             box-shadow: 0 2px 4px rgba(15, 23, 42, 0.04), 0 14px 28px -10px rgba(79, 70, 229, 0.16);
             transform: translateY(-2px);
@@ -51,11 +64,22 @@
             /* Optional: set room name title size here if you want, e.g., font-size: 14px; */
         }
 
+        .zone-card-simple .zone-name {
+            font-weight: 600;
+        }
+
         /* Place your smaller font size and margin styles here on the description element */
         .room-panel .room-card-simple .room-desc {
             font-size: 11px;
             margin-top: 4px;
         }
+
+        .zone-panel .zone-card-simple .zone-desc {
+            font-size: 11px;
+            margin-top: 4px;
+        }
+
+
         .overview-page-loading {
             min-height: 200px;
             display: flex;
@@ -96,6 +120,11 @@
                             data-bs-toggle="pill" data-bs-target="#view-floors" role="tab"
                             aria-controls="view-floors" aria-selected="true">Floors</button>
                     </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="px-4 py-1 nav-link rounded-pill" id="view-zones-tab" type="button"
+                            data-bs-toggle="pill" data-bs-target="#view-zones" role="tab"
+                            aria-controls="view-zones" aria-selected="false">Zones</button>
+                    </li>   
                     <li class="nav-item" role="presentation">
                         <button class="px-4 py-1 nav-link rounded-pill" id="view-rooms-tab" type="button"
                             data-bs-toggle="pill" data-bs-target="#view-rooms" role="tab"
@@ -188,6 +217,55 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Zone list -->
+
+                 <div class="tab-pane fade" id="view-zones" role="tabpanel" aria-labelledby="view-zones-tab">
+                    <div class="row justify-content-center">
+                        <div class="col-12">
+                            <div class="card border-0 shadow-sm p-3" style="background-color: #ffffff; border-radius: 12px;">
+                                
+                                <div class="d-flex justify-content-between align-items-center mb-4 px-2">
+                                    <div class="d-flex align-items-center">
+                                        <h4 class="mb-0 me-2 fw-bold" style="color: #2196f3; font-size: 1.4rem;">Zones</h4>
+                                        <button class="btn btn-link p-0 border-0 d-flex align-items-center" type="button" data-bs-toggle="modal" data-bs-target="#modal_add_zone" style="text-decoration: none;">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-plus-circle fs-4 plus-icon" data-bs-toggle="modal" data-bs-target="#modal_add_zone">
+                                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"></path>
+                                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"></path>
+                                            </svg>                                        </button>
+                                    </div>
+                                    
+                                    <div class="d-flex align-items-center">
+                                        <span class="me-2 text-secondary" style="font-size: 0.9rem;">Search:</span>
+                                        <input type="text" id="zone-search-input" class="form-control form-control-sm" style="width: 180px; border-radius: 6px; background-color: #f1f3f5; border: 1px solid #ced4da;">
+                                    </div>
+                                </div>
+                                
+                                <div class="table-responsive">
+                                    <table class="table table-hover align-middle mb-1" style="border-collapse: separate; border-spacing: 0;">
+                                        <thead>
+                                            <tr class="text-secondary" style="font-size: 0.85rem; background-color: #f8f9fa;">
+                                                <th style="width: 80px; font-weight: 800; border-bottom: 2px solid #dee2e6;">#</th>
+                                                <th style="font-weight: 800; border-bottom: 2px solid #dee2e6;">NAME</th>
+                                                <th style="font-weight: 800; border-bottom: 2px solid #dee2e6;">ACTIVE</th>
+                                                <th style="font-weight: 800; border-bottom: 2px solid #dee2e6;">TEMPERATURE</th>
+                                                <th class="text-center" style="width: 120px; font-weight: 800; border-bottom: 2px solid #dee2e6;">ACTION</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="list-zones" style="font-size: 0.95rem; font-weight: 500;">
+                                            <tr>
+                                                <td colspan="5" class="text-center text-muted py-4">Loading zones…</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
 
                 <!-- Rooms list -->
                 <div class="tab-pane fade" id="view-rooms" role="tabpanel" aria-labelledby="view-rooms-tab">
@@ -640,6 +718,83 @@
                 </div>
             </div>
 
+            <!-- Add zone modal -->
+            <div class="modal fade" role="dialog" tabindex="-1" id="modal_add_zone">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header header-color">
+                            <h4 class="modal-title">Add zone</h4>
+                            <button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="add-zone-form">
+                                <div class="mb-3">
+                                    <div class="row">
+                                        <div class="col"><label class="form-label">Name</label><input class="form-control" type="text" name="zone-name"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="row">
+                                        <div class="col"><label class="form-label">Temperature</label><input class="form-control" type="number" name="zone-temperature" value="0.0" step="0.1"></div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button>
+                            <button class="btn btn-primary" type="button" id="add-zone-submit">Add</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Edit zone modal (zone settings + rooms in this zone) -->
+            <div class="modal fade" role="dialog" tabindex="-1" id="modal_edit_zone">
+                <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header header-color">
+                            <h4 class="modal-title" id="edit-zone-title">Zone setup</h4>
+                            <button class="btn-close" type="button" aria-label="Close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="edit-zone-form">
+                                <input type="hidden" name="zone-id">
+                                <div class="row g-3 mb-4 ">
+                                    <div class="col-6"><label class="form-label">Name</label><input class="form-control" type="text" name="zone-name"></div>
+                                    <div class="col-6"><label class="form-label">Temperature</label><input class="form-control" type="number" name="zone-temperature" step="1"></div>
+                                </div>
+                            </form>
+                            <div>
+                                <div id="" class="d-flex align-items-center justify-content-between mb-3"><div id="" class="roomsLabel">
+                <h6 class="text-uppercase fw-bold text-muted mb-0">
+                    LIST OF ROOMS
+                </h6>
+                </div><div class="dt-search"><label for="dt-search-1">Search:</label><input type="search" class="form-control form-control-sm" id="dt-search-1" placeholder="" aria-controls="floorRoomsTable"></div></div>
+                                
+                                <div id="zone-rooms-empty" class="text-center text-muted bg-light py-3 px-2 rounded border small empty-message" style="display:none;"><i class="bi bi-info-circle me-1"></i><span> No rooms on this zone</span></div>
+                                <div class="table-responsive" id="zone-rooms-table-container">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Name</th>
+                                                <th>Description</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="zone-rooms-list"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button>
+                            <button class="btn btn-primary" type="button" id="edit-zone-submit">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End of Edit Zone Modal -->
+
         </div>
     </section>
         <script src="assets/js/jquery.min.js"></script>
@@ -703,6 +858,36 @@
                 });
             });
         })();
+
+          (function () {
+            const searchInput = document.getElementById('zone-search-input');
+            const tableBody = document.getElementById('list-zones');
+            
+            if (!searchInput || !tableBody) return;
+
+            searchInput.addEventListener('input', () => {
+                const query = searchInput.value.trim().toLowerCase();
+                const rows = tableBody.querySelectorAll('tr');
+
+                rows.forEach((row) => {
+                    const cells = row.querySelectorAll('td');
+                   
+                    if (cells.length < 5) return;
+
+          
+                    const zoneName = cells[1].textContent.toLowerCase();
+                    const zoneLevel = cells[2].textContent.toLowerCase();
+
+                    if (zoneName.includes(query) || zoneLevel.includes(query)) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            });
+        })();
+
+
     </script>
     <script type="module" src="assets/js/floor.js?v=20260713a"></script>
     <script type="module" src="assets/js/room.js"></script>

@@ -949,3 +949,38 @@ async def add_zone(payload: dict):
         raise HTTPException(status_code=400, detail=str(err))
     finally:
         conn.close()
+
+@app.put("/zone/update/{zone_id}")
+async def update_zone(zone_id: int, payload: dict):
+    conn = await get_connection()
+    try:
+        async with conn.cursor() as cursor:
+            await cursor.execute("CALL UpsertZone(%s, %s, %s, %s)", 
+                                 (zone_id,
+                                  payload.get("name", ""), 
+                                  payload.get("is_active", 0),
+                                  payload.get("target_temperature", None)
+                                  ))
+            await conn.commit()
+        return {"message": "Zone updated successfully"}
+
+    except pymysql.MySQLError as err:
+        await conn.rollback()
+        raise HTTPException(status_code=400, detail=str(err))
+    finally:
+        conn.close()
+
+@app.delete("/zone/delete/{zone_id}")
+async def delete_zone(zone_id: int):
+    conn = await get_connection()
+    try:
+        async with conn.cursor() as cursor:
+            await cursor.execute("CALL DeleteZone(%s)", (zone_id,))
+            await conn.commit()
+        return {"message": "Zone deleted successfully"}
+
+    except pymysql.MySQLError as err:
+        await conn.rollback()
+        raise HTTPException(status_code=400, detail=str(err))
+    finally:
+        conn.close()
