@@ -869,6 +869,8 @@
                                                         <input type="text" id="room-search-input" class="form-control form-control-sm"
                                                             style="width: 180px; border-radius: 6px; background-color: #f1f3f5; border: 1px solid #ced4da;">
                                                     </div>
+
+                                        
                                                 </div>
 
                                                 <div class="table-responsive">
@@ -1095,7 +1097,6 @@
                     (function () {
                         const searchInput = document.getElementById('dt-search-1');
                         const tableBody = document.getElementById('floor-rooms-list');
-
                         if (!searchInput || !tableBody) return;
 
                         searchInput.addEventListener('input', () => {
@@ -1104,14 +1105,10 @@
 
                             rows.forEach((row) => {
 
-                                const cells = row.querySelectorAll('td');
-                                if (cells.length < 3) return;
+                                if (row.querySelector('[colspan]')) return;
 
-                                const roomName = cells[1].textContent.toLowerCase();
-                                const roomDesc = cells[2].textContent.toLowerCase();
-
-                                // Show row if query matches either name or description
-                                if (roomName.includes(query) || roomDesc.includes(query)) {
+                                const rowText = row.textContent.toLowerCase();
+                                if (rowText.includes(query)) {
                                     row.style.display = '';
                                 } else {
                                     row.style.display = 'none';
@@ -1131,15 +1128,11 @@
                             const rows = tableBody.querySelectorAll('tr');
 
                             rows.forEach((row) => {
-                                const cells = row.querySelectorAll('td');
+                               
+                                if (row.querySelector('[colspan]')) return;
 
-                                if (cells.length < 5) return;
-
-
-                                const floorName = cells[1].textContent.toLowerCase();
-                                const floorLevel = cells[2].textContent.toLowerCase();
-
-                                if (floorName.includes(query) || floorLevel.includes(query)) {
+                                const rowText = row.textContent.toLowerCase();  
+                                if (rowText.includes(query)) {
                                     row.style.display = '';
                                 } else {
                                     row.style.display = 'none';
@@ -1159,15 +1152,11 @@
                             const rows = tableBody.querySelectorAll('tr');
 
                             rows.forEach((row) => {
-                                const cells = row.querySelectorAll('td');
 
-                                if (cells.length < 5) return;
+                                if (row.querySelector('[colspan]')) return;
 
-
-                                const zoneName = cells[1].textContent.toLowerCase();
-                                const zoneLevel = cells[2].textContent.toLowerCase();
-
-                                if (zoneName.includes(query) || zoneLevel.includes(query)) {
+                                const rowText = row.textContent.toLowerCase();
+                                if (rowText.includes(query)) {
                                     row.style.display = '';
                                 } else {
                                     row.style.display = 'none';
@@ -1187,14 +1176,11 @@
                             const rows = tableBody.querySelectorAll('tr');
 
                             rows.forEach((row) => {
-                                const cells = row.querySelectorAll('td');
+                               
+                                if (row.querySelector('[colspan]')) return;
 
-                                if (cells.length < 5) return;
-
-                                const roomName = cells[1].textContent.toLowerCase();
-                                const roomDesc = cells[2].textContent.toLowerCase();
-
-                                if (roomName.includes(query) || roomDesc.includes(query)) {
+                                const rowText = row.textContent.toLowerCase();  
+                                if (rowText.includes(query)) {
                                     row.style.display = '';
                                 } else {
                                     row.style.display = 'none';
