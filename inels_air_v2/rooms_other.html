@@ -1055,7 +1055,7 @@
                                             </h6>
                                         </div>
                                         <div class="dt-search"><label for="dt-search-1">Search:</label><input type="search"
-                                                class="form-control form-control-sm" id="dt-search-1" placeholder=""
+                                                class="form-control form-control-sm" id="zone-rooms-search" placeholder=""
                                                 aria-controls="floorRoomsTable"></div>
                                     </div>
                 
@@ -1097,6 +1097,29 @@
                     (function () {
                         const searchInput = document.getElementById('dt-search-1');
                         const tableBody = document.getElementById('floor-rooms-list');
+                        if (!searchInput || !tableBody) return;
+
+                        searchInput.addEventListener('input', () => {
+                            const query = searchInput.value.trim().toLowerCase();
+                            const rows = tableBody.querySelectorAll('tr');
+
+                            rows.forEach((row) => {
+
+                                if (row.querySelector('[colspan]')) return;
+
+                                const rowText = row.textContent.toLowerCase();
+                                if (rowText.includes(query)) {
+                                    row.style.display = '';
+                                } else {
+                                    row.style.display = 'none';
+                                }
+                            });
+                        });
+                    })();
+
+                     (function () {
+                        const searchInput = document.getElementById('zone-rooms-search');
+                        const tableBody = document.getElementById('zone-rooms-list');
                         if (!searchInput || !tableBody) return;
 
                         searchInput.addEventListener('input', () => {
