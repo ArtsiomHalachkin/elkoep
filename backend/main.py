@@ -113,7 +113,7 @@ async def get_connection():
 
 @app.get("/")
 async def root():
-    return RedirectResponse(url="/static/rooms_en.html")
+    return RedirectResponse(url="/static/overview.html")
 
 # --- ---------------- --- 
 # --- ROOM ENDPOINTS ---
