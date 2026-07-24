@@ -662,6 +662,7 @@ $(document).ready(async function () {
         try {
             tableBody.html(""); // Clear table body
 
+
             const plans = await fetchTemperaturePlans();
 
             plans.forEach((plan, index) => {
