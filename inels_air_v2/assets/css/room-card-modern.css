@@ -401,6 +401,119 @@
   color: #059669;
 }
 
+/* Heating overview: compact room title and history actions */
+.room-card-scaled .room-card-header__row--heating {
+  align-items: center;
+  min-height: 24px;
+}
+
+.room-card-scaled .room-card-header__row--heating .room-card-name {
+  font-size: 1.05rem;
+}
+
+.room-card-scaled .room-heating-action {
+  cursor: pointer;
+  pointer-events: auto;
+  color: #475569;
+}
+
+.room-card-scaled .room-heating-action:hover,
+.room-card-scaled .room-heating-action:focus-visible {
+  background: #ffffff;
+  color: #0091ea;
+  box-shadow: var(--chip-active-shadow);
+  outline: none;
+}
+
+.room-card-scaled .room-heating-action .room-status-chip__icon {
+  color: currentColor;
+}
+
+.room-card-scaled .room-heating-action__svg {
+  width: var(--chip-icon-img);
+  height: var(--chip-icon-img);
+}
+
+.room-card-scaled .room-heating-action .room-status-chip__label {
+  color: currentColor;
+}
+
+/* Four-state heating mode control */
+.room-card-scaled .room-climate-panel {
+  grid-template-areas:
+    "modes modes"
+    "temperatures controls";
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+
+.room-card-scaled .room-climate-panel__temps {
+  grid-area: temperatures;
+}
+
+.room-card-scaled .room-climate-panel__aside {
+  display: contents;
+}
+
+.room-card-scaled .heating-mode-selector {
+  grid-area: modes;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid #e2e8f0;
+  border-radius: 9px;
+  background: #f1f5f9;
+}
+
+.room-card-scaled .heating-mode-selector__button {
+  min-width: 0;
+  padding: 5px 2px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: transparent;
+  color: #64748b;
+  font-size: 0.53rem;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.room-card-scaled .heating-mode-selector__button:hover,
+.room-card-scaled .heating-mode-selector__button:focus-visible {
+  color: #0f172a;
+  background: rgba(255, 255, 255, 0.75);
+  outline: none;
+}
+
+.room-card-scaled .heating-mode-selector__button.active {
+  background: #ffffff;
+  border-color: rgba(245, 158, 11, 0.4);
+  color: #b45309;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.12);
+}
+
+.room-card-scaled .heating-mode-selector__button--eco.active {
+  border-color: rgba(34, 197, 94, 0.45);
+  color: #15803d;
+}
+
+.room-card-scaled .heating-mode-selector__button--comfort.active {
+  border-color: rgba(239, 68, 68, 0.4);
+  color: #dc2626;
+}
+
+.room-card-scaled .heating-mode-selector__button--protected.active {
+  border-color: rgba(59, 130, 246, 0.4);
+  color: #2563eb;
+}
+
+.room-card-scaled .room-climate-panel__stepper-row {
+  grid-area: controls;
+  align-self: stretch;
+}
+
 .room-card-scaled .room-card-scenes-row .ButtonsGrid_button_wrapper__2NBWx.hidden {
   display: none !important;
 }
@@ -750,4 +863,29 @@
 .room-card-scaled .room-climate-data-fields,
 .room-card-scaled .room-scene-data-fields {
   display: none !important;
+}
+
+/* Final layout override: mode bar spans the complete climate panel width. */
+.room-card-scaled .room-climate-panel {
+  grid-template-areas:
+    "modes modes"
+    "temperatures controls";
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+
+.room-card-scaled .room-climate-panel__temps {
+  grid-area: temperatures;
+}
+
+.room-card-scaled .room-climate-panel__aside {
+  display: contents;
+}
+
+.room-card-scaled .heating-mode-selector {
+  grid-area: modes;
+}
+
+.room-card-scaled .room-climate-panel__stepper-row {
+  grid-area: controls;
+  align-self: stretch;
 }

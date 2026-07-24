@@ -1,0 +1,148 @@
+.history-chart-modal .modal-content {
+  overflow: hidden;
+  border: 0;
+  border-radius: 16px;
+  box-shadow: 0 24px 70px rgba(15, 23, 42, 0.25);
+}
+
+.history-chart-modal .modal-header {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid #e2e8f0;
+  background: #ffffff;
+}
+
+.history-chart-modal__eyebrow {
+  margin-bottom: 2px;
+  color: #64748b;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.history-chart-modal .modal-title {
+  color: #0f172a;
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.history-chart-modal .modal-body {
+  padding: 1.25rem;
+  background: #f8fafc;
+}
+
+.history-chart-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.history-chart-periods {
+  display: inline-flex;
+  gap: 3px;
+  padding: 4px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #eef2f7;
+}
+
+.history-chart-periods__button {
+  padding: 0.45rem 1rem;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  background: transparent;
+  color: #64748b;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.history-chart-periods__button:hover,
+.history-chart-periods__button:focus-visible {
+  color: #0f172a;
+  outline: none;
+}
+
+.history-chart-periods__button.active {
+  border-color: #dbeafe;
+  background: #ffffff;
+  color: #0369a1;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.12);
+}
+
+.history-chart-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.48rem 0.8rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #334155;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.history-chart-download:hover,
+.history-chart-download:focus-visible {
+  border-color: #38bdf8;
+  color: #0369a1;
+  outline: none;
+}
+
+.history-chart-download svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.history-chart-surface {
+  position: relative;
+  height: min(55vh, 500px);
+  min-height: 360px;
+  padding: 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+}
+
+.history-chart-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-top: 0.85rem;
+  color: #64748b;
+  font-size: 0.78rem;
+}
+
+.history-chart-summary strong {
+  margin-left: 0.25rem;
+  color: #0f172a;
+}
+
+@media (max-width: 575.98px) {
+  .history-chart-modal .modal-body {
+    padding: 0.75rem;
+  }
+
+  .history-chart-toolbar {
+    align-items: stretch;
+  }
+
+  .history-chart-periods {
+    flex: 1 1 100%;
+  }
+
+  .history-chart-periods__button {
+    flex: 1 1 0;
+    padding-inline: 0.35rem;
+  }
+
+  .history-chart-surface {
+    height: 420px;
+    min-height: 320px;
+    padding: 0.5rem;
+  }
+}

@@ -98,11 +98,13 @@
         <li class="nav-item logo-holder">
             <div class="logo py-4 mx-4"><img src="assets/img/logo-inels.svg" style="max-width: 60%;margin-top: -19px;margin-bottom: -11px;"><span class="fs-5 fw-bold text-dark logo" id="title" style="padding-right: 30px;"></span><a class="float-end text-dark" id="sidebarToggleHolder" href="#"><img id="sidebarToggle" src="assets/img/menu-icon-black.svg"></a></div>
         </li>
-        <li class="nav-item"><a class="nav-link text-start py-1 px-0 text-color" href="rooms_en.html"><img class="navbar-icon" src="assets/img/overview-icon-inactive.svg"><span class="text-nowrap mx-2">Rooms</span></a></li>
+               <li class="nav-item"><a class="nav-link text-start py-1 px-0 text-color" href="overview.html"><img
+                    class="navbar-icon" src="assets/img/overview-icon-inactive.svg"><span
+                    class="text-nowrap mx-2">Overview</span></a></li>
         <li class="nav-item"><a class="nav-link active text-start py-1 px-0 text-color" href="rooms_other.html"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-building fs-5 navbar-icon">
                     <path d="M4 2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM4 5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zM7.5 5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm2.5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zM4.5 8a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm2.5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm3.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5z"></path>
                     <path d="M2 1a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1zm11 0H3v14h3v-2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5V15h3z"></path>
-                </svg><span class="text-nowrap mx-2">Floor/Rooms</span></a></li>
+                </svg><span class="text-nowrap mx-2">Floors/Zones/Rooms</span></a></li>
         <li class="nav-item"><a class="nav-link text-start py-1 px-0 text-color" href="devices.html"><img class="navbar-icon" src="assets/img/settings-icon-inactive.svg"><span class="text-nowrap mx-2">Devices</span></a></li>
         <li class="nav-item"><a class="nav-link text-start py-1 px-0 text-color" href="temp_plans.html"><img class="navbar-icon" src="assets/img/settings-icon-inactive.svg"><span class="text-nowrap mx-2">Temperature plans</span></a></li>
         <li class="nav-item"><a class="nav-link text-start py-1 px-0 text-color" href="accounts.html"><img class="navbar-icon" src="assets/img/user.svg"><span class="text-nowrap mx-2">App accounts</span></a></li>
@@ -116,15 +118,15 @@
             <div class="d-flex justify-content-center mb-4 overview-toolbar">
                 <ul class="nav nav-pills bg-light p-1 border rounded-pill flex-wrap mb-0" id="viewSwitcher" role="tablist">
                     <li class="nav-item" role="presentation">
-                        <button class="px-4 py-1 nav-link rounded-pill active" id="view-floors-tab" type="button"
-                            data-bs-toggle="pill" data-bs-target="#view-floors" role="tab"
-                            aria-controls="view-floors" aria-selected="true">Floors</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
                         <button class="px-4 py-1 nav-link rounded-pill" id="view-zones-tab" type="button"
                             data-bs-toggle="pill" data-bs-target="#view-zones" role="tab"
                             aria-controls="view-zones" aria-selected="false">Zones</button>
                     </li>   
+                    <li class="nav-item" role="presentation">
+                        <button class="px-4 py-1 nav-link rounded-pill active" id="view-floors-tab" type="button"
+                            data-bs-toggle="pill" data-bs-target="#view-floors" role="tab"
+                            aria-controls="view-floors" aria-selected="true">Floors</button>
+                    </li>
                     <li class="nav-item" role="presentation">
                         <button class="px-4 py-1 nav-link rounded-pill" id="view-rooms-tab" type="button"
                             data-bs-toggle="pill" data-bs-target="#view-rooms" role="tab"
@@ -173,52 +175,8 @@
                         </div>
                     </div>
                 </div> -->
-                <div class="tab-pane fade show active" id="view-floors" role="tabpanel" aria-labelledby="view-floors-tab">
-                    <div class="row justify-content-center">
-                        <div class="col-12">
-                            <div class="card border-0 shadow-sm p-3" style="background-color: #ffffff; border-radius: 12px;">
-                                
-                                <div class="d-flex justify-content-between align-items-center mb-4 px-2">
-                                    <div class="d-flex align-items-center">
-                                        <h4 class="mb-0 me-2 fw-bold" style="color: #2196f3; font-size: 1.4rem;">Floors</h4>
-                                        <button class="btn btn-link p-0 border-0 d-flex align-items-center" type="button" data-bs-toggle="modal" data-bs-target="#modal_add_floor" style="text-decoration: none;">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-plus-circle fs-4 plus-icon" data-bs-toggle="modal" data-bs-target="#modal_add_floor">
-                                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"></path>
-                                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"></path>
-                                            </svg>                                        </button>
-                                    </div>
-                                    
-                                    <div class="d-flex align-items-center">
-                                        <span class="me-2 text-secondary" style="font-size: 0.9rem;">Search:</span>
-                                        <input type="text" id="floor-search-input" class="form-control form-control-sm" style="width: 180px; border-radius: 6px; background-color: #f1f3f5; border: 1px solid #ced4da;">
-                                    </div>
-                                </div>
-                                
-                                <div class="table-responsive">
-                                    <table class="table table-hover align-middle mb-0" style="border-collapse: separate; border-spacing: 0;">
-                                        <thead>
-                                            <tr class="text-secondary" style="font-size: 0.85rem; background-color: #f8f9fa;">
-                                                <th style="width: 80px; font-weight: 800; border-bottom: 2px solid #dee2e6;">#</th>
-                                                <th style="font-weight: 800; border-bottom: 2px solid #dee2e6;">NAME</th>
-                                                <th style="font-weight: 800; border-bottom: 2px solid #dee2e6;">LEVEL</th>
-                                                <th style="font-weight: 800; border-bottom: 2px solid #dee2e6;">NUMBER OF ROOMS</th>
-                                                <th class="text-center" style="width: 120px; font-weight: 800; border-bottom: 2px solid #dee2e6;">ACTION</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="list-floors" style="font-size: 0.95rem; font-weight: 500;">
-                                            <tr>
-                                                <td colspan="5" class="text-center text-muted py-4">Loading floors…</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Zone list -->
+                                <!-- Zone list -->
 
                  <div class="tab-pane fade" id="view-zones" role="tabpanel" aria-labelledby="view-zones-tab">
                     <div class="row justify-content-center">
@@ -255,6 +213,52 @@
                                         <tbody id="list-zones" style="font-size: 0.95rem; font-weight: 500;">
                                             <tr>
                                                 <td colspan="5" class="text-center text-muted py-4">Loading zones…</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="tab-pane fade show active" id="view-floors" role="tabpanel" aria-labelledby="view-floors-tab">
+                    <div class="row justify-content-center">
+                        <div class="col-12">
+                            <div class="card border-0 shadow-sm p-3" style="background-color: #ffffff; border-radius: 12px;">
+                                
+                                <div class="d-flex justify-content-between align-items-center mb-4 px-2">
+                                    <div class="d-flex align-items-center">
+                                        <h4 class="mb-0 me-2 fw-bold" style="color: #2196f3; font-size: 1.4rem;">Floors</h4>
+                                        <button class="btn btn-link p-0 border-0 d-flex align-items-center" type="button" data-bs-toggle="modal" data-bs-target="#modal_add_floor" style="text-decoration: none;">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-plus-circle fs-4 plus-icon" data-bs-toggle="modal" data-bs-target="#modal_add_floor">
+                                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"></path>
+                                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"></path>
+                                            </svg>                                        </button>
+                                    </div>
+                                    
+                                    <div class="d-flex align-items-center">
+                                        <span class="me-2 text-secondary" style="font-size: 0.9rem;">Search:</span>
+                                        <input type="text" id="floor-search-input" class="form-control form-control-sm" style="width: 180px; border-radius: 6px; background-color: #f1f3f5; border: 1px solid #ced4da;">
+                                    </div>
+                                </div>
+                                
+                                <div class="table-responsive">
+                                    <table class="table table-hover align-middle mb-0" style="border-collapse: separate; border-spacing: 0;">
+                                        <thead>
+                                            <tr class="text-secondary" style="font-size: 0.85rem; background-color: #f8f9fa;">
+                                                <th style="width: 80px; font-weight: 800; border-bottom: 2px solid #dee2e6;">#</th>
+                                                <th style="font-weight: 800; border-bottom: 2px solid #dee2e6;">NAME</th>
+                                                <th style="font-weight: 800; border-bottom: 2px solid #dee2e6;">LEVEL</th>
+                                                <th style="font-weight: 800; border-bottom: 2px solid #dee2e6;">NUMBER OF ROOMS</th>
+                                                <th class="text-center" style="width: 120px; font-weight: 800; border-bottom: 2px solid #dee2e6;">ACTION</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="list-floors" style="font-size: 0.95rem; font-weight: 500;">
+                                            <tr>
+                                                <td colspan="5" class="text-center text-muted py-4">Loading floors…</td>
                                             </tr>
                                         </tbody>
                                     </table>

@@ -1,0 +1,305 @@
+.rooms-grid.home-grid {
+  grid-template-columns: minmax(360px, 0.9fr) minmax(460px, 1.1fr) !important;
+  gap: 18px !important;
+  align-items: stretch;
+}
+
+.home-dashboard-card {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: 14px;
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+}
+
+.home-dashboard-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.1rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.home-dashboard-card__eyebrow {
+  display: block;
+  margin-bottom: 0.15rem;
+  color: #64748b;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.home-dashboard-card__title {
+  margin: 0;
+  color: #0f172a;
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.home-dashboard-card__body {
+  padding: 1rem 1.1rem 1.1rem;
+}
+
+.home-chart-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.home-chart-action {
+  display: flex;
+  min-width: 0;
+  min-height: 82px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.65rem 0.4rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  background: #f8fafc;
+  color: #475569;
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.15s ease, color 0.15s ease, background 0.15s ease;
+}
+
+.home-chart-action:hover,
+.home-chart-action:focus-visible {
+  transform: translateY(-1px);
+  border-color: #38bdf8;
+  background: #ffffff;
+  color: #0369a1;
+  outline: none;
+}
+
+.home-chart-action svg {
+  width: 1.4rem;
+  height: 1.4rem;
+}
+
+.home-chart-action span {
+  font-size: 0.67rem;
+  font-weight: 800;
+  line-height: 1.15;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.home-outdoor-temperature {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem;
+  border-left: 4px solid #15a9f2;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #eff6ff, #f8fafc);
+}
+
+.home-house-metrics {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.home-energy-consumption {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem;
+  border-left: 4px solid #10b981;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #ecfdf5, #f8fafc);
+}
+
+.home-energy-consumption__icon {
+  width: 52px;
+  height: 52px;
+  color: #10b981;
+}
+
+.home-energy-consumption__label {
+  display: block;
+  color: #64748b;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.home-energy-consumption__value {
+  display: block;
+  margin-top: 0.1rem;
+  color: #0f172a;
+  font-size: 2.15rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.home-energy-consumption__meta {
+  display: block;
+  margin-top: 0.35rem;
+  color: #64748b;
+  font-size: 0.76rem;
+}
+
+.home-outdoor-temperature__icon {
+  width: 52px;
+  height: 52px;
+  color: #f59e0b;
+}
+
+.home-outdoor-temperature__label {
+  display: block;
+  color: #64748b;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.home-outdoor-temperature__value {
+  display: block;
+  margin-top: 0.1rem;
+  color: #0f172a;
+  font-size: 2.15rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.home-outdoor-temperature__meta {
+  display: block;
+  margin-top: 0.35rem;
+  color: #64748b;
+  font-size: 0.76rem;
+}
+
+.weather-current {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.weather-current__icon {
+  width: 70px;
+  height: 70px;
+  color: #f59e0b;
+}
+
+.weather-current__temperature {
+  color: #0f172a;
+  font-size: 2.35rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.weather-current__condition {
+  margin-top: 0.25rem;
+  color: #475569;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.weather-details {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.weather-detail {
+  padding: 0.65rem;
+  border-radius: 9px;
+  background: #f8fafc;
+  text-align: center;
+}
+
+.weather-detail__label {
+  display: block;
+  color: #94a3b8;
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.weather-detail__value {
+  display: block;
+  margin-top: 0.2rem;
+  color: #334155;
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.weather-forecast {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.4rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.weather-forecast__day {
+  padding: 0.55rem 0.25rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.weather-forecast__name {
+  display: block;
+  color: #64748b;
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.weather-forecast__icon {
+  width: 28px;
+  height: 28px;
+  margin: 0.35rem auto;
+  color: #f59e0b;
+}
+
+.weather-forecast__temp {
+  color: #334155;
+  font-size: 0.76rem;
+  font-weight: 800;
+}
+
+.weather-data-source {
+  padding: 0.3rem 0.55rem;
+  border-radius: 999px;
+  background: #eef2ff;
+  color: #4f46e5;
+  font-size: 0.62rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+@media (max-width: 1199.98px) {
+  .rooms-grid.home-grid {
+    grid-template-columns: 1fr !important;
+    align-items: start;
+  }
+
+  .home-dashboard-card {
+    height: auto;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .home-chart-actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .home-chart-action {
+    min-height: 58px;
+    flex-direction: row;
+  }
+}
